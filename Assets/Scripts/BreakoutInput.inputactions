@@ -1,0 +1,34 @@
+{
+    "name": "BreakoutInput",
+    "maps": [
+        {
+            "name": "AllActions",
+            "id": "5137975d-4e5f-4ea4-9f44-d8855643a142",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "f5169a73-3b1d-4215-9606-86ea0ed6adfa",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "793ea5ca-28ad-4cca-b3c3-68c0c610e697",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
