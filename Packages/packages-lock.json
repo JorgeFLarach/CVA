@@ -26,7 +26,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
+<<<<<<< HEAD
       "version": "8.0.3",
+=======
+      "version": "8.0.2",
+>>>>>>> 0198c20 (DESPREATE FIX)
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -63,11 +67,19 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
+<<<<<<< HEAD
       "version": "9.0.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "8.0.3",
+=======
+      "version": "9.0.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.common": "8.0.2",
+>>>>>>> 0198c20 (DESPREATE FIX)
         "com.unity.mathematics": "1.1.0",
         "com.unity.modules.physics2d": "1.0.0"
       },
@@ -95,7 +107,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
+<<<<<<< HEAD
       "version": "1.8.17",
+=======
+      "version": "1.8.16",
+>>>>>>> 0198c20 (DESPREATE FIX)
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -105,7 +121,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
+<<<<<<< HEAD
       "version": "2.4.4",
+=======
+      "version": "2.4.3",
+>>>>>>> 0198c20 (DESPREATE FIX)
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -137,14 +157,22 @@
         "com.unity.2d.pixel-perfect": "5.0.3",
         "com.unity.2d.psdimporter": "8.0.5",
         "com.unity.2d.sprite": "1.0.0",
+<<<<<<< HEAD
         "com.unity.2d.spriteshape": "9.0.4",
+=======
+        "com.unity.2d.spriteshape": "9.0.3",
+>>>>>>> 0198c20 (DESPREATE FIX)
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "3.1.2",
         "com.unity.2d.aseprite": "1.1.4"
       }
     },
     "com.unity.ide.rider": {
+<<<<<<< HEAD
       "version": "3.0.31",
+=======
+      "version": "3.0.28",
+>>>>>>> 0198c20 (DESPREATE FIX)
       "depth": 0,
       "source": "registry",
       "dependencies": {
