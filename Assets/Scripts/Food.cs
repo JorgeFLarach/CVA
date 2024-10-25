@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 2f;
     public int lives = 3;
 
     void Update()

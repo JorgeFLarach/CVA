@@ -6,23 +6,6 @@ TagManager:
   tags:
   - Coin
   - Enemy
-<<<<<<< HEAD
-  - Food
-  - You lose
-  - GameEnd
-  - Sauce
-  - Cheese
-  - Pasta
-  - Plate
-  - lasagnaGround
-  - Timer
-  - GoodBar
-  - MidBar
-  - BadBar
-  - OvenText
-  - Shot
-=======
->>>>>>> 0198c20 (DESPREATE FIX)
   layers:
   - Default
   - TransparentFX
@@ -33,17 +16,10 @@ TagManager:
   - Ground
   - Unwalkable
   - Moveable
-<<<<<<< HEAD
   - Kitchen
   - Battle Ground
-  - Food
-  - Enemy
-=======
   - 
   - 
-  - 
-  - 
->>>>>>> 0198c20 (DESPREATE FIX)
   - 
   - 
   - 
@@ -67,21 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
   - name: New Layer 1
     uniqueID: 941640649
     locked: 0
   - name: New Layer 2
     uniqueID: 695644729
     locked: 0
-  - name: Food
-    uniqueID: 1351529609
-    locked: 0
-  - name: Aliens
-    uniqueID: 176499395
-    locked: 0
-  - name: Projectiles
-    uniqueID: 3036835865
-    locked: 0
-=======
->>>>>>> 0198c20 (DESPREATE FIX)
