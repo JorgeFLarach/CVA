@@ -29,5 +29,11 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetTrajectory(trajectory);
         }
     }
-
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Food"))
+    //     {
+    //         Destroy(collision.gameObject);
+    //     }
+    // }
 }
