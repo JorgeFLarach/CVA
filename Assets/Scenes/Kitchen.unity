@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834a5a6550a734579ab2269e6797d073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   lives: 3
 --- !u!50 &46910496
 Rigidbody2D:
@@ -606,8 +606,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: -4266189279835900299, guid: 5f2db92723676431894376994c3a3681, type: 3}
   spawnDistance: 10
-  spawnRate: 3
-  spawnAmount: 1
+  spawnRate: 2
+  spawnAmount: 2
   trajectoryVariance: 15
 --- !u!4 &2037308806
 Transform:

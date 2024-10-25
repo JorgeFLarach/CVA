@@ -174,5 +174,5 @@ MonoBehaviour:
   sprites:
   - {fileID: 2747690628134850419, guid: 36f15ed68fad74a8993516c6be0269f4, type: 3}
   - {fileID: 7482667652216324306, guid: 844b14f8dc5094ca39ed0b3a04a325cd, type: 3}
-  speed: 0.5
+  speed: 3
   lifeTime: 50
