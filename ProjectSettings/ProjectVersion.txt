@@ -1,7 +1,2 @@
-<<<<<<< HEAD
 m_EditorVersion: 2022.3.43f1
 m_EditorVersionWithRevision: 2022.3.43f1 (85497d293fa1)
-=======
-m_EditorVersion: 2022.3.37f1
-m_EditorVersionWithRevision: 2022.3.37f1 (340ba89e4c23)
->>>>>>> 0198c20 (DESPREATE FIX)
