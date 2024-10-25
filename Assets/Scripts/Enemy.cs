@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     public float speed = 0.5f;
     public float lifeTime = 30f;
+    public float lives = 3;
 
     private void Awake()
     {
@@ -34,7 +35,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Food"))
         {
-            Destroy(gameObject);
+            lives--;
+            if (lives <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
