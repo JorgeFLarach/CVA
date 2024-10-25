@@ -19,21 +19,14 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnAmount; i++)
         {
-            Vector3 spawnDirection = Random.insideUnitCircle.normalized;
+            Vector3 spawnDirection = Vector3.left;
             Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
-            Quaternion rotation =  Quaternion.AngleAxis(variance, Vector3.forward);
+            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
             Enemy enemy = Instantiate(enemyPrefab, spawnPoint, rotation);
 
-            Vector2 trajectory = rotation * -spawnDirection;
+            Vector2 trajectory = rotation * spawnDirection;
             enemy.SetTrajectory(trajectory);
         }
     }
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Food"))
-    //     {
-    //         Destroy(collision.gameObject);
-    //     }
-    // }
 }
