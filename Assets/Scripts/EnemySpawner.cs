@@ -29,4 +29,8 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetTrajectory(trajectory);
         }
     }
+
+    private void GameOver(){
+        
+    }
 }
