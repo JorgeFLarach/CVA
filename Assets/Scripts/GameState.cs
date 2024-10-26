@@ -29,4 +29,6 @@ public class GameState : MonoBehaviour
         Instantiate(foodPrefab, worldPosition, Quaternion.identity);
     }
 
+    
+
 }
