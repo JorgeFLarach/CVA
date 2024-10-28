@@ -7,8 +7,10 @@ TagManager:
   - Coin
   - Enemy
   - Food
-  - You lose
-  - GameEnd
+  - Sauce
+  - Cheese
+  - Pasta
+  - Plate
   layers:
   - Default
   - TransparentFX
