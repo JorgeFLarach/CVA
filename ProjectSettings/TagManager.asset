@@ -7,6 +7,10 @@ TagManager:
   - Coin
   - Enemy
   - Food
+  - Sauce
+  - Cheese
+  - Pasta
+  - Plate
   layers:
   - Default
   - TransparentFX
