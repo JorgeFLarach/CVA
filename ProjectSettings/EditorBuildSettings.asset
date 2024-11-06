@@ -9,6 +9,29 @@ EditorBuildSettings:
     path: Assets/Scenes/LasagnaStartGame.unity
     guid: f30f11e81e9f4f947a3b22062ca10cfa
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/LasagnaMiniGame.unity
     guid: e31ecf47707506d429ba7cca504563b3
+=======
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Breakout.unity
+    guid: d46d7e1871644463790398e41f6bba63
+  - enabled: 1
+    path: Assets/Scenes/AnimationStuff.unity
+    guid: de8f09fea2f444c6592f47e22d089cae
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 37b16b120102841b6b5391906ed1413e
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: 5bbe6f02c6ce646fc846ee0c2a858099
+  - enabled: 1
+    path: Assets/Scenes/GameSelector.unity
+    guid: 794c67ab7323a499cb9d31bfa1ee2f0c
+  - enabled: 1
+    path: Assets/Scenes/WaveScreen.unity
+    guid: f3636bac0be7f47a4977425b24fff4c3
+>>>>>>> 94f61f1 (game selection page, wave screens, game over screen)
   m_configObjects: {}
