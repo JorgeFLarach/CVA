@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {   
@@ -38,14 +39,26 @@ public class Enemy : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
+                
                 Destroy(gameObject);
             }
+        }
+        else if (collision.gameObject.CompareTag("GameEnd")) // Replace "GameEndTag" with the actual tag
+        {
+            GameOver();
         }
     }
 
     public void SetTrajectory(Vector2 direction)
     {
         rb.velocity = direction * speed;
+    }
+
+    public void GameOver()
+    {
+        rb.velocity = Vector2.zero;
+        // Add additional game over logic here, such as displaying a game over screen
+        SceneManager.LoadScene("GameOver");
     }
 
 }
