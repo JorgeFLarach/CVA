@@ -4,11 +4,17 @@ public class Food : MonoBehaviour
 {
     public float speed = 2f;
     public int lives = 3;
+    
+    public int lifetime = 30;
 
     void Update()
     {
         // Move the food to the right
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+    private void Start()
+    {
+        Destroy(gameObject, lifetime);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
