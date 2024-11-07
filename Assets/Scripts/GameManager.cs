@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int highScore;
     public int foodReserves = 200;
+    // public UnityEngine.UI.Text foodReservesText;
+    public TextMeshProUGUI foodReservesText;
+
 
     // public EnemySpawner enemySpawner;
 
@@ -26,6 +31,7 @@ public class GameManager : MonoBehaviour
             SpawnFood();
         }
         GameOver();
+        DisplayFoodReserves();
     }
 
     void SpawnFood()
@@ -51,7 +57,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public UnityEngine.UI.Text foodReservesText;
 
     void Start()
     {
