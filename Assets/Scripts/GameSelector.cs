@@ -35,7 +35,7 @@ public class GameSelector : MonoBehaviour
     }
     public void Lasanga()
     {
-        SceneManager.LoadScene("Breakout");
+        SceneManager.LoadScene("LasagnaStartGame");
     }
     public void Pizza()
     {
