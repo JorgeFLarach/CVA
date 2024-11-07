@@ -11,6 +11,8 @@ TagManager:
   - Cheese
   - Pasta
   - Plate
+  - lasagnaGround
+  - Timer
   layers:
   - Default
   - TransparentFX

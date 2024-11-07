@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -11,30 +12,29 @@ using UnityEngine.SceneManagement;
 
 public class plateMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    public GameObject cheesePrefab;
-    public GameObject pastaPrefab;
-    public GameObject saucePrefab;
-    public float speed = 2f;
+    public float speed = 1f;
     public bool isMoving = false;
     public int stackCount = 0;
-
     public float startMousePos;
-
+    public float mouseMove;
+    public float timelapsed = .05f;
+    public float time = 0f;
     public List<String> foodOrder = new List<string> {"Pasta", "Cheese", "Sauce"};
+    public List<GameObject> stack; 
 
-  
+    void Start(){
 
-    
+    }
     void Update(){
-       int random = UnityEngine.Random.Range(0,150);
-        if(random == 10){
-            spawnFoods();
-        }
-
+        if(!(GameObject.FindGameObjectWithTag("Timer").GetComponent<timer>().gameOver)){
+            time += Time.deltaTime;
+            if (time >= timelapsed){
+                // reset time 
+                time = 0.0f;
+                spawnFoods();
+            }
+        
         if (Input.GetMouseButtonDown(0)){
-            Debug.Log("Down mouse played ");
             isMoving = true;
             startMousePos = Input.mousePosition.x;
         }
@@ -45,53 +45,37 @@ public class plateMovement : MonoBehaviour
 
         if (isMoving){
             float currPos = Input.mousePosition.x;
-            float mouseMov = currPos - startMousePos;
+            mouseMove = currPos - startMousePos;
             UnityEngine.Vector3 plateTransform = transform.position;
-            plateTransform.x += mouseMov * speed * Time.deltaTime;
+            // adding movement to the vector
+            plateTransform.x += mouseMove * speed * Time.deltaTime;
+             // ensure plate doesnt move beyond screen
+             plateTransform.x = Mathf.Clamp(plateTransform.x, -3f, 9f);
+            //setting transform for that vector
             transform.position = plateTransform;
-
             startMousePos = currPos;
-
         }
-
+        
+    }
     }
 
-    void OnCollisionEnter2D(Collision2D other){
-        String correctItem = foodOrder[0];
-        Debug.Log("correct item" + correctItem);
-            if (other.gameObject.CompareTag(correctItem)){
-                // catch item on plate
-                foodOrder.Remove(correctItem);
-                foodOrder.Add(correctItem);
-                Debug.Log("curr list: " + foodOrder[0]);
-                stackCount +=1;
-
-            }
-            else {
-                Debug.Log("loading lose scene");
-                //SceneManager.LoadScene("gameOver");
-            }
-        }
-
     void spawnFoods(){
-          int randNum = UnityEngine.Random.Range(-10, 10);
-          int randIndex = UnityEngine.Random.Range(0, 3);
+          float randNum = UnityEngine.Random.Range(-3f, 3f);
+          float randNum2 = UnityEngine.Random.Range(3f, 9f);
+          int randIndex = UnityEngine.Random.Range(0, 2); 
           GameObject foodObject; 
 
           String spawnedFood = foodOrder[randIndex];
-          if (spawnedFood == "Cheese"){
-                 foodObject = cheesePrefab;
-          }
-          else if (spawnedFood == "Pasta"){
-            foodObject = pastaPrefab;
-
-          }
-          else {
-            foodObject = saucePrefab;
-          }
-   
-          UnityEngine.Vector3 foodPos = new UnityEngine.Vector3(randNum , 4, 0);
+          UnityEngine.Vector3 foodPos = new UnityEngine.Vector3(randNum , 5, 0);
+        
+          foodObject = (GameObject)Resources.Load($"Prefabs/{spawnedFood}", typeof(GameObject));  
           Instantiate(foodObject, foodPos, UnityEngine.Quaternion.identity);
+
+          //spawn second needed item 
+         UnityEngine.Vector3 foodPos2 = new UnityEngine.Vector3(randNum2, 5, 0);
+         foodObject = (GameObject)Resources.Load($"Prefabs/{foodOrder[0]}", typeof(GameObject));  
+         Instantiate(foodObject, foodPos2, UnityEngine.Quaternion.identity);
+
     }
 
     }
