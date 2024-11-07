@@ -328,12 +328,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-<<<<<<< HEAD
   m_TemplateCustomTags:
     PRODUCT_DESCRIPTION: 
-=======
-  m_TemplateCustomTags: {}
->>>>>>> 0198c20 (DESPREATE FIX)
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -588,11 +584,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-<<<<<<< HEAD
   webGLTemplate: APPLICATION:PWA
-=======
-  webGLTemplate: APPLICATION:Default
->>>>>>> 0198c20 (DESPREATE FIX)
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 2

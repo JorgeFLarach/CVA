@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LasagnaStartGame.unity
     guid: f30f11e81e9f4f947a3b22062ca10cfa
   - enabled: 1
-    path: Assets/Scenes/LasangaMiniGame.unity
+    path: Assets/Scenes/LasagnaMiniGame.unity
     guid: e31ecf47707506d429ba7cca504563b3
   m_configObjects: {}
