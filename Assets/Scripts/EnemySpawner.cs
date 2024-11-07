@@ -4,6 +4,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class EnemySpawner : MonoBehaviour
 {
     public Enemy enemyPrefab;
@@ -13,8 +14,10 @@ public class EnemySpawner : MonoBehaviour
     public float trajectoryVariance = 15f;
 
     public float waveTime = 60f;
+    public int WaveCount = 1;
 
     public List<Enemy> enemies = new List<Enemy>();
+
 
     private void Start()
     {
@@ -46,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
             CancelInvoke(nameof(Spawn));
             if(waveTime <= -5)
             {
+                // FindAnyObjectByType<GameSelector>().WaveCount++;
                 SceneManager.LoadScene("WaveScreen");
             }
             // SceneManager.LoadScene("WaveScreen");
