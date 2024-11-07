@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/WaveScreen.unity.meta
-guid: f3636bac0be7f47a4977425b24fff4c3
-========
-guid: 794c67ab7323a499cb9d31bfa1ee2f0c
->>>>>>>> 11b54bc93fa6c8348ff4fe20e46b1a7a9b9eb11b:Assets/Scenes/GameSelector.unity.meta
+guid: baa469ab8d27241329c86b3d16d75845
 DefaultImporter:
   externalObjects: {}
   userData: 
