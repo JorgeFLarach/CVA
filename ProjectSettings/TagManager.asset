@@ -9,6 +9,12 @@ TagManager:
   - Food
   - You lose
   - GameEnd
+  - Sauce
+  - Cheese
+  - Pasta
+  - Plate
+  - lasagnaGround
+  - Timer
   layers:
   - Default
   - TransparentFX
