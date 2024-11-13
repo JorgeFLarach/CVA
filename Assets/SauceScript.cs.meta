@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SauceScript.cs.meta
+guid: eb9d5ea3544ded747826f1a8c25101f6
+========
+guid: dfa4f237caa91419998048cf484b360d
+>>>>>>>> 11b54bc93fa6c8348ff4fe20e46b1a7a9b9eb11b:Assets/Scripts/GameSelector.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
