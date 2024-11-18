@@ -26,6 +26,7 @@ public class SliderScript : MonoBehaviour
         clicked = false;
         startloc = transform.position;
         level = 1;
+        speed = 1;
     }
 
     // Update is called once per frame

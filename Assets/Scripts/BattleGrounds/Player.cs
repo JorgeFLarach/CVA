@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.SceneManagement;
 
-struct SelectedFood
+/* struct SelectedFood
 {
   bool salad;
   bool pie;
 }
 public class Player : MonoBehaviour
 {
-  public SelectedFood selectedFood;
+  // public SelectedFood selectedFood;
   public Sprite[] saladSprites;
   public Sprite[] pieSprites;
 
@@ -42,12 +42,12 @@ public class Player : MonoBehaviour
   }
   public void SelectSalad()
   {
-    selectedFood.salad = true;
-    selectedFood.pie = false;
+    // selectedFood.salad = true;
+    // selectedFood.pie = false;
   }
   public void SelectPie()
   {
-    selectedFood.salad = false;
-    selectedFood.pie = true;
+    // selectedFood.salad = false;
+    // selectedFood.pie = tue;
   }
-}
+}*/

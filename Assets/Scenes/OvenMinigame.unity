@@ -773,7 +773,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 851299133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046c70f4c8bd4d44eb3b8ccc432029f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d195851dcae8494a9fa3525e5b91c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   badbar1: {fileID: 1975138372}
@@ -894,11 +894,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033913926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37317587ac8921141b556ab230f67b1c, type: 3}
+  m_Script: {fileID: 11500000, guid: e35eb008373c644278beba746aa30e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoretext: {fileID: 1714135184}
-  Panel: {fileID: 482754164}
+  Panel: {fileID: 0}
   loc: {x: 0, y: 0, z: 0}
   elsewhere: {x: 0, y: 0, z: 0}
   score: 0
@@ -999,11 +999,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1193795999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56013cd7fc9216c49b4c5e32681860c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e97b722baba04b43aad6895b2c52860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clicked: 0
-  speed: 1
+  speed: 0
   startloc: {x: 0, y: 0, z: 0}
   level: 0
   barstatus: 
@@ -1706,11 +1706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37317587ac8921141b556ab230f67b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoretext: {fileID: 1714135184}
-  Panel: {fileID: 0}
-  loc: {x: 0, y: 0, z: 0}
-  elsewhere: {x: 0, y: 0, z: 0}
-  score: 0
 --- !u!1 &1734543142
 GameObject:
   m_ObjectHideFlags: 0
