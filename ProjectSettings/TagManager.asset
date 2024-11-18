@@ -13,6 +13,9 @@ TagManager:
   - Plate
   - lasagnaGround
   - Timer
+  - Lasagna
+  - Veggies
+  - Oven
   layers:
   - Default
   - TransparentFX

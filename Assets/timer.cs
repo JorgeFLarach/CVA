@@ -24,20 +24,21 @@ public class timer : MonoBehaviour {
 
         if (countdown < 0){
             winPanel.SetActive(true);
+            gameOver = true;
            
-            // can adjust with time and play
-            if (plate.GetComponent<plateMovement>().stack.Count <= 4){
-                earnedMonsters = 2;
+            if (plate.GetComponent<plateMovement>().stack.Count <= 3){
+                earnedMonsters = 15;
             }
-            else if (plate.GetComponent<plateMovement>().stack.Count <= 8){
-                earnedMonsters = 5;
+            else if (plate.GetComponent<plateMovement>().stack.Count <= 6){
+                earnedMonsters = 30;
             }
-            else if(plate.GetComponent<plateMovement>().stack.Count <= 11){
-                earnedMonsters = 8;
+            else if(plate.GetComponent<plateMovement>().stack.Count <= 8){
+                earnedMonsters = 45;
             }
             else {
-                earnedMonsters = 10;
+                earnedMonsters = 55;
             }
+          PlayerPrefs.SetInt("LasagnaEarned", earnedMonsters);
           winPanelText.text = $"You earned {earnedMonsters} lasagna monsters! ";
           Invoke("MainMenu", 4f);
         }
@@ -50,12 +51,10 @@ public class timer : MonoBehaviour {
          gameOver = true;
          losePanel.SetActive(true);
          Invoke("MainMenu", 3f);
-
-         
         }
 
      public void MainMenu(){
-         SceneManager.LoadScene("LasagnaStartGame");
+         SceneManager.LoadScene("KitchenPrep");
          
         }
         
