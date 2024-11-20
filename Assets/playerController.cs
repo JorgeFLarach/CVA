@@ -37,7 +37,7 @@ public class playerController : MonoBehaviour
             moveDir = playerControls.ReadValue<Vector2>();
         }
 
-     //   if (timer < 0){
+     //if (timer < 0){
          // show panel quickly then go to battle ground
       //  }
 

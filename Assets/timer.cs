@@ -38,7 +38,7 @@ public class timer : MonoBehaviour {
             else {
                 earnedMonsters = 55;
             }
-          PlayerPrefs.SetInt("LasagnaEarned", earnedMonsters);
+          PlayerPrefs.SetInt("Lasagna", earnedMonsters);
           winPanelText.text = $"You earned {earnedMonsters} lasagna monsters! ";
           Invoke("MainMenu", 4f);
         }
