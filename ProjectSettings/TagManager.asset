@@ -11,6 +11,10 @@ TagManager:
   - Cheese
   - Pasta
   - Plate
+  - Brussel Sprout
+  - Cabbage
+  - Bok Choy
+  - Knife
   layers:
   - Default
   - TransparentFX
