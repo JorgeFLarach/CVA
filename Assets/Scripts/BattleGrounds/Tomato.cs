@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaladFork : MonoBehaviour
+public class Tomato : MonoBehaviour
 {
   public int Speed;
   public int Damage;
   public Vector2 Target;
   public Vector2 Position;
-  
+
   public int GetDamage(){
     return Damage;
   }

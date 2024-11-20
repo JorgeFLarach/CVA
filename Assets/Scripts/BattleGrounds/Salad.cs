@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class Salad : MonoBehaviour
 {
-  public List<SaladFork> forks = new List<SaladFork>();
+  public List<Tomato> tomatos = new List<Tomato>();
   public Vector2 Position;
   public int Health;
-  public SaladFork forkPrefab;
+  public Tomato tomatoPrefab;
 
   public Targeting targeting;
 
-  public void ThrowFork(){
+  public void ThrowTomato(){
    GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Enemy");
    Vector3 closestPosition = targeting.GetClosestTargetPosition(potentialTargets);
-   SaladFork fork = Instantiate(forkPrefab, Position, Quaternion.identity);
-   fork.GetComponent<SaladFork>().SetTarget(closestPosition); 
-   forks.Add(fork);
+   Tomato tomato = Instantiate(tomatoPrefab, Position, Quaternion.identity);
+   tomato.GetComponent<Tomato>().SetTarget(closestPosition);
+   tomatos.Add(tomato);
   }
 
   public void TakeDamage(int damage){
