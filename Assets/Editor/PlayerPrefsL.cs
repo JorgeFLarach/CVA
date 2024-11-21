@@ -1,4 +1,8 @@
-/*
+// FOR PLAY TESTING IN UNITY, 
+// EACH TIME YOU START A NEW GAME, OR PRESS PLAY, YOU MUST UNCOMMENT THIS CODE AND RUN IT. THEN YOU CAN COMMENT THIS CODE
+// OUT AND PLAY THE GAME LIKE NORMAL
+
+
 using UnityEditor;
 using UnityEngine;
 
@@ -6,11 +10,10 @@ using UnityEngine;
 public class ClearPlayerPrefsOnPlay
 {
     static ClearPlayerPrefsOnPlay(){
-        // Subscribe to the play mode state change event
         EditorApplication.playModeStateChanged += ClearPlayerPrefsOnPlayModeChange;
     }
 
-    // This method will be called whenever the play mode state changes
+
     private static void ClearPlayerPrefsOnPlayModeChange(PlayModeStateChange state){
         // Check if Unity is entering play mode
         if (state == PlayModeStateChange.EnteredPlayMode) {
@@ -20,6 +23,7 @@ public class ClearPlayerPrefsOnPlay
         }
        }
 }
-*/
+
+
 
 

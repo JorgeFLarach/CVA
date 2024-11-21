@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class fillClock : MonoBehaviour
 {
@@ -11,13 +11,12 @@ public class fillClock : MonoBehaviour
    public float totTime;
     // Update is called once per frame
     public void Start(){
-    
+     
      totTime = 70f;
     }
     public void Update(){
         currTime = PlayerPrefs.GetFloat("Timer");
-        Debug.Log(currTime);
         fill.fillAmount = Mathf.InverseLerp(0, totTime, currTime);
-        
+      
     }
 }

@@ -2,15 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Threading;
+
 
 
 public class playerController : MonoBehaviour
 {
     public bool fstMove = true;
     public InputAction playerControls;
-    public float speed = 4f;
-    // Start is called before the first frame update
+    public float speed = 5.3f;
     public Animator anim;
     public Vector2 moveDir;
     //public TMP_Text timeText;
@@ -22,24 +21,14 @@ public class playerController : MonoBehaviour
         playerControls.Enable();
         rb = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
-       // PlayerPrefs.SetFloat("Timer", 70);
-      //  timer = PlayerPrefs.GetFloat("Timer", 70);
-       // PlayerPrefs.Save();
-
-       // DontDestroyOnLoad(gameObject); 
+    
     }
 
     public void Update(){
-
-      //  timeText.text = timer.ToString("F2");
       timer = PlayerPrefs.GetFloat("Timer");
         if (timer > 0){
             moveDir = playerControls.ReadValue<Vector2>();
         }
-
-     //if (timer < 0){
-         // show panel quickly then go to battle ground
-      //  }
 
    
     }

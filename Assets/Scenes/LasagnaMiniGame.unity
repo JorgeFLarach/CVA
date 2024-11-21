@@ -1331,7 +1331,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1465,8 +1465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 350}
-  m_SizeDelta: {x: 600, y: 50}
+  m_AnchoredPosition: {x: 220, y: 350}
+  m_SizeDelta: {x: 340, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646231833
 MonoBehaviour:
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5142384, g: 0.24241517, b: 0.64779866, a: 1}
+  m_Color: {r: 0.67850447, g: 0.4560341, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1541,8 +1541,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 350}
-  m_SizeDelta: {x: 600, y: 50}
+  m_AnchoredPosition: {x: 220, y: 350}
+  m_SizeDelta: {x: 340, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673499714
 MonoBehaviour:
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.55773103, b: 0.7433691, a: 1}
+  m_Color: {r: 0.3338872, g: 0.15272333, b: 0.41509432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1565,10 +1565,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 46d85e9a57ba2b34db4123118124f670, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clock
+  m_text: 40
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2185,8 +2185,8 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2334,7 +2334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -515, y: 280}
+  m_AnchoredPosition: {x: -580, y: 280}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7346322887840735800
@@ -2588,14 +2588,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8538698905229065285}
   - {fileID: 7103284086713848330}
   - {fileID: 4679238636776389630}
   - {fileID: 381691943}
-  - {fileID: 4640008178586494872}
   - {fileID: 1762324546}
-  - {fileID: 1673499713}
   - {fileID: 1646231832}
+  - {fileID: 1673499713}
+  - {fileID: 4640008178586494872}
+  - {fileID: 8538698905229065285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
