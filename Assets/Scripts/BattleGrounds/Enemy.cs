@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
-{   
+{
     public Sprite[] sprites;
 
     private SpriteRenderer spriteRenderer;
@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-                
                 Destroy(gameObject);
             }
         }

@@ -6,18 +6,22 @@ using UnityEngine;
 public class Salad : MonoBehaviour
 {
   public List<Tomato> tomatos = new List<Tomato>();
-  public Vector2 Position;
+  private Vector2 Position;
   public int Health;
   public Tomato tomatoPrefab;
+  public int throwRate = 10;
+  public int hp;
 
-  public Targeting targeting;
+  public void SetPosition(Vector2 position){
+    Position = position;
+  }
 
   public void ThrowTomato(){
-   GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Enemy");
-   Vector3 closestPosition = targeting.GetClosestTargetPosition(potentialTargets);
    Tomato tomato = Instantiate(tomatoPrefab, Position, Quaternion.identity);
-   tomato.GetComponent<Tomato>().SetTarget(closestPosition);
    tomatos.Add(tomato);
+  }
+  public void SetHP(int num){
+      hp = num;
   }
 
   public void TakeDamage(int damage){
@@ -30,6 +34,6 @@ public class Salad : MonoBehaviour
     Destroy(gameObject);
   }
   public void Start(){
-    targeting = GetComponent<Targeting>();
+    InvokeRepeating("ThrowTomato", 0, throwRate);
   }
 }

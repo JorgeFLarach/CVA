@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     public int spawnAmount = 1;
     public float trajectoryVariance = 15f;
 
+    public int enemyCount = 0;
+
     public float waveTime = 60f;
     public int WaveCount = 1;
 
@@ -35,24 +37,41 @@ public class EnemySpawner : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
             Enemy enemy = Instantiate(enemyPrefab, spawnPoint, rotation);
             enemies.Add(enemy);
+            enemyCount++;
 
             Vector2 trajectory = rotation * spawnDirection;
             enemy.SetTrajectory(trajectory);
         }
 
     }
+    public void RemoveEnemy()
+    {
+        enemyCount--;
+    }
+    public bool AllEnemiesDead()
+    {
+        if(enemyCount <= 0){
+            return true;
+        }else{
+            // Debug.Log("Enemies are still alive: " + enemies.Count);
+            return false;
+        }
+    }
+
     private void Update()
     {
             waveTime -= Time.deltaTime;
         if (waveTime <= 0)
         {
+            Debug.Log("Enemies are still alive: " + enemies.Count);
             CancelInvoke(nameof(Spawn));
-            if(waveTime <= -5)
-            {
-                // FindAnyObjectByType<GameSelector>().WaveCount++;
-                SceneManager.LoadScene("WaveScreen");
-            }
-            // SceneManager.LoadScene("WaveScreen");
+
+            SceneManager.LoadScene("WaveScreen");
+        }
+        if(AllEnemiesDead()&& waveTime < 0)
+        {
+            // FindAnyObjectByType<GameSelector>().WaveCount++;
+            SceneManager.LoadScene("WaveScreen");
         }
     }
 
