@@ -29,7 +29,18 @@ public TMP_Text lossText;
   }
  public void OnCollisionEnter2D(Collision2D other) {
     if (other.gameObject.CompareTag("Plate")){
-        if(this.gameObject.transform.position.x - .5 <= other.gameObject.transform.position.x && other.gameObject.transform.position.x <= this.gameObject.transform.position.x + .5){
+                 if (other.gameObject.transform.position.x - .5f > this.gameObject.transform.position.x) {
+
+                  //Falling to the left
+                    this.gameObject.transform.position += new Vector3(-80f, -20f, 0f) * Time.deltaTime;
+
+                  }
+                  else if (other.gameObject.transform.position.x + .5f < this.gameObject.transform.position.x) {
+                      this.gameObject.transform.position += new Vector3(80f, -20f, 0f) * Time.deltaTime;
+                   
+                  }
+
+        if (this.gameObject.transform.position.x - .5 <= other.gameObject.transform.position.x && other.gameObject.transform.position.x <= this.gameObject.transform.position.x + .5){
             plate.GetComponent<plateMovement>().stack.Add(this.gameObject);
             plate.GetComponent<plateMovement>().foodOrder.Remove("Pasta");
             plate.GetComponent<plateMovement>().foodOrder.Add("Pasta");
@@ -78,7 +89,6 @@ public TMP_Text lossText;
 
                   //Falling to the left
                     other.gameObject.transform.position += new Vector3(-80f, -20f, 0f) * Time.deltaTime;
-                   
 
                   }
                   else {

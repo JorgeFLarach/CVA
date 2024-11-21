@@ -18,12 +18,8 @@ public class EarnedMonsters : MonoBehaviour
         lasagna = PlayerPrefs.GetInt("Lasagna", 0);
         //pie = PlayerPrefs.GetInt("Pie",0);
         //veggie = PlayerPrefs.GetInt("Veggie", 0);
-        Monstertext.text = $"Lasagna Monsters: {lasagna}";
+        Monstertext.text = $"Lasagna Monsters: {lasagna}\nPie Monsters: 60\n Veggie Monsters: 100 ";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Xml.Serialization;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class timer : MonoBehaviour {
@@ -38,12 +39,14 @@ public class timer : MonoBehaviour {
             else {
                 earnedMonsters = 55;
             }
-          PlayerPrefs.SetInt("Lasagna", earnedMonsters);
+          int oldTot = PlayerPrefs.GetInt("Lasagna");
+          int newTot = oldTot + earnedMonsters;
+          PlayerPrefs.SetInt("Lasagna", newTot);
           winPanelText.text = $"You earned {earnedMonsters} lasagna monsters! ";
           Invoke("MainMenu", 4f);
         }
 
-    text.text = countdown.ToString();
+        text.text = countdown.ToString().Split('.')[0];
       }
     }
 
@@ -54,9 +57,8 @@ public class timer : MonoBehaviour {
         }
 
      public void MainMenu(){
+         Debug.Log("startGame");
          SceneManager.LoadScene("KitchenPrep");
-         
         }
-        
     }
 

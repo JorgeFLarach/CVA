@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class GlobalTime : MonoBehaviour
@@ -13,8 +14,7 @@ public class GlobalTime : MonoBehaviour
     public void Start(){
 
       if (!PlayerPrefs.HasKey("Timer")){
-       Debug.Log("setting timer");
-       PlayerPrefs.SetFloat("Timer", 70);
+       PlayerPrefs.SetFloat("Timer", 100);
        PlayerPrefs.Save();
       }
     }
@@ -28,8 +28,8 @@ public class GlobalTime : MonoBehaviour
         }
 
         else if (timer < 0){
-            Debug.Log("timer complete");
-         // show panel quickly then go to battle ground
+            SceneManager.LoadScene("EndPrepTime");
+        
         }
     }
 
