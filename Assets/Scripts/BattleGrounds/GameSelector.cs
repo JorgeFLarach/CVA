@@ -43,12 +43,13 @@ public class GameSelector : MonoBehaviour
     }
     public void ChopVeggies()
     {
-        SceneManager.LoadScene("ChopVeggies");
+        SceneManager.LoadScene("SaladGame");
     }
     public void Oven()
     {
         SceneManager.LoadScene("OvenMinigame");
     }
+    
 
 
 }

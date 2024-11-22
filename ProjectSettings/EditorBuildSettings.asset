@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OvenMinigame.unity
     guid: 0a4a6df97e6dcbf42a98875593405b36
+  - enabled: 1
+    path: Assets/Scenes/SaladGame.unity
+    guid: 75387e864db8c49ea9c0be77050e37a0
   m_configObjects: {}

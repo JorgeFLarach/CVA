@@ -590,8 +590,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285033068
-  m_fontColor: {r: 0.4245283, g: 0.41731933, b: 0.40650588, a: 1}
+    rgba: 4278229503
+  m_fontColor: {r: 1, g: 0.6, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -740,7 +740,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 623858071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1122860582}
+        m_TargetAssemblyTypeName: GameSelector, Assembly-CSharp
+        m_MethodName: ChopVeggies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &623858071
 MonoBehaviour:
   m_ObjectHideFlags: 0
