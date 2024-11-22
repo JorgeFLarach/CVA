@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8404694497905695663}
   - component: {fileID: -2685340408918836900}
   m_Layer: 11
-  m_Name: Tomato
+  m_Name: tomato
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,5 +175,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 8, y: 8}
   m_EdgeRadius: 0

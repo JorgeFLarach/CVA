@@ -40,6 +40,7 @@ public class SelectedFood
         return food == "lasanga";
     }
 }
+
 public class Player : MonoBehaviour
 {
 
@@ -76,6 +77,22 @@ public class Player : MonoBehaviour
         lasangaCost = cost;
         }
     }
+
+
+    public void PlaceFoodWithKey(){
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
+            SelectPie();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+            SelectSalad();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha3)){
+            SelectLasanga();
+        }
+    }
+
   public SelectedFood selectedFood;
   public List<Salad> saladSprites = new List<Salad>();
   public List<Pie> pieSprites = new List<Pie>();
@@ -113,8 +130,9 @@ public class Player : MonoBehaviour
     Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
     lasangaSprites.Add(lasanga);
   }
-  public int PlaceFood(Vector2 position)
+  public int PlaceFood(Vector2 input)
   {
+    Vector2 position = CalculatePosition(input);
     if(selectedFood.isSalad())
     {
       PlaceSalad(position);
@@ -132,6 +150,89 @@ public class Player : MonoBehaviour
       return 0;
     }
   }
+
+
+  public Vector2 CalculatePosition(Vector2 input){
+    Vector2 position = new Vector2(input.x, input.y);
+    if(input.y > 3.2){
+        Debug.Log("y set to 3.7");
+        position.y = 3.7f;
+    }else if(input.y <3.2 && input.y > 2.2){
+        Debug.Log("y set to 2.7");
+        position.y = 2.7f;
+    }else if(input.y <2.2 && input.y > 1.2){
+        Debug.Log("y set to 1.7");
+        position.y = 1.7f;
+    }else if(input.y <1.2 && input.y > 0.2){
+        Debug.Log("y set to 0.7");
+        position.y = 0.7f;
+    }else if(input.y <0.2 && input.y > -0.8){
+        Debug.Log("y set to -0.3");
+        position.y = -0.3f;
+    }else if(input.y < -0.8 && input.y > -1.8){
+        Debug.Log("y set to -1.3");
+        position.y = -1.3f;
+    }else if(input.y < -1.8 && input.y > -2.8){
+        Debug.Log("y set to -2.3");
+        position.y = -2.3f;
+    }else if(input.y < -2.8 && input.y > -3.8){
+        Debug.Log("y set to -3.3");
+        position.y = -3.3f;
+    }else {
+        Debug.Log("y set to -4.3");
+        position.y = -4.3f;
+    }
+    Debug.Log("position.y: " + position.y);
+
+    if (input.x > -6.3 && input.x <= -4.8)
+        {
+            Debug.Log("x set to -5.55");
+            position.x = -5.55f;
+        }
+        else if (input.x > -4.8 && input.x <= -3.3)
+        {
+            Debug.Log("x set to -4.05");
+            position.x = -4.05f;
+        }
+        else if (input.x > -3.3 && input.x <= -1.8)
+        {
+            Debug.Log("x set to -2.55");
+            position.x = -2.55f;
+        }
+        else if (input.x > -1.8 && input.x <= -0.3)
+        {
+            Debug.Log("x set to -1.05");
+            position.x = -1.05f;
+        }
+        else if (input.x > -0.3 && input.x <= 1.2)
+        {
+            Debug.Log("x set to 0.45");
+            position.x = 0.45f;
+        }
+        else if (input.x > 1.2 && input.x <= 2.7)
+        {
+            Debug.Log("x set to 1.95");
+            position.x = 1.95f;
+        }
+        else if (input.x > 2.7 && input.x <= 4.2)
+        {
+            Debug.Log("x set to 3.45");
+            position.x = 3.45f;
+        }
+        else if (input.x > 4.2 && input.x <= 5.7)
+        {
+            Debug.Log("x set to 4.95");
+            position.x = 4.95f;
+        }
+        else
+        {
+            Debug.Log("x is out of bounds, defaulting to -6.3");
+            position.x = -6.3f; // Default or out-of-bounds handling
+        }
+
+        Debug.Log("position.x: " + position.x);
+        return position;
+  }
   public void SelectSalad()
   {
     Debug.Log("salad selected");
@@ -146,13 +247,8 @@ public class Player : MonoBehaviour
   {
     selectedFood.lasanga();
   }
-
-
-  void OnMouseDown()
+  public void Update()
   {
-      // Get the position of the mouse click in world space
-      Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      mousePosition.z = 0; // Set z to 0 since we're in 2D
-      PlaceFood(mousePosition);
+    PlaceFoodWithKey();
   }
 }
