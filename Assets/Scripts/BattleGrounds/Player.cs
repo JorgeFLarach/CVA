@@ -47,9 +47,9 @@ public class Player : MonoBehaviour
   public List<GameObject> lasangaSprites = new List<GameObject>();
 
   // private SelectedFood selectedFood;
-  public Prefab saladPrefab;
+  /*public Prefab saladPrefab;
   public Prefab piePrefab;
-  public Prefab lasangaPrefab;
+  public Prefab lasangaPrefab; */
 
   private SpriteRenderer spriteRenderer;
   private Rigidbody2D rb;
