@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8824686157820126029
+--- !u!1 &2296085912446164505
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3717549486708756052}
-  - component: {fileID: 625207848436466666}
-  - component: {fileID: 3952022343401220194}
-  - component: {fileID: -3305805665514281470}
-  - component: {fileID: -8318390176191398229}
+  - component: {fileID: 301754293124530080}
+  - component: {fileID: -2554006819459595013}
+  - component: {fileID: 2864491281462127574}
+  - component: {fileID: 1567982376199622827}
+  - component: {fileID: -2866572682143312181}
   m_Layer: 11
-  m_Name: Salad
-  m_TagString: Untagged
+  m_Name: Pie
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3717549486708756052
+--- !u!4 &301754293124530080
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824686157820126029}
+  m_GameObject: {fileID: 2296085912446164505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &625207848436466666
+--- !u!212 &-2554006819459595013
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824686157820126029}
+  m_GameObject: {fileID: 2296085912446164505}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,41 +76,41 @@ SpriteRenderer:
   m_SortingLayerID: 695644729
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 557657cf9f3884407901e3fe37cc79e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ea6ff72be5fe4fd5b29ce67c6adddc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.6, y: 19.6}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3952022343401220194
+--- !u!114 &2864491281462127574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824686157820126029}
+  m_GameObject: {fileID: 2296085912446164505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e11c9538b9ec400eb55d1211fcfcbc7, type: 3}
+  m_Script: {fileID: 11500000, guid: cdd0a60fd68404c1d9a9bc0fe682cd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tomatos: []
-  Health: 10
-  tomatoPrefab: {fileID: 8919942188823721890, guid: cb6fec8f4ab2040b981d822995ba07e9, type: 3}
-  throwRate: 10
+  speed: 2
+  lives: 1
+  damage: 10
   hp: 0
---- !u!61 &-3305805665514281470
+  lifetime: 30
+--- !u!61 &1567982376199622827
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824686157820126029}
+  m_GameObject: {fileID: 2296085912446164505}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -140,23 +140,23 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.6, y: 19.6}
-    newSize: {x: 19.6, y: 19.6}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.6, y: 19.6}
+  m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
---- !u!50 &-8318390176191398229
+--- !u!50 &-2866572682143312181
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824686157820126029}
+  m_GameObject: {fileID: 2296085912446164505}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -175,4 +175,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

@@ -10,9 +10,7 @@ public class TextScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_Text scoretext;
-    public GameObject Panel;
-    public Vector3 loc;
-    public Vector3 elsewhere;
+
     public int score = 0;
 
     void Start()
@@ -42,9 +40,6 @@ public class TextScript : MonoBehaviour
     }
 
     public void Complete(){
-        //Panel.SetActive(true);
-        //Panel.transform.position = loc;
-        
         Debug.Log("Game Over");
     }
 

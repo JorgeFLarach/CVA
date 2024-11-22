@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+
+public class Brute : MonoBehaviour
 {
-    public Sprite[] sprites;
-
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb;
-
+    // Start is called before the first frame update
     public float speed = 0.5f;
     public float lifeTime = 30f;
-    public float lives = 3;
+    public float lives = 10;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
-
-    private void Start()
+    void Start()
     {
-        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360f);
-        Destroy(gameObject, lifeTime);
 
-        // Set a random angle to move left
-        float angle = Random.Range(-45f, 45f);
-        Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.left;
-        SetTrajectory(direction);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +36,7 @@ public class Enemy : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
+
                 Destroy(gameObject);
             }
         }
@@ -48,16 +46,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void SetTrajectory(Vector2 direction)
-    {
-        rb.velocity = direction * speed;
-    }
-
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
         // Add additional game over logic here, such as displaying a game over screen
         SceneManager.LoadScene("GameOver");
     }
-
 }
