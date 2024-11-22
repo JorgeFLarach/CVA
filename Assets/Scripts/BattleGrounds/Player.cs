@@ -79,12 +79,12 @@ public class Player : MonoBehaviour
   public SelectedFood selectedFood;
   public List<Salad> saladSprites = new List<Salad>();
   public List<Pie> pieSprites = new List<Pie>();
-  public List<GameObject> lasangaSprites = new List<GameObject>();
+  public List<Lasanga> lasangaSprites = new List<Lasanga>();
 
   // private SelectedFood selectedFood;
   public Salad saladPrefab;
   public Pie piePrefab;
-  // public Lasanga lasangaPrefab;
+  public Lasanga lasangaPrefab;
 
   private SpriteRenderer spriteRenderer;
   private Rigidbody2D rb;
@@ -110,8 +110,8 @@ public class Player : MonoBehaviour
   }
   public void PlaceLasanga(Vector2 position)
   {
-    // Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
-    // lasangaSprites.Add(lasanga);
+    Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
+    lasangaSprites.Add(lasanga);
   }
   public int PlaceFood(Vector2 position)
   {

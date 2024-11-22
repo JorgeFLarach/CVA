@@ -99,7 +99,12 @@ public class GameManager : MonoBehaviour
     {
         if (foodReservesText != null)
         {
+            if(foodReserves >= 0){
             foodReservesText.text = "Food Reserves: " + foodReserves;
+            }
+            else{
+                foodReservesText.text = "Food Reserves: 0";
+            }
         }
     }
     public void SetPie()
@@ -109,5 +114,9 @@ public class GameManager : MonoBehaviour
     public void SetSalad()
     {
         player.SelectSalad();
+    }
+    public void SetLasanga()
+    {
+        player.SelectLasanga();
     }
 }

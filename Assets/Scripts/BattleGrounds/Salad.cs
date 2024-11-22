@@ -41,7 +41,7 @@ public class Salad : MonoBehaviour
   {
       if (collision.gameObject.CompareTag("Enemy"))
       {
-          TakeDamage(2 * Time.deltaTime); // Adjust damage over time
+          TakeDamage(1 * Time.deltaTime); // Adjust damage over time
       }
   }
 
