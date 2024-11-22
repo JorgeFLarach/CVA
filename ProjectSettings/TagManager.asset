@@ -19,6 +19,7 @@ TagManager:
   - MidBar
   - BadBar
   - OvenText
+  - Shot
   layers:
   - Default
   - TransparentFX
