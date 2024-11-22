@@ -37,4 +37,16 @@ public class Pie : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other){
+        Debug.Log("Trigger Entered");
+        if (other.gameObject.CompareTag("Shot"))
+        {
+            lives--; // Decrease lives by 1
+            if (lives <= 0)
+            {
+                Destroy(gameObject); // Destroy the food if no lives are left
+            }
+        }
+    }
+
 }

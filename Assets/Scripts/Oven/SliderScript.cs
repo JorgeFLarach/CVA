@@ -27,6 +27,7 @@ public class SliderScript : MonoBehaviour
         startloc = transform.position;
         level = 1;
         speed = 1;
+        
     }
 
     // Update is called once per frame
@@ -36,7 +37,10 @@ public class SliderScript : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         if (isFacingRight && transform.position.x > 5.42) Flip();
         if (!isFacingRight && transform.position.x < -5.39) Flip();
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attempt();
+        }
         
         
         
@@ -50,7 +54,7 @@ public class SliderScript : MonoBehaviour
         transform.localScale = localScale;*/
     }
 
-    void OnClick()
+    void Attempt()
     {
         clicked = true;
         //texting.IncreaseScore(1);

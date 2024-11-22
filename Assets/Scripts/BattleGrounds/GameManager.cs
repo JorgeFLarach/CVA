@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void DisplayFoodReserves()
     {
-        Debug.Log("Food Reserves: " + foodReserves);
+        //Debug.Log("Food Reserves: " + foodReserves);
         UpdateFoodReservesText();
     }
 
