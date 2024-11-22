@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class EnemySpawner : MonoBehaviour
 {
     public Enemy enemyPrefab;
+    public Shooter shooterPrefab;
+    public Brute brutePrefab;
     public float spawnDistance = 15f;
     public float spawnRate = 2f;
     public int spawnAmount = 1;
@@ -19,11 +21,15 @@ public class EnemySpawner : MonoBehaviour
     public int WaveCount = 1;
 
     public List<Enemy> enemies = new List<Enemy>();
+    public List<Shooter> shooters = new List<Shooter>();
+    public List<Brute> brutes = new List<Brute>();
 
 
     private void Start()
     {
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        InvokeRepeating(nameof(SpawnShooter), spawnRate*10, spawnRate*5);
+        InvokeRepeating(nameof(SpawnBrute), spawnRate*5, spawnRate*5);
     }
 
     public void Spawn()
@@ -42,6 +48,24 @@ public class EnemySpawner : MonoBehaviour
             Vector2 trajectory = rotation * spawnDirection;
             enemy.SetTrajectory(trajectory);
         }
+
+    }
+    public void SpawnShooter()
+    {
+        Vector3 spawnDirection = Vector3.left;
+        Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
+        Shooter shooter = Instantiate(shooterPrefab, spawnPoint, Quaternion.identity);
+        shooters.Add(shooter);
+        enemyCount++;
+    }
+    public void SpawnBrute()
+    {
+        Vector3 spawnDirection = Vector3.left;
+        Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
+        Brute brute = Instantiate(brutePrefab, spawnPoint, Quaternion.identity);
+        brutes.Add(brute);
+        enemyCount++;
+
 
     }
     public void RemoveEnemy()
@@ -65,6 +89,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("Enemies are still alive: " + enemies.Count);
             CancelInvoke(nameof(Spawn));
+            CancelInvoke(nameof(SpawnShooter));
+            CancelInvoke(nameof(SpawnBrute));
 
             SceneManager.LoadScene("WaveScreen");
         }

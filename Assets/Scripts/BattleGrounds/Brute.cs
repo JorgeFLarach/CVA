@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class BruteScript : MonoBehaviour
+public class Brute : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 0.5f;
@@ -12,7 +12,7 @@ public class BruteScript : MonoBehaviour
     public float lives = 10;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,7 +20,7 @@ public class BruteScript : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class BruteScript : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-                
+
                 Destroy(gameObject);
             }
         }

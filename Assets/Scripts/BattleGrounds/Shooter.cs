@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ShooterAlien : MonoBehaviour
-{   
+public class Shooter : MonoBehaviour
+{
     //public Sprite[] sprites;
 
     private SpriteRenderer spriteRenderer;
@@ -38,7 +38,7 @@ public class ShooterAlien : MonoBehaviour
     }
 
     void Update(){
-        
+
         if (reloading == false){
             transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
@@ -51,7 +51,7 @@ public class ShooterAlien : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-                
+
                 Destroy(gameObject);
             }
         }
@@ -81,7 +81,7 @@ public class ShooterAlien : MonoBehaviour
                 //Kerpow!
                 Debug.Log("Reloading Start");
                 StartCoroutine(ReloadingTime());
-                
+
             }
         }
     }
