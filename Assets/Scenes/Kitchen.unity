@@ -2006,6 +2006,7 @@ MonoBehaviour:
   pauseBtn: {fileID: 1440998983}
   foodReservesText: {fileID: 1527941240}
   player: {fileID: 229968826}
+  pauseButtonText: {fileID: 150985925}
 --- !u!4 &1961119745
 Transform:
   m_ObjectHideFlags: 0

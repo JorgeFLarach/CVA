@@ -13,19 +13,19 @@ public class GameManager : MonoBehaviour
     public int foodReserves = 200;
     public int pieCost = 1;
     public int saladCost = 10;
-    public int lasangaCost = 5;
+    public int lasagnaCost = 5;
     public int pieHP = 3;
     public int tomatoHP = 1;
     public int saladHP = 20;
-    public int lasangaHP = 10;
+    public int lasagnaHP = 10;
     public int pieDmg = 3;
     public int tomatoDmg = 1;
-    public int lasangaDmg = 10;
+    public int lasagnaDmg = 10;
 
 
     public Button setPieBtn;
     public Button setSaladBtn;
-    public Button setLasangaBtn;
+    public Button setLasagnaBtn;
     public Button pauseBtn;
 
     public TextMeshProUGUI foodReservesText;
@@ -71,18 +71,18 @@ public class GameManager : MonoBehaviour
     void setCost(){
         player.SetCost(1, pieCost);
         player.SetCost(2, saladCost);
-        player.SetCost(3, lasangaCost);
+        player.SetCost(3, lasagnaCost);
     }
     void setHP(){
         player.SetHP(1, pieHP);
         player.SetHP(2, tomatoHP);
         player.SetHP(3, saladHP);
-        player.SetHP(4, lasangaHP);
+        player.SetHP(4, lasagnaHP);
     }
     void setDmg(){
         player.SetDmg(1, pieDmg);
         player.SetDmg(2, tomatoDmg);
-        player.SetDmg(3, lasangaDmg);
+        player.SetDmg(3, lasagnaDmg);
     }
 
 
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         setPieBtn.onClick.AddListener(() => SetPie());
         setSaladBtn.onClick.AddListener(() => SetSalad());
-        setLasangaBtn.onClick.AddListener(() => SetLasanga());
+        setLasagnaBtn.onClick.AddListener(() => SetLasagna());
         pauseBtn.onClick.AddListener(() => TogglePause());
 
         if (pauseButtonText != null)
@@ -127,9 +127,9 @@ public class GameManager : MonoBehaviour
     {
         player.SelectSalad();
     }
-    public void SetLasanga()
+    public void SetLasagna()
     {
-        player.SelectLasanga();
+        player.SelectLasagna();
     }
 
     public void TogglePause(){

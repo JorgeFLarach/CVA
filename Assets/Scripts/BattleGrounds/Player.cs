@@ -15,7 +15,7 @@ public class SelectedFood
         food = "pie";
         }
         else if(num == 3){
-        food = "lasanga";
+        food = "lasagna";
         }
     }
     public string GetFood(){
@@ -27,8 +27,8 @@ public class SelectedFood
     public void pie(){
         food = "pie";
     }
-    public void lasanga(){
-        food = "lasanga";
+    public void lasagna(){
+        food = "lasagna";
     }
     public bool isSalad(){
         return food == "salad";
@@ -36,8 +36,8 @@ public class SelectedFood
     public bool isPie(){
         return food == "pie";
     }
-    public bool isLasanga(){
-        return food == "lasanga";
+    public bool isLasagna(){
+        return food == "lasagna";
     }
 }
 
@@ -45,22 +45,22 @@ public class Player : MonoBehaviour
 {
     public int pieCost = 1;
     public int saladCost = 10;
-    public int lasangaCost = 5;
+    public int lasagnaCost = 5;
     public int pieHP;
     public int tomatoHP;
     public int saladHP;
-    public int lasangaHP;
+    public int lasagnaHP;
     public int pieDmg;
     public int tomatoDmg;
 
     public SelectedFood selectedFood;
     public List<Salad> saladSprites = new List<Salad>();
     public List<Pie> pieSprites = new List<Pie>();
-    public List<Lasanga> lasangaSprites = new List<Lasanga>();
+    public List<Lasagna> lasagnaSprites = new List<Lasagna>();
 
     public Salad saladPrefab;
     public Pie piePrefab;
-    public Lasanga lasangaPrefab;
+    public Lasagna lasagnaPrefab;
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
             saladHP = hp;
         }
         else if(num == 4){
-            lasangaHP = hp;
+            lasagnaHP = hp;
         }
     }
     public void SetCost(int num, int cost){
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
             saladCost = cost;
         }
         else if(num == 3){
-            lasangaCost = cost;
+            lasagnaCost = cost;
         }
     }
     public void SetDmg(int num, int dmg){
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3)){
-            SelectLasanga();
+            SelectLasagna();
         }
     }
 
@@ -134,9 +134,9 @@ public class Player : MonoBehaviour
     {
         selectedFood.pie();
     }
-    public void SelectLasanga()
+    public void SelectLasagna()
     {
-        selectedFood.lasanga();
+        selectedFood.lasagna();
     }
 
     public void PlaceSalad(Vector2 position)
@@ -150,10 +150,10 @@ public class Player : MonoBehaviour
         Pie pie = Instantiate(piePrefab, position, Quaternion.identity);
         pieSprites.Add(pie);
     }
-    public void PlaceLasanga(Vector2 position)
+    public void PlaceLasagna(Vector2 position)
     {
-        Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
-        lasangaSprites.Add(lasanga);
+        Lasagna lasagna = Instantiate(lasagnaPrefab, position, Quaternion.identity);
+        lasagnaSprites.Add(lasagna);
     }
     public int PlaceFood(Vector2 input)
     {
@@ -168,9 +168,9 @@ public class Player : MonoBehaviour
             ThrowPie(position);
             return pieCost;
         }
-        else if (selectedFood.isLasanga()){
-            PlaceLasanga(position);
-            return lasangaCost;
+        else if (selectedFood.isLasagna()){
+            PlaceLasagna(position);
+            return lasagnaCost;
         } else {
             return 0;
         }
