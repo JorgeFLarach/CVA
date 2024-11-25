@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -19,12 +18,20 @@ public class GameManager : MonoBehaviour
     public int tomatoHP = 1;
     public int saladHP = 20;
     public int lasangaHP = 10;
+    public int pieDmg = 3;
+    public int tomatoDmg = 1;
+    public int lasangaDmg = 10;
 
-    // public UnityEngine.UI.Text foodReservesText;
+
+    public Button setPieBtn;
+    public Button setSaladBtn;
+    public Button setLasangaBtn;
+    public Button pauseBtn;
+
     public TextMeshProUGUI foodReservesText;
     public Player player;
 
-    // public EnemySpawner enemySpawner;
+    public TextMeshProUGUI pauseButtonText;
 
     public void AddScore(int score)
     {
@@ -34,12 +41,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.timeScale != 0 && Input.GetMouseButtonDown(0))
         {
             SpawnFood();
-
         }
-        GameOver();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
+
         DisplayFoodReserves();
     }
 
@@ -50,25 +60,14 @@ public class GameManager : MonoBehaviour
             return;
         }else {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10.0f; // Set this to be the distance from the camera
+            mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            // Instantiate(foodPrefab, worldPosition, Quaternion.identity);
-            // foodReserves--;
             if(worldPosition.y < 4.3 && worldPosition.x > -7){
-                // Debug.Log(worldPosition.y);
                 foodReserves -= player.PlaceFood(worldPosition);
             }
         }
     }
 
-    private void GameOver()
-    {
-        // if(foodReserves <= 0)
-        // {
-        //     Debug.Log("Game Over! You ran out of food Monsters!");
-        //     SceneManager.LoadScene("GameOver");
-        // }
-    }
     void setCost(){
         player.SetCost(1, pieCost);
         player.SetCost(2, saladCost);
@@ -80,6 +79,11 @@ public class GameManager : MonoBehaviour
         player.SetHP(3, saladHP);
         player.SetHP(4, lasangaHP);
     }
+    void setDmg(){
+        player.SetDmg(1, pieDmg);
+        player.SetDmg(2, tomatoDmg);
+        player.SetDmg(3, lasangaDmg);
+    }
 
 
     void Start()
@@ -87,11 +91,19 @@ public class GameManager : MonoBehaviour
         UpdateFoodReservesText();
         setCost();
 
+        setPieBtn.onClick.AddListener(() => SetPie());
+        setSaladBtn.onClick.AddListener(() => SetSalad());
+        setLasangaBtn.onClick.AddListener(() => SetLasanga());
+        pauseBtn.onClick.AddListener(() => TogglePause());
+
+        if (pauseButtonText != null)
+        {
+            pauseButtonText.text = "Pause";
+        }
     }
 
     public void DisplayFoodReserves()
     {
-        //Debug.Log("Food Reserves: " + foodReserves);
         UpdateFoodReservesText();
     }
 
@@ -100,7 +112,7 @@ public class GameManager : MonoBehaviour
         if (foodReservesText != null)
         {
             if(foodReserves >= 0){
-            foodReservesText.text = "Food Reserves: " + foodReserves;
+                foodReservesText.text = "Food Reserves: " + foodReserves;
             }
             else{
                 foodReservesText.text = "Food Reserves: 0";
@@ -118,5 +130,27 @@ public class GameManager : MonoBehaviour
     public void SetLasanga()
     {
         player.SelectLasanga();
+    }
+
+    public void TogglePause(){
+        if(Time.timeScale == 0){
+            ResumeGame();
+            if (pauseButtonText != null)
+            {
+                pauseButtonText.text = "Pause";
+            }
+        }else{
+            PauseGame();
+            if (pauseButtonText != null)
+            {
+                pauseButtonText.text = "Resume";
+            }
+        }
+    }
+    public void PauseGame(){
+        Time.timeScale = 0;
+    }
+    public void ResumeGame(){
+        Time.timeScale = 1;
     }
 }

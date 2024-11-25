@@ -7,6 +7,7 @@ public class Lasanga : MonoBehaviour
     public int lives = 3;
     public float Health = 10;
 
+
     private Vector2 Position;
 
     public int hp;
@@ -14,6 +15,7 @@ public class Lasanga : MonoBehaviour
     public void SetHP(int num){
         hp = num;
     }
+
 
     public void SetPosition(Vector2 position){
       Position = position;
@@ -32,7 +34,7 @@ public class Lasanga : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1 * Time.deltaTime); // Adjust damage over time
+            TakeDamage(1 * Time.deltaTime);
         }
     }
     public void TakeDamage(float damage){

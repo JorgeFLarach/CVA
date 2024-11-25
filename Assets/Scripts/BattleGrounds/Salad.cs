@@ -1,7 +1,7 @@
-// using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.SceneManagement;
+
 
 public class Salad : MonoBehaviour
 {
@@ -41,7 +41,7 @@ public class Salad : MonoBehaviour
   {
       if (collision.gameObject.CompareTag("Enemy"))
       {
-          TakeDamage(1 * Time.deltaTime); // Adjust damage over time
+          TakeDamage(1 * Time.deltaTime);
       }
   }
 

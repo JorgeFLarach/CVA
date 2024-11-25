@@ -12,13 +12,15 @@ public class Pie : MonoBehaviour
     public int GetDamage(){
       return damage;
     }
+    public void SetDamage(int dmg){
+        damage = dmg;
+    }
     public void SetHP(int num){
         hp = num;
     }
 
     void Update()
     {
-        // Move the food to the right
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
     private void Start()
@@ -29,10 +31,10 @@ public class Pie : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            lives--; // Decrease lives by 1
+            lives--;
             if (lives <= 0)
             {
-                Destroy(gameObject); // Destroy the food if no lives are left
+                Destroy(gameObject);
             }
         }
     }

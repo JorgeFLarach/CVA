@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,32 +40,50 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
-            Enemy enemy = Instantiate(enemyPrefab, spawnPoint, rotation);
+            Enemy enemy = Instantiate(enemyPrefab, GridSpawning(), Quaternion.identity);
             enemies.Add(enemy);
-            enemyCount++;
-
-            Vector2 trajectory = rotation * spawnDirection;
-            enemy.SetTrajectory(trajectory);
+            // enemyCount++;
         }
 
     }
+    public Vector2 GridSpawning(){
+        float rand = Random.Range(-4.8f,4.2f);
+        Vector2 position = new Vector2(4.95f, 0f);
+        if(rand > 3.2f){
+            position.y = 3.7f;
+        }else if(rand <3.2f && rand > 2.2f){
+            position.y = 2.7f;
+        }else if(rand <2.2f && rand > 1.2f){
+            position.y = 1.7f;
+        }else if(rand <1.2f && rand > 0.2f){
+            position.y = 0.7f;
+        }else if(rand <0.2f && rand > -0.8f){
+            position.y = -0.3f;
+        }else if(rand < -0.8f && rand > -1.8f){
+            position.y = -1.3f;
+        }else if(rand < -1.8f && rand > -2.8f){
+            position.y = -2.3f;
+        }else if(rand < -2.8f && rand > -3.8f){
+            position.y = -3.3f;
+        }else {
+            position.y = -4.3f;
+        }
+        return position;
+    }
+
     public void SpawnShooter()
     {
         Vector3 spawnDirection = Vector3.left;
         Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
-        Shooter shooter = Instantiate(shooterPrefab, spawnPoint, Quaternion.identity);
+        Shooter shooter = Instantiate(shooterPrefab, GridSpawning(), Quaternion.identity);
         shooters.Add(shooter);
-        enemyCount++;
     }
     public void SpawnBrute()
     {
         Vector3 spawnDirection = Vector3.left;
         Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
-        Brute brute = Instantiate(brutePrefab, spawnPoint, Quaternion.identity);
+        Brute brute = Instantiate(brutePrefab, GridSpawning(), Quaternion.identity);
         brutes.Add(brute);
-        enemyCount++;
-
-
     }
     public void RemoveEnemy()
     {
@@ -74,31 +91,33 @@ public class EnemySpawner : MonoBehaviour
     }
     public bool AllEnemiesDead()
     {
-        if(enemyCount <= 0){
-            return true;
-        }else{
-            // Debug.Log("Enemies are still alive: " + enemies.Count);
-            return false;
-        }
+        return enemyCount <= 0;
+    }
+    public void endSpawning(){
+        CancelInvoke(nameof(Spawn));
+        CancelInvoke(nameof(SpawnShooter));
+        CancelInvoke(nameof(SpawnBrute));
+    }
+
+    public int updateEnemyCount(){
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        return enemies.Length;
     }
 
     private void Update()
     {
-            waveTime -= Time.deltaTime;
+        enemyCount = updateEnemyCount();
+        // Debug.Log(enemyCount);
+        waveTime -= Time.deltaTime;
         if (waveTime <= 0)
         {
-            Debug.Log("Enemies are still alive: " + enemies.Count);
-            CancelInvoke(nameof(Spawn));
-            CancelInvoke(nameof(SpawnShooter));
-            CancelInvoke(nameof(SpawnBrute));
+            endSpawning();
+            if(AllEnemiesDead())
+            {
+                SceneManager.LoadScene("WaveScreen");
+        }
+        }
 
-            SceneManager.LoadScene("WaveScreen");
-        }
-        if(AllEnemiesDead()&& waveTime < 0)
-        {
-            // FindAnyObjectByType<GameSelector>().WaveCount++;
-            SceneManager.LoadScene("WaveScreen");
-        }
     }
 
 

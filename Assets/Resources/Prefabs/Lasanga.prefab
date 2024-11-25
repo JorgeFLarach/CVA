@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 695644729
-  m_SortingLayer: 2
+  m_SortingLayerID: 1351529609
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c0c91ddaf7c0453fb3398fca2729b9c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 428b915b7739248a89c0e0ad431366e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 2
   lives: 3
   Health: 20
+  damage: 0
   hp: 0
 --- !u!50 &-8318390176191398229
 Rigidbody2D:
@@ -164,9 +165,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.22, w: 0.94}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.26, y: 6.26}
+    oldSize: {x: 10.82, y: 8.2}
     newSize: {x: 19.6, y: 19.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

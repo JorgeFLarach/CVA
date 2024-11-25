@@ -23,15 +23,12 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360f);
-        Destroy(gameObject, lifeTime);
 
-        // Set a random angle to move left
-        float angle = Random.Range(-45f, 45f);
-        Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.left;
-        SetTrajectory(direction);
     }
-
+    void Update()
+    {
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Food"))
@@ -42,7 +39,7 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.CompareTag("GameEnd")) // Replace "GameEndTag" with the actual tag
+        else if (collision.gameObject.CompareTag("GameEnd"))
         {
             GameOver();
         }
@@ -56,7 +53,6 @@ public class Enemy : MonoBehaviour
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
-        // Add additional game over logic here, such as displaying a game over screen
         SceneManager.LoadScene("GameOver");
     }
 

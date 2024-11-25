@@ -79,7 +79,7 @@ public class Shooter : MonoBehaviour
                 Instantiate(shotPrefab, gameObject.transform.position, gameObject.transform.rotation);
                 reloading = true;
                 //Kerpow!
-                Debug.Log("Reloading Start");
+                // Debug.Log("Reloading Start");
                 StartCoroutine(ReloadingTime());
 
             }
@@ -87,10 +87,10 @@ public class Shooter : MonoBehaviour
     }
 
     IEnumerator ReloadingTime() {
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        // Debug.Log("Started Coroutine at timestamp : " + Time.time);
         yield return new WaitForSeconds(reloadtime);
-        Debug.Log("Reloading Done");
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        // Debug.Log("Reloading Done");
+        // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         reloading = false;
     }
 

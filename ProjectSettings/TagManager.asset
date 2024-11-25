@@ -33,7 +33,7 @@ TagManager:
   - Kitchen
   - Battle Ground
   - Food
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -62,4 +62,13 @@ TagManager:
     locked: 0
   - name: New Layer 2
     uniqueID: 695644729
+    locked: 0
+  - name: Food
+    uniqueID: 1351529609
+    locked: 0
+  - name: Aliens
+    uniqueID: 176499395
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3036835865
     locked: 0

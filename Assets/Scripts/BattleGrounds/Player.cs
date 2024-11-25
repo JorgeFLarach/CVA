@@ -43,8 +43,6 @@ public class SelectedFood
 
 public class Player : MonoBehaviour
 {
-
-
     public int pieCost = 1;
     public int saladCost = 10;
     public int lasangaCost = 5;
@@ -52,32 +50,67 @@ public class Player : MonoBehaviour
     public int tomatoHP;
     public int saladHP;
     public int lasangaHP;
+    public int pieDmg;
+    public int tomatoDmg;
+
+    public SelectedFood selectedFood;
+    public List<Salad> saladSprites = new List<Salad>();
+    public List<Pie> pieSprites = new List<Pie>();
+    public List<Lasanga> lasangaSprites = new List<Lasanga>();
+
+    public Salad saladPrefab;
+    public Pie piePrefab;
+    public Lasanga lasangaPrefab;
+
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+
+    public void Start()
+    {
+        selectedFood = new SelectedFood();
+        selectedFood.pie();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void Update()
+    {
+        PlaceFoodWithKey();
+    }
+
     public void SetHP(int num, int hp){
         if(num == 1){
-        pieHP = hp;
+            pieHP = hp;
         }
         else if(num == 2){
-        tomatoHP = hp;
+            tomatoHP = hp;
         }
         else if(num == 3){
-        saladHP = hp;
+            saladHP = hp;
         }
         else if(num == 4){
-        lasangaHP = hp;
+            lasangaHP = hp;
         }
     }
     public void SetCost(int num, int cost){
         if(num == 1){
-        pieCost = cost;
+            pieCost = cost;
         }
         else if(num == 2){
-        saladCost = cost;
+            saladCost = cost;
         }
         else if(num == 3){
-        lasangaCost = cost;
+            lasangaCost = cost;
         }
     }
-
+    public void SetDmg(int num, int dmg){
+        if(num == 1){
+            pieDmg = dmg;
+        }
+        else if(num == 2){
+            tomatoDmg = dmg;
+        }
+    }
 
     public void PlaceFoodWithKey(){
         if(Input.GetKeyDown(KeyCode.Alpha1)){
@@ -93,162 +126,98 @@ public class Player : MonoBehaviour
         }
     }
 
-  public SelectedFood selectedFood;
-  public List<Salad> saladSprites = new List<Salad>();
-  public List<Pie> pieSprites = new List<Pie>();
-  public List<Lasanga> lasangaSprites = new List<Lasanga>();
-
-  // private SelectedFood selectedFood;
-  public Salad saladPrefab;
-  public Pie piePrefab;
-  public Lasanga lasangaPrefab;
-
-  private SpriteRenderer spriteRenderer;
-  private Rigidbody2D rb;
-
-  public void Start()
-  {
-    selectedFood = new SelectedFood();
-    selectedFood.pie();
-    spriteRenderer = GetComponent<SpriteRenderer>();
-    rb = GetComponent<Rigidbody2D>();
-  }
-
-  public void PlaceSalad(Vector2 position)
-  {
-    Salad salad = Instantiate(saladPrefab, position, Quaternion.identity);
-    salad.SetPosition(position);
-    saladSprites.Add(salad);
-  }
-  public void ThrowPie(Vector2 position)
-  {
-    Pie pie = Instantiate(piePrefab, position, Quaternion.identity);
-    pieSprites.Add(pie);
-  }
-  public void PlaceLasanga(Vector2 position)
-  {
-    Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
-    lasangaSprites.Add(lasanga);
-  }
-  public int PlaceFood(Vector2 input)
-  {
-    Vector2 position = CalculatePosition(input);
-    if(selectedFood.isSalad())
+    public void SelectSalad()
     {
-      PlaceSalad(position);
-      return saladCost;
+        selectedFood.salad();
     }
-    else if(selectedFood.isPie())
+    public void SelectPie()
     {
-      ThrowPie(position);
-      return pieCost;
+        selectedFood.pie();
     }
-    else if (selectedFood.isLasanga()){
-        PlaceLasanga(position);
-        return lasangaCost;
-    } else {
-      return 0;
+    public void SelectLasanga()
+    {
+        selectedFood.lasanga();
     }
-  }
 
-
-  public Vector2 CalculatePosition(Vector2 input){
-    Vector2 position = new Vector2(input.x, input.y);
-    if(input.y > 3.2){
-        Debug.Log("y set to 3.7");
-        position.y = 3.7f;
-    }else if(input.y <3.2 && input.y > 2.2){
-        Debug.Log("y set to 2.7");
-        position.y = 2.7f;
-    }else if(input.y <2.2 && input.y > 1.2){
-        Debug.Log("y set to 1.7");
-        position.y = 1.7f;
-    }else if(input.y <1.2 && input.y > 0.2){
-        Debug.Log("y set to 0.7");
-        position.y = 0.7f;
-    }else if(input.y <0.2 && input.y > -0.8){
-        Debug.Log("y set to -0.3");
-        position.y = -0.3f;
-    }else if(input.y < -0.8 && input.y > -1.8){
-        Debug.Log("y set to -1.3");
-        position.y = -1.3f;
-    }else if(input.y < -1.8 && input.y > -2.8){
-        Debug.Log("y set to -2.3");
-        position.y = -2.3f;
-    }else if(input.y < -2.8 && input.y > -3.8){
-        Debug.Log("y set to -3.3");
-        position.y = -3.3f;
-    }else {
-        Debug.Log("y set to -4.3");
-        position.y = -4.3f;
+    public void PlaceSalad(Vector2 position)
+    {
+        Salad salad = Instantiate(saladPrefab, position, Quaternion.identity);
+        salad.SetPosition(position);
+        saladSprites.Add(salad);
     }
-    Debug.Log("position.y: " + position.y);
-
-    if (input.x > -6.3 && input.x <= -4.8)
+    public void ThrowPie(Vector2 position)
+    {
+        Pie pie = Instantiate(piePrefab, position, Quaternion.identity);
+        pieSprites.Add(pie);
+    }
+    public void PlaceLasanga(Vector2 position)
+    {
+        Lasanga lasanga = Instantiate(lasangaPrefab, position, Quaternion.identity);
+        lasangaSprites.Add(lasanga);
+    }
+    public int PlaceFood(Vector2 input)
+    {
+        Vector2 position = CalculatePosition(input);
+        if(selectedFood.isSalad())
         {
-            Debug.Log("x set to -5.55");
+            PlaceSalad(position);
+            return saladCost;
+        }
+        else if(selectedFood.isPie())
+        {
+            ThrowPie(position);
+            return pieCost;
+        }
+        else if (selectedFood.isLasanga()){
+            PlaceLasanga(position);
+            return lasangaCost;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public Vector2 CalculatePosition(Vector2 input)
+    {
+        Vector2 position = new Vector2(input.x, input.y);
+        if (input.y > 3.2f) {
+            position.y = 3.7f;
+        } else if (input.y > 2.2f) {
+            position.y = 2.7f;
+        } else if (input.y > 1.2f) {
+            position.y = 1.7f;
+        } else if (input.y > 0.2f) {
+            position.y = 0.7f;
+        } else if (input.y > -0.8f) {
+            position.y = -0.3f;
+        } else if (input.y > -1.8f) {
+            position.y = -1.3f;
+        } else if (input.y > -2.8f) {
+            position.y = -2.3f;
+        } else if (input.y > -3.8f) {
+            position.y = -3.3f;
+        } else {
+            position.y = -4.3f;
+        }
+        if (input.x > -6.3f && input.x <= -4.8f) {
             position.x = -5.55f;
-        }
-        else if (input.x > -4.8 && input.x <= -3.3)
-        {
-            Debug.Log("x set to -4.05");
+        } else if (input.x > -4.8f && input.x <= -3.3f) {
             position.x = -4.05f;
-        }
-        else if (input.x > -3.3 && input.x <= -1.8)
-        {
-            Debug.Log("x set to -2.55");
+        } else if (input.x > -3.3f && input.x <= -1.8f) {
             position.x = -2.55f;
-        }
-        else if (input.x > -1.8 && input.x <= -0.3)
-        {
-            Debug.Log("x set to -1.05");
+        } else if (input.x > -1.8f && input.x <= -0.3f) {
             position.x = -1.05f;
-        }
-        else if (input.x > -0.3 && input.x <= 1.2)
-        {
-            Debug.Log("x set to 0.45");
+        } else if (input.x > -0.3f && input.x <= 1.2f) {
             position.x = 0.45f;
-        }
-        else if (input.x > 1.2 && input.x <= 2.7)
-        {
-            Debug.Log("x set to 1.95");
+        } else if (input.x > 1.2f && input.x <= 2.7f) {
             position.x = 1.95f;
-        }
-        else if (input.x > 2.7 && input.x <= 4.2)
-        {
-            Debug.Log("x set to 3.45");
+        } else if (input.x > 2.7f && input.x <= 4.2f) {
             position.x = 3.45f;
-        }
-        else if (input.x > 4.2 && input.x <= 5.7)
-        {
-            Debug.Log("x set to 4.95");
+        } else if (input.x > 4.2f && input.x <= 5.7f) {
             position.x = 4.95f;
+        } else {
+            position.x = -6.3f;
         }
-        else
-        {
-            Debug.Log("x is out of bounds, defaulting to -6.3");
-            position.x = -6.3f; // Default or out-of-bounds handling
-        }
-
-        Debug.Log("position.x: " + position.x);
         return position;
-  }
-  public void SelectSalad()
-  {
-    Debug.Log("salad selected");
-    selectedFood.salad();
-  }
-  public void SelectPie()
-  {
-    Debug.Log("pie selected");
-    selectedFood.pie();
-  }
-  public void SelectLasanga()
-  {
-    selectedFood.lasanga();
-  }
-  public void Update()
-  {
-    PlaceFoodWithKey();
-  }
+    }
 }

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Brute : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float speed = 0.5f;
     public float lifeTime = 30f;
     public float lives = 10;
@@ -18,12 +17,7 @@ public class Brute : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -40,7 +34,7 @@ public class Brute : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.CompareTag("GameEnd")) // Replace "GameEndTag" with the actual tag
+        else if (collision.gameObject.CompareTag("GameEnd"))
         {
             GameOver();
         }
@@ -49,7 +43,6 @@ public class Brute : MonoBehaviour
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
-        // Add additional game over logic here, such as displaying a game over screen
         SceneManager.LoadScene("GameOver");
     }
 }
