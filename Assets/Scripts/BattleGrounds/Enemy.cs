@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public Sprite[] sprites;
 
-    private SpriteRenderer spriteRenderer;
+    // private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
 
     public float speed = 0.5f;
@@ -16,13 +16,13 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
+        // spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
 
     }
     void Update()
