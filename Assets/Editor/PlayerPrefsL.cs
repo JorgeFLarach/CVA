@@ -2,7 +2,7 @@
 // EACH TIME YOU START A NEW GAME, OR PRESS PLAY, YOU MUST UNCOMMENT THIS CODE AND RUN IT. THEN YOU CAN COMMENT THIS CODE
 // OUT AND PLAY THE GAME LIKE NORMAL
 
-
+/*
 using UnityEditor;
 using UnityEngine;
 
@@ -24,6 +24,6 @@ public class ClearPlayerPrefsOnPlay
        }
 }
 
-
+*/
 
 
