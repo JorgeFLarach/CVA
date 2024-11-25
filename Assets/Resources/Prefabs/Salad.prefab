@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3952022343401220194}
   - component: {fileID: -3305805665514281470}
   - component: {fileID: -8318390176191398229}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Salad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1351529609
+  m_SortingLayerID: -291175727
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50a5a9a947eb546e3b4e0c47493b352e, type: 3}
@@ -104,7 +104,6 @@ MonoBehaviour:
   tomatoPrefab: {fileID: 8919942188823721890, guid: cb6fec8f4ab2040b981d822995ba07e9, type: 3}
   throwRate: 10
   hp: 0
-  damage: 0
 --- !u!61 &-3305805665514281470
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -304,19 +304,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieCost: 1
   saladCost: 10
-  lasangaCost: 5
+  lasagnaCost: 5
   pieHP: 0
   tomatoHP: 0
   saladHP: 0
-  lasangaHP: 0
+  lasagnaHP: 0
   pieDmg: 0
   tomatoDmg: 0
   saladSprites: []
   pieSprites: []
-  lasangaSprites: []
+  lasagnaSprites: []
   saladPrefab: {fileID: 3952022343401220194, guid: 6108c38205f7f424d980f0e925c2899e, type: 3}
   piePrefab: {fileID: 2864491281462127574, guid: d1c3dab6a528b4cc087ee3a0b6823d0b, type: 3}
-  lasangaPrefab: {fileID: 661464866136891020, guid: e952ddfcf7a5745639ed5deaf4a2cd85, type: 3}
+  lasagnaPrefab: {fileID: 661464866136891020, guid: e952ddfcf7a5745639ed5deaf4a2cd85, type: 3}
 --- !u!1 &332437343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,17 +1992,17 @@ MonoBehaviour:
   foodReserves: 500
   pieCost: 1
   saladCost: 10
-  lasangaCost: 5
+  lasagnaCost: 5
   pieHP: 3
   tomatoHP: 1
   saladHP: 20
-  lasangaHP: 10
+  lasagnaHP: 10
   pieDmg: 3
   tomatoDmg: 1
-  lasangaDmg: 10
+  lasagnaDmg: 10
   setPieBtn: {fileID: 1218895191}
   setSaladBtn: {fileID: 332437345}
-  setLasangaBtn: {fileID: 751838293}
+  setLasagnaBtn: {fileID: 751838293}
   pauseBtn: {fileID: 1440998983}
   foodReservesText: {fileID: 1527941240}
   player: {fileID: 229968826}

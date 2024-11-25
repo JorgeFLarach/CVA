@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: baa469ab8d27241329c86b3d16d75845
-=======
-<<<<<<<< HEAD:Assets/Scenes/LasagnaMiniGame.unity.meta
-guid: e31ecf47707506d429ba7cca504563b3
+<<<<<<<< HEAD:Assets/Scenes/LasagnaStartGame.unity.meta
+guid: 46d146b63a4504402a0eb49fb55c36fe
 ========
-guid: f3636bac0be7f47a4977425b24fff4c3
->>>>>>>> 94f61f1 (game selection page, wave screens, game over screen):Assets/Scenes/WaveScreen.unity.meta
->>>>>>> 94f61f1 (game selection page, wave screens, game over screen)
+guid: 37b16b120102841b6b5391906ed1413e
+>>>>>>>> 94f61f1 (game selection page, wave screens, game over screen):Assets/Scenes/GameOver.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

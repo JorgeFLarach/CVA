@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8919942188823721890}
   - component: {fileID: -8404694497905695663}
   - component: {fileID: -2685340408918836900}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: tomato
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1258131431
+  m_SortingLayerID: 917767495
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 310eaa83cd0dc4f65879be80b461accf, type: 3}

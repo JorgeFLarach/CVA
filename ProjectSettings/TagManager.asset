@@ -16,6 +16,8 @@ TagManager:
   - Lasagna
   - Veggies
   - Oven
+  - GameEnd
+  - Shot
   layers:
   - Default
   - TransparentFX
@@ -28,9 +30,9 @@ TagManager:
   - Moveable
   - Kitchen
   - Battle Ground
-  - 
-  - 
-  - 
+  - Enemies
+  - Food
+  - Projectiles
   - 
   - 
   - 
@@ -58,4 +60,13 @@ TagManager:
     locked: 0
   - name: New Layer 2
     uniqueID: 695644729
+    locked: 0
+  - name: Food
+    uniqueID: 4003791569
+    locked: 0
+  - name: Aliens
+    uniqueID: 2237513917
+    locked: 0
+  - name: Projectiles
+    uniqueID: 917767495
     locked: 0
