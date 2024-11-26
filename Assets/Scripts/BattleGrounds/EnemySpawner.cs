@@ -12,11 +12,11 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDistance = 15f;
     public float spawnRate = 2f;
     public int spawnAmount = 1;
-    public float trajectoryVariance = 15f;
+    // public float trajectoryVariance = 15f;
 
     public int enemyCount = 0;
 
-    public float waveTime = 60f;
+    public float waveTime = 120f;
     public int WaveCount = 1;
 
     public List<Enemy> enemies = new List<Enemy>();
@@ -36,39 +36,35 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < spawnAmount; i++)
         {
-            Vector3 spawnDirection = Vector3.left;
-            Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
-            float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
-            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
+            // Vector3 spawnDirection = Vector3.left;
+            // Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
+            // float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
+            // Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
             Enemy enemy = Instantiate(enemyPrefab, GridSpawning(), Quaternion.identity);
             enemies.Add(enemy);
             // enemyCount++;
         }
 
     }
-    public Vector2 GridSpawning(){
-        float rand = Random.Range(-4.8f,4.2f);
+    public Vector2 GridSpawning()
+    {
+        float rand = Random.Range(-4.8f, 4.2f);
         Vector2 position = new Vector2(4.95f, 0f);
-        if(rand > 3.2f){
-            position.y = 3.7f;
-        }else if(rand <3.2f && rand > 2.2f){
-            position.y = 2.7f;
-        }else if(rand <2.2f && rand > 1.2f){
-            position.y = 1.7f;
-        }else if(rand <1.2f && rand > 0.2f){
-            position.y = 0.7f;
-        }else if(rand <0.2f && rand > -0.8f){
-            position.y = -0.3f;
-        }else if(rand < -0.8f && rand > -1.8f){
-            position.y = -1.3f;
-        }else if(rand < -1.8f && rand > -2.8f){
-            position.y = -2.3f;
-        }else if(rand < -2.8f && rand > -3.8f){
-            position.y = -3.3f;
-        }else {
-            position.y = -4.3f;
-        }
+        position.y = LockYPosition(rand);
         return position;
+    }
+
+    private float LockYPosition(float y)
+    {
+        if (y > 3.2f) return 3.7f;
+        if (y > 2.2f) return 2.7f;
+        if (y > 1.2f) return 1.7f;
+        if (y > 0.2f) return 0.7f;
+        if (y > -0.8f) return -0.3f;
+        if (y > -1.8f) return -1.3f;
+        if (y > -2.8f) return -2.3f;
+        if (y > -3.8f) return -3.3f;
+        return -4.3f;
     }
 
     public void SpawnShooter()

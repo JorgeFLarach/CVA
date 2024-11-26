@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
     }
     public int PlaceFood(Vector2 input)
     {
-        Vector2 position = CalculatePosition(input);
+        Vector2 position = GridLockPosition(input);
         if(selectedFood.isSalad())
         {
             PlaceSalad(position);
@@ -176,48 +176,37 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    public Vector2 CalculatePosition(Vector2 input)
+    private float LockYPosition(float y)
     {
-        Vector2 position = new Vector2(input.x, input.y);
-        if (input.y > 3.2f) {
-            position.y = 3.7f;
-        } else if (input.y > 2.2f) {
-            position.y = 2.7f;
-        } else if (input.y > 1.2f) {
-            position.y = 1.7f;
-        } else if (input.y > 0.2f) {
-            position.y = 0.7f;
-        } else if (input.y > -0.8f) {
-            position.y = -0.3f;
-        } else if (input.y > -1.8f) {
-            position.y = -1.3f;
-        } else if (input.y > -2.8f) {
-            position.y = -2.3f;
-        } else if (input.y > -3.8f) {
-            position.y = -3.3f;
-        } else {
-            position.y = -4.3f;
-        }
-        if (input.x > -6.3f && input.x <= -4.8f) {
-            position.x = -5.55f;
-        } else if (input.x > -4.8f && input.x <= -3.3f) {
-            position.x = -4.05f;
-        } else if (input.x > -3.3f && input.x <= -1.8f) {
-            position.x = -2.55f;
-        } else if (input.x > -1.8f && input.x <= -0.3f) {
-            position.x = -1.05f;
-        } else if (input.x > -0.3f && input.x <= 1.2f) {
-            position.x = 0.45f;
-        } else if (input.x > 1.2f && input.x <= 2.7f) {
-            position.x = 1.95f;
-        } else if (input.x > 2.7f && input.x <= 4.2f) {
-            position.x = 3.45f;
-        } else if (input.x > 4.2f && input.x <= 5.7f) {
-            position.x = 4.95f;
-        } else {
-            position.x = -6.3f;
-        }
-        return position;
+        if (y > 3.2f) return 3.7f;
+        if (y > 2.2f) return 2.7f;
+        if (y > 1.2f) return 1.7f;
+        if (y > 0.2f) return 0.7f;
+        if (y > -0.8f) return -0.3f;
+        if (y > -1.8f) return -1.3f;
+        if (y > -2.8f) return -2.3f;
+        if (y > -3.8f) return -3.3f;
+        return -4.3f;
+    }
+
+    private float LockXPosition(float x)
+    {
+        if (x > -6.3f && x <= -4.8f) return -5.55f;
+        if (x > -4.8f && x <= -3.3f) return -4.05f;
+        if (x > -3.3f && x <= -1.8f) return -2.55f;
+        if (x > -1.8f && x <= -0.3f) return -1.05f;
+        if (x > -0.3f && x <= 1.2f) return 0.45f;
+        if (x > 1.2f && x <= 2.7f) return 1.95f;
+        if (x > 2.7f && x <= 4.2f) return 3.45f;
+        if (x > 4.2f && x <= 5.7f) return 4.95f;
+        return -6.3f;
+    }
+
+    public Vector2 GridLockPosition(Vector2 input)
+    {
+        return new Vector2(
+            LockXPosition(input.x),
+            LockYPosition(input.y)
+        );
     }
 }
