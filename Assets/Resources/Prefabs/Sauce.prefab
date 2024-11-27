@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8529220106526238091}
   - component: {fileID: 9075355761552846963}
   - component: {fileID: 2731144960467364433}
-  - component: {fileID: -8962923641923169910}
   - component: {fileID: 8957832215690878760}
+  - component: {fileID: 3655301285324192679}
   m_Layer: 0
   m_Name: Sauce
   m_TagString: Sauce
@@ -132,26 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1373038, y: 0.49256504}
   m_EdgeRadius: 0
---- !u!114 &-8962923641923169910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725663740800297994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9d5ea3544ded747826f1a8c25101f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lossText: {fileID: 0}
-  foodCaught: 0
-  speed: 2
-  correctItem: 
-  plate: {fileID: 0}
-  timer: {fileID: 0}
-  topFood: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!50 &8957832215690878760
 Rigidbody2D:
   serializedVersion: 4
@@ -179,3 +159,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3655301285324192679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725663740800297994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff52997fa04e40e392a61ba4b028686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lossText: {fileID: 0}
+  foodCaught: 0
+  speed: 2
+  correctItem: 
+  plate: {fileID: 0}
+  timer: {fileID: 0}
+  topFood: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  initialDist: {x: 0, y: 0, z: 0}

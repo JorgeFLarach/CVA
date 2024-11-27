@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class fillClock : MonoBehaviour
+public class fillClock3 : MonoBehaviour
 {
    public UnityEngine.UI.Image fill;
    public float currTime;
@@ -16,8 +16,7 @@ public class fillClock : MonoBehaviour
     }
     public void Update(){
         currTime = PlayerPrefs.GetFloat("Timer");
-        Debug.Log("HERE" + currTime);
-
+        Debug.Log("VEGGIE" + currTime);
         fill.fillAmount = Mathf.InverseLerp(0, totTime, currTime);
       
     }

@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 
 
+
 public class TextScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_Text scoretext;
+
+    public TMP_Text pieNumber;
 
     public int score = 0;
 
@@ -35,12 +38,19 @@ public class TextScript : MonoBehaviour
     
 
     public void Menu()
-    {
-        SceneManager.LoadScene("GameSelector");
+    { 
+        int oldScore = PlayerPrefs.GetInt("Pie", 0);
+        oldScore+=score;
+        PlayerPrefs.SetInt("Pie", oldScore);
+        SceneManager.LoadScene("KitchenPrep");
     }
 
     public void Complete(){
         Debug.Log("Game Over");
+        int oldScore = PlayerPrefs.GetInt("Pie", 0);
+        oldScore+=score;
+        PlayerPrefs.SetInt("Pie", oldScore);
+        SceneManager.LoadScene("KitchenPrep");
     }
 
 }

@@ -16,9 +16,9 @@ public class EarnedMonsters : MonoBehaviour
     void Start()
     {
         lasagna = PlayerPrefs.GetInt("Lasagna", 0);
-        //pie = PlayerPrefs.GetInt("Pie",0);
-        //veggie = PlayerPrefs.GetInt("Veggie", 0);
-        Monstertext.text = $"Lasagna Monsters: {lasagna}\nPie Monsters: 60\n Veggie Monsters: 100 ";
+        pie = PlayerPrefs.GetInt("Pie", 0);
+        veggie = PlayerPrefs.GetInt("Veggie", 0);
+        Monstertext.text = $"Lasagna Monsters: {lasagna}\nPie Monsters: {pie}\n Veggie Monsters: {veggie} ";
     }
 
    

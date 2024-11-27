@@ -47,7 +47,7 @@ public class SauceScript : MonoBehaviour
 
         else if(this.foodCaught){
             correctItem = "Pasta";
-             if (other.gameObject.transform.position.y >this.gameObject.transform.position.y){
+             if (other.gameObject.transform.position.y > this.gameObject.transform.position.y){
                   topFood = other.gameObject;
               }
               else {
