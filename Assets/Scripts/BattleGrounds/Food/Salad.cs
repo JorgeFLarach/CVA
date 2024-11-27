@@ -9,7 +9,7 @@ public class Salad : MonoBehaviour
   private Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
-  public int throwRate = 10;
+  public int throwRate = 6;
   public int hp;
 
   public void SetPosition(Vector2 position){

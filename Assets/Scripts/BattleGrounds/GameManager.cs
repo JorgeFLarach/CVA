@@ -7,10 +7,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
-    public int score = 0;
-    public int highScore;
-    public int foodReserves = 200;
     public int pieCost = 1;
     public int saladCost = 10;
     public int lasagnaCost = 5;
@@ -22,6 +18,10 @@ public class GameManager : MonoBehaviour
     public int tomatoDmg = 1;
     public int lasagnaDmg = 10;
 
+    public float startSpawnRate = 1f;
+    public int startSpawnAmount = 1;
+    public float startWaveTime = 50f;
+
 
     public Button setPieBtn;
     public Button setSaladBtn;
@@ -29,13 +29,24 @@ public class GameManager : MonoBehaviour
     public Button pauseBtn;
 
     public TextMeshProUGUI foodReservesText;
+    public TextMeshProUGUI scoreText;
     public Player player;
 
     public TextMeshProUGUI pauseButtonText;
 
-    public void AddScore(int score)
-    {
-        this.score += score;
+
+    public EnemySpawner enemySpawner;
+
+    public float makeDecimal(int wvNum){
+        return (float)wvNum / 10f;
+    }
+
+
+    public void startWave(){
+        enemySpawner.SetWaveTime(startWaveTime * (1+ makeDecimal(GameData.waveNumber)));
+        enemySpawner.SetSpawnRate(startSpawnRate * (1+ makeDecimal(GameData.waveNumber)));
+        enemySpawner.SetSpawnAmount((int)(startSpawnAmount * (1+ makeDecimal(GameData.waveNumber))));
+        enemySpawner.StartSpawning();
     }
 
 
@@ -51,11 +62,12 @@ public class GameManager : MonoBehaviour
         }
 
         DisplayFoodReserves();
+        DisplayScore();
     }
 
     void SpawnFood()
     {
-        if(foodReserves <= 0)
+        if(GameData.globalFoodReserves <= 0)
         {
             return;
         }else {
@@ -63,7 +75,7 @@ public class GameManager : MonoBehaviour
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             if(worldPosition.y < 4.3 && worldPosition.x > -7){
-                foodReserves -= player.PlaceFood(worldPosition);
+                GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
             }
         }
     }
@@ -88,7 +100,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UpdateFoodReservesText();
+        DisplayFoodReserves();
+        DisplayScore();
         setCost();
 
         setPieBtn.onClick.AddListener(() => SetPie());
@@ -100,19 +113,21 @@ public class GameManager : MonoBehaviour
         {
             pauseButtonText.text = "Pause";
         }
+        startWave();
+    }
+
+    public void DisplayScore(){
+        if(scoreText != null){
+            scoreText.text = "Score: " + GameData.playerScore;
+        }
     }
 
     public void DisplayFoodReserves()
     {
-        UpdateFoodReservesText();
-    }
-
-    void UpdateFoodReservesText()
-    {
         if (foodReservesText != null)
         {
-            if(foodReserves >= 0){
-                foodReservesText.text = "Food Reserves: " + foodReserves;
+            if(GameData.globalFoodReserves >= 0){
+                foodReservesText.text = "Food Reserves: " + GameData.globalFoodReserves;
             }
             else{
                 foodReservesText.text = "Food Reserves: 0";

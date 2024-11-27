@@ -9,13 +9,9 @@ public class EnemySpawner : MonoBehaviour
     public Enemy enemyPrefab;
     public Shooter shooterPrefab;
     public Brute brutePrefab;
-    public float spawnDistance = 15f;
     public float spawnRate = 2f;
     public int spawnAmount = 1;
-    // public float trajectoryVariance = 15f;
-
     public int enemyCount = 0;
-
     public float waveTime = 120f;
     public int WaveCount = 1;
 
@@ -23,28 +19,43 @@ public class EnemySpawner : MonoBehaviour
     public List<Shooter> shooters = new List<Shooter>();
     public List<Brute> brutes = new List<Brute>();
 
+    public void SetWaveTime(float time)
+    {
+        waveTime = time;
+    }
+    public void SetSpawnRate(float rate)
+    {
+        spawnRate = rate;
+    }
+    public void SetSpawnAmount(int amount)
+    {
+        spawnAmount = amount;
+    }
 
     private void Start()
+    {
+        StartSpawning();
+    }
+
+    public void StartSpawning()
     {
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
         InvokeRepeating(nameof(SpawnShooter), spawnRate*10, spawnRate*5);
         InvokeRepeating(nameof(SpawnBrute), spawnRate*5, spawnRate*5);
     }
+    public void endSpawning(){
+        CancelInvoke(nameof(Spawn));
+        CancelInvoke(nameof(SpawnShooter));
+        CancelInvoke(nameof(SpawnBrute));
+    }
 
     public void Spawn()
     {
-
         for (int i = 0; i < spawnAmount; i++)
         {
-            // Vector3 spawnDirection = Vector3.left;
-            // Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
-            // float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
-            // Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
             Enemy enemy = Instantiate(enemyPrefab, GridSpawning(), Quaternion.identity);
             enemies.Add(enemy);
-            // enemyCount++;
         }
-
     }
     public Vector2 GridSpawning()
     {
@@ -69,30 +80,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnShooter()
     {
-        Vector3 spawnDirection = Vector3.left;
-        Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
         Shooter shooter = Instantiate(shooterPrefab, GridSpawning(), Quaternion.identity);
         shooters.Add(shooter);
     }
     public void SpawnBrute()
     {
-        Vector3 spawnDirection = Vector3.left;
-        Vector3 spawnPoint = transform.position + (spawnDirection * spawnDistance);
         Brute brute = Instantiate(brutePrefab, GridSpawning(), Quaternion.identity);
         brutes.Add(brute);
-    }
-    public void RemoveEnemy()
-    {
-        enemyCount--;
     }
     public bool AllEnemiesDead()
     {
         return enemyCount <= 0;
-    }
-    public void endSpawning(){
-        CancelInvoke(nameof(Spawn));
-        CancelInvoke(nameof(SpawnShooter));
-        CancelInvoke(nameof(SpawnBrute));
     }
 
     public int updateEnemyCount(){
@@ -103,13 +101,14 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         enemyCount = updateEnemyCount();
-        // Debug.Log(enemyCount);
         waveTime -= Time.deltaTime;
         if (waveTime <= 0)
         {
             endSpawning();
             if(AllEnemiesDead())
             {
+                GameData.waveNumber++;
+                GameData.playerScore += 1000;
                 SceneManager.LoadScene("WaveScreen");
         }
         }

@@ -51,7 +51,7 @@ public class Shooter : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-
+                GameData.playerScore += 250;
                 Destroy(gameObject);
             }
         }
@@ -69,7 +69,9 @@ public class Shooter : MonoBehaviour
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
-        // Add additional game over logic here, such as displaying a game over screen
+        if(GameData.playerScore > GameData.highScore){
+            GameData.highScore = GameData.playerScore;
+        }
         SceneManager.LoadScene("GameOver");
     }
 

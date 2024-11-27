@@ -3,32 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+
+public class Brute : MonoBehaviour
 {
-    public Sprite[] sprites;
-
-    // private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb;
-
     public float speed = 0.5f;
     public float lifeTime = 30f;
-    public float lives = 3;
+    public float lives = 10;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
-        // spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        // spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-
-    }
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Food"))
@@ -36,6 +30,7 @@ public class Enemy : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
+                GameData.playerScore += 500;
                 Destroy(gameObject);
             }
         }
@@ -45,15 +40,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void SetTrajectory(Vector2 direction)
-    {
-        rb.velocity = direction * speed;
-    }
-
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
+        if(GameData.playerScore > GameData.highScore){
+            GameData.highScore = GameData.playerScore;
+        }
         SceneManager.LoadScene("GameOver");
     }
-
 }
