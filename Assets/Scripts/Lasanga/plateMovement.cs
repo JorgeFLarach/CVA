@@ -25,8 +25,10 @@ public class plateMovement : MonoBehaviour
       private Camera mainCamera;
       public UnityEngine.Vector3 worldMousePos;
       public UnityEngine.Vector3 plateTransform;
-    void Start(){
 
+      public bool inMinigame;
+    void Start(){
+     PlayerPrefs.SetInt("inMinigame", 1);
      mainCamera = Camera.main;
     }
     public void Update(){
@@ -56,7 +58,7 @@ public class plateMovement : MonoBehaviour
         plateTransform.x = worldMousePos.x;
 
         // Clamp the X position to ensure it doesn't move beyond the screen boundaries
-        plateTransform.x = Mathf.Clamp(plateTransform.x, -3, 9);
+        plateTransform.x = Mathf.Clamp(plateTransform.x, -3, 8);
 
         // Update the plate's position
         transform.position = plateTransform;
@@ -67,7 +69,7 @@ public class plateMovement : MonoBehaviour
 
     void spawnFoods(){
           float randNum = UnityEngine.Random.Range(-3f, 1f);
-          float randNum2 = UnityEngine.Random.Range(5f, 9f);
+          float randNum2 = UnityEngine.Random.Range(5f, 8f);
           int rand = UnityEngine.Random.Range(1, 3);
           int randIndex = UnityEngine.Random.Range(0, 2); 
           GameObject foodObject; 

@@ -10,7 +10,9 @@ public class GlobalTime : MonoBehaviour
 {    
     public TMP_Text clock;
     public float timer;
- 
+
+    public int inMinigame;
+  
     public void Start(){
 
       if (!PlayerPrefs.HasKey("Timer")){
@@ -19,6 +21,7 @@ public class GlobalTime : MonoBehaviour
       }
     }
    public void Update(){
+        inMinigame = PlayerPrefs.GetInt("inMinigame");
         timer = PlayerPrefs.GetFloat("Timer");
         clock.text = timer.ToString().Split('.')[0];
           if (timer > 0){
@@ -28,9 +31,16 @@ public class GlobalTime : MonoBehaviour
         }
 
         else if (timer < 0){
-            SceneManager.LoadScene("EndPrepTime");
+          inMinigame = PlayerPrefs.GetInt("inMinigame");
+          if (inMinigame == 0){
+            Invoke("EndPrep", 2f);
+          }
         
         }
+    }
+
+    public void EndPrep(){
+       SceneManager.LoadScene("EndPrepTime");
     }
 
 }

@@ -42,6 +42,7 @@ public class TextScript : MonoBehaviour
         int oldScore = PlayerPrefs.GetInt("Pie", 0);
         oldScore+=score;
         PlayerPrefs.SetInt("Pie", oldScore);
+        PlayerPrefs.SetInt("inMinigame", 0);
         SceneManager.LoadScene("KitchenPrep");
     }
 
@@ -50,6 +51,7 @@ public class TextScript : MonoBehaviour
         int oldScore = PlayerPrefs.GetInt("Pie", 0);
         oldScore+=score;
         PlayerPrefs.SetInt("Pie", oldScore);
+        PlayerPrefs.SetInt("inMinigame", 0);
         SceneManager.LoadScene("KitchenPrep");
     }
 

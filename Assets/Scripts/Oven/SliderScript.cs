@@ -27,7 +27,7 @@ public class SliderScript : MonoBehaviour
         startloc = transform.position;
         level = 1;
         speed = 1;
-        
+        PlayerPrefs.SetInt("inMinigame", 1);
     }
 
     // Update is called once per frame
