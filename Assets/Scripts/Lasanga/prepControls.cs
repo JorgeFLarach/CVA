@@ -12,6 +12,6 @@ public class prepControls : MonoBehaviour
 
 
     public void StartBattle(){
-      SceneManager.LoadScene("WaveScreen");
+      SceneManager.LoadScene("Kitchen");
     }
 }

@@ -65,10 +65,10 @@ public class playerController : MonoBehaviour
             SceneManager.LoadScene("LasagnaStartGame");
         }
         else if (other.tag == "Oven"){
-          // SceneManager.LoadScene("LasagnaStartGame");
+          SceneManager.LoadScene("OvenStart");
         }
         else if (other.tag == "Veggies"){
-           // SceneManagement.LoadScene("LasagnaStartGame");
+           SceneManager.LoadScene("VeggieStart");
         }
     }
     

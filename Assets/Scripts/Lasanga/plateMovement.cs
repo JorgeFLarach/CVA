@@ -17,7 +17,6 @@ public class plateMovement : MonoBehaviour
     public int stackCount = 0;
     public float startMousePos;
     public float mouseMove;
-    //public float timelapsed =; //doesnt work for spawning FIX
     public float time = 2.7f;
     public float cutTime;
     public List<String> foodOrder = new List<string> {"Pasta", "Cheese", "Sauce"};
@@ -31,7 +30,7 @@ public class plateMovement : MonoBehaviour
      mainCamera = Camera.main;
     }
     public void Update(){
-        if(!(GameObject.FindGameObjectWithTag("Timer").GetComponent<timer>().gameOver)){
+        if(!GameObject.FindGameObjectWithTag("Timer").GetComponent<timer>().gameOver){
             time -= Time.deltaTime;
             cutTime = float.Parse(time.ToString().Split('.')[0]);
         
