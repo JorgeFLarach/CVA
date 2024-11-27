@@ -10,8 +10,10 @@ using System;
 public class timer : MonoBehaviour {
     public GameObject winPanel;
     public TMP_Text text;
+
+    public TMP_Text loseText;
      public TMP_Text winPanelText;
-    float countdown = 20;
+    float countdown = 25;
     public GameObject losePanel; 
     public GameObject plate; 
     public int earnedMonsters = 0;
@@ -31,19 +33,20 @@ public class timer : MonoBehaviour {
                 earnedMonsters = 15;
             }
             else if (plate.GetComponent<plateMovement>().stack.Count <= 6){
-                earnedMonsters = 30;
+                earnedMonsters = 40;
             }
             else if(plate.GetComponent<plateMovement>().stack.Count <= 8){
-                earnedMonsters = 45;
+                earnedMonsters = 55;
             }
             else {
-                earnedMonsters = 55;
+                earnedMonsters = 65;
             }
           int oldTot = PlayerPrefs.GetInt("Lasagna");
           int newTot = oldTot + earnedMonsters;
           PlayerPrefs.SetInt("Lasagna", newTot);
           winPanelText.text = $"You earned {earnedMonsters} lasagna monsters! ";
-          Invoke("MainMenu", 4f);
+          PlayerPrefs.SetInt("inMinigame", 0);
+          Invoke("MainMenu", 3f);
         }
 
         text.text = countdown.ToString().Split('.')[0];
@@ -53,7 +56,23 @@ public class timer : MonoBehaviour {
     public void EndGame(){
          gameOver = true;
          losePanel.SetActive(true);
-         Invoke("MainMenu", 3f);
+         PlayerPrefs.SetInt("inMinigame", 0);
+
+        if (plate.GetComponent<plateMovement>().stack.Count <= 4){
+                earnedMonsters = 15;
+            }
+         else if(plate.GetComponent<plateMovement>().stack.Count <= 5){
+            earnedMonsters = 30;
+         }
+         else {
+            earnedMonsters = 40;
+         }
+          int oldTot = PlayerPrefs.GetInt("Lasagna");
+          int newTot = oldTot + earnedMonsters;
+          PlayerPrefs.SetInt("Lasagna", newTot);
+          loseText.text = $"You earned {earnedMonsters} lasagna monsters.";
+          PlayerPrefs.SetInt("inMinigame", 0);
+          Invoke("MainMenu", 3f);
         }
 
      public void MainMenu(){

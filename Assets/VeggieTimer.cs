@@ -11,6 +11,10 @@ public class VeggieTimer : MonoBehaviour
     public float countdown = 20f;
     
     public TMP_Text timerText;
+
+    void Start(){
+     PlayerPrefs.SetInt("inMinigame", 1);
+    }
     
     void Update()
     {
@@ -20,6 +24,7 @@ public class VeggieTimer : MonoBehaviour
         }
 
         if (countdown < 0){
+           PlayerPrefs.SetInt("inMinigame", 0);
            SceneManager.LoadScene("KitchenPrep");
     }
 }
