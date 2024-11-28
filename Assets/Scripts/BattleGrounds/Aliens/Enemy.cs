@@ -54,6 +54,9 @@ public class Enemy : MonoBehaviour
     public void GameOver()
     {
         rb.velocity = Vector2.zero;
+        if(GameData.playerScore > GameData.highScore){
+            GameData.highScore = GameData.playerScore;
+        }
         SceneManager.LoadScene("GameOver");
     }
 
