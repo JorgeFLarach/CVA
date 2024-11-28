@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         {
             pauseButtonText.text = "Pause";
         }
-        startWave();
+        // startWave();
     }
 
     public void DisplayScore(){

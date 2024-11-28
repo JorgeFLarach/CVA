@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    public float speed = 2f;
-    public int lifetime = 30;
+    private float speed = 15f;
+    private int lifetime = 2;
 
     void Update()
     {
@@ -12,5 +12,10 @@ public class Star : MonoBehaviour
     private void Start()
     {
         Destroy(gameObject, lifetime);
+    }
+
+    public void SpeedUp(float input)
+    {
+         speed = input;
     }
 }

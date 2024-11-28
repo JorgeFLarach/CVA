@@ -12,20 +12,24 @@ public class Stars : MonoBehaviour
     public float maxY = 10f;
     public int planetsEvery = 10;
 
+    public float speedUpVal = 10f;
+
     void Start()
     {
-        InvokeRepeating("SpawnStar", 0f, 0.5f);
-        InvokeRepeating("SpawnPlanet", 0f, 8f);
+        InvokeRepeating("SpawnStar", 0f, 0.1f);
+        InvokeRepeating("SpawnPlanet", 0f, 4f);
     }
 
     void SpawnStar()
     {
         GameObject star = Instantiate(starPrefab,  GetRandomPosition(), Quaternion.identity);
+        // star.SpeedUp(speedUpVal);
     }
 
     void SpawnPlanet()
     {
         GameObject planet = Instantiate(planetPrefabs[Random.Range(0, planetPrefabs.Length)],  GetRandomPosition(), Quaternion.identity);
+        // planet.SpeedUp(speedUpVal);
     }
 
     Vector3 GetRandomPosition()
