@@ -37,22 +37,24 @@ public class GameManager : MonoBehaviour
 
     public EnemySpawner enemySpawner;
 
-    public float makeDecimal(int wvNum){
+    public float makeDecimal(int wvNum)
+    {
         return (float)wvNum / 10f;
     }
 
 
-    public void startWave(){
-        enemySpawner.SetWaveTime(startWaveTime * (1+ makeDecimal(GameData.waveNumber)));
-        enemySpawner.SetSpawnRate(startSpawnRate * (1+ makeDecimal(GameData.waveNumber)));
-        enemySpawner.SetSpawnAmount((int)(startSpawnAmount * (1+ makeDecimal(GameData.waveNumber))));
+    public void startWave()
+    {
+        enemySpawner.SetWaveTime(startWaveTime * (1 + makeDecimal(GameData.waveNumber)));
+        enemySpawner.SetSpawnRate(startSpawnRate * (1 + makeDecimal(GameData.waveNumber)));
+        enemySpawner.SetSpawnAmount((int)(startSpawnAmount * (1 + makeDecimal(GameData.waveNumber))));
         enemySpawner.StartSpawning();
     }
 
 
     void Update()
     {
-        if (Time.timeScale != 0 && Input.GetMouseButtonDown(0))
+        if (Time.timeScale != 0 && Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             SpawnFood();
         }
@@ -67,31 +69,37 @@ public class GameManager : MonoBehaviour
 
     void SpawnFood()
     {
-        if(GameData.globalFoodReserves <= 0)
+        if (GameData.globalFoodReserves <= 0)
         {
             return;
-        }else {
+        }
+        else
+        {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            if(worldPosition.y < 4.3 && worldPosition.x > -7){
+            if (worldPosition.y < 4.3 && worldPosition.x > -7)
+            {
                 GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
             }
         }
     }
 
-    void setCost(){
+    void setCost()
+    {
         player.SetCost(1, pieCost);
         player.SetCost(2, saladCost);
         player.SetCost(3, lasagnaCost);
     }
-    void setHP(){
+    void setHP()
+    {
         player.SetHP(1, pieHP);
         player.SetHP(2, tomatoHP);
         player.SetHP(3, saladHP);
         player.SetHP(4, lasagnaHP);
     }
-    void setDmg(){
+    void setDmg()
+    {
         player.SetDmg(1, pieDmg);
         player.SetDmg(2, tomatoDmg);
         player.SetDmg(3, lasagnaDmg);
@@ -116,8 +124,10 @@ public class GameManager : MonoBehaviour
         // startWave();
     }
 
-    public void DisplayScore(){
-        if(scoreText != null){
+    public void DisplayScore()
+    {
+        if (scoreText != null)
+        {
             scoreText.text = "Score: " + GameData.playerScore;
         }
     }
@@ -126,10 +136,12 @@ public class GameManager : MonoBehaviour
     {
         if (foodReservesText != null)
         {
-            if(GameData.globalFoodReserves >= 0){
+            if (GameData.globalFoodReserves >= 0)
+            {
                 foodReservesText.text = "Food Reserves: " + GameData.globalFoodReserves;
             }
-            else{
+            else
+            {
                 foodReservesText.text = "Food Reserves: 0";
             }
         }
@@ -147,14 +159,18 @@ public class GameManager : MonoBehaviour
         player.SelectLasagna();
     }
 
-    public void TogglePause(){
-        if(Time.timeScale == 0){
+    public void TogglePause()
+    {
+        if (Time.timeScale == 0)
+        {
             ResumeGame();
             if (pauseButtonText != null)
             {
                 pauseButtonText.text = "Pause";
             }
-        }else{
+        }
+        else
+        {
             PauseGame();
             if (pauseButtonText != null)
             {
@@ -162,10 +178,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void PauseGame(){
+    public void PauseGame()
+    {
         Time.timeScale = 0;
     }
-    public void ResumeGame(){
+    public void ResumeGame()
+    {
         Time.timeScale = 1;
     }
 }
