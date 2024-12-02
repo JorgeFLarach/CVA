@@ -8,12 +8,15 @@ public class Lasagna : MonoBehaviour
     public float Health = 30;
 
 
-    public Vector2 Position;
+    private Vector2 Position;
 
     public int hp;
 
     public void SetHP(int num){
         hp = num;
+    }
+    public Vector2 GetPosition(){
+      return Position;
     }
     public void SetPosition(Vector2 position){
       Position = position;

@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     public Salad saladPrefab;
     public Pie piePrefab;
     public Lasagna lasagnaPrefab;
-
+    public Table tablePrefab;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
 
@@ -138,6 +138,11 @@ public class Player : MonoBehaviour
     {
         selectedFood.lasagna();
     }
+    public void PlaceTable(Vector2 position){
+        Table table = Instantiate(tablePrefab, position, Quaternion.identity);
+        table.SetPosition(position);
+        GameData.tables.Add(table);
+    }
 
     public void PlaceSalad(Vector2 position)
     {
@@ -159,7 +164,7 @@ public class Player : MonoBehaviour
     }
     public int PlaceFood(Vector2 input)
     {
-        Vector2 position = GridLockPosition(input);
+        Vector2 position = GameData.GridLockPosition(input);
         if(selectedFood.isSalad() && !GameData.isOccupied(position))
         {
             PlaceSalad(position);
@@ -178,37 +183,37 @@ public class Player : MonoBehaviour
         }
     }
 
-    private float LockYPosition(float y)
-    {
-        if (y > 3.2f) return 3.7f;
-        if (y > 2.2f) return 2.7f;
-        if (y > 1.2f) return 1.7f;
-        if (y > 0.2f) return 0.7f;
-        if (y > -0.8f) return -0.3f;
-        if (y > -1.8f) return -1.3f;
-        if (y > -2.8f) return -2.3f;
-        if (y > -3.8f) return -3.3f;
-        return -4.3f;
-    }
+    // private float LockYPosition(float y)
+    // {
+    //     if (y > 3.2f) return 3.7f;
+    //     if (y > 2.2f) return 2.7f;
+    //     if (y > 1.2f) return 1.7f;
+    //     if (y > 0.2f) return 0.7f;
+    //     if (y > -0.8f) return -0.3f;
+    //     if (y > -1.8f) return -1.3f;
+    //     if (y > -2.8f) return -2.3f;
+    //     if (y > -3.8f) return -3.3f;
+    //     return -4.3f;
+    // }
 
-    private float LockXPosition(float x)
-    {
-        if (x > -6.3f && x <= -4.8f) return -5.55f;
-        if (x > -4.8f && x <= -3.3f) return -4.05f;
-        if (x > -3.3f && x <= -1.8f) return -2.55f;
-        if (x > -1.8f && x <= -0.3f) return -1.05f;
-        if (x > -0.3f && x <= 1.2f) return 0.45f;
-        if (x > 1.2f && x <= 2.7f) return 1.95f;
-        if (x > 2.7f && x <= 4.2f) return 3.45f;
-        if (x > 4.2f && x <= 5.7f) return 4.95f;
-        return -6.3f;
-    }
+    // private float LockXPosition(float x)
+    // {
+    //     if (x > -6.3f && x <= -4.8f) return -5.55f;
+    //     if (x > -4.8f && x <= -3.3f) return -4.05f;
+    //     if (x > -3.3f && x <= -1.8f) return -2.55f;
+    //     if (x > -1.8f && x <= -0.3f) return -1.05f;
+    //     if (x > -0.3f && x <= 1.2f) return 0.45f;
+    //     if (x > 1.2f && x <= 2.7f) return 1.95f;
+    //     if (x > 2.7f && x <= 4.2f) return 3.45f;
+    //     if (x > 4.2f && x <= 5.7f) return 4.95f;
+    //     return -6.3f;
+    // }
 
-    public Vector2 GridLockPosition(Vector2 input)
-    {
-        return new Vector2(
-            LockXPosition(input.x),
-            LockYPosition(input.y)
-        );
-    }
+    // public Vector2 GridLockPosition(Vector2 input)
+    // {
+    //     return new Vector2(
+    //         LockXPosition(input.x),
+    //         LockYPosition(input.y)
+    //     );
+    // }
 }

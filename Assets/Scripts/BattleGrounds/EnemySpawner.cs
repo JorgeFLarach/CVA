@@ -61,22 +61,11 @@ public class EnemySpawner : MonoBehaviour
     {
         float rand = Random.Range(-4.8f, 4.2f);
         Vector2 position = new Vector2(4.95f, 0f);
-        position.y = LockYPosition(rand);
+        position.y = GameData.LockYPosition(rand);
         return position;
     }
 
-    private float LockYPosition(float y)
-    {
-        if (y > 3.2f) return 3.7f;
-        if (y > 2.2f) return 2.7f;
-        if (y > 1.2f) return 1.7f;
-        if (y > 0.2f) return 0.7f;
-        if (y > -0.8f) return -0.3f;
-        if (y > -1.8f) return -1.3f;
-        if (y > -2.8f) return -2.3f;
-        if (y > -3.8f) return -3.3f;
-        return -4.3f;
-    }
+
 
     public void SpawnShooter()
     {

@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         {
             pauseButtonText.text = "Pause";
         }
+        GenerateTables();
         // startWave();
     }
 
@@ -182,5 +183,40 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void placeTables(int num){
+        int rows = 9;
+        List<int> availableRows = new List<int>();
+        for (int i = 0; i < rows; i++) {
+            availableRows.Add(i);
+        }
+
+        for (int i = 0; i < num; i++) {
+            if (availableRows.Count == 0) {
+                for (int j = 0; j < rows; j++) {
+                    availableRows.Add(j);
+                }
+            }
+
+            int randomRowIndex = Random.Range(0, availableRows.Count);
+            int selectedRow = availableRows[randomRowIndex];
+            availableRows.RemoveAt(randomRowIndex);
+
+            float yPos = GameData.LockYPosition(3.7f - (selectedRow * 1.0f));
+            float xPos = GameData.LockXPosition(Random.Range(-6.3f, 5.7f));
+            Vector2 position = new Vector2(xPos, yPos);
+            if (!GameData.isOccupied(position)) {
+                player.PlaceTable(position);
+            }
+        }
+    }
+
+    public void GenerateTables(){
+        Debug.Log($"Generating tables for wave {GameData.waveNumber}");
+        if (GameData.waveNumber > 2){
+            Debug.Log($"Generating {GameData.waveNumber} tables for wave {GameData.waveNumber}");
+            placeTables(GameData.waveNumber);
+        }
     }
 }

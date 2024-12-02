@@ -6,7 +6,7 @@ using UnityEngine;
 public class Salad : MonoBehaviour
 {
   public List<Tomato> tomatos = new List<Tomato>();
-  public Vector2 Position;
+  private Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
   public int throwRate = 6;
@@ -14,6 +14,9 @@ public class Salad : MonoBehaviour
 
   public void SetPosition(Vector2 position){
     Position = position;
+  }
+  public Vector2 GetPosition(){
+    return Position;
   }
 
   public void ThrowTomato(){
