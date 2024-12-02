@@ -20,7 +20,7 @@ public class EarnedMonsters : MonoBehaviour
         veggie = PlayerPrefs.GetInt("Veggie", 0);
         Monstertext.text = $"Lasagna Monsters: {lasagna}\nPie Monsters: {pie}\n Veggie Monsters: {veggie} ";
         int total = (int)(lasagna + pie + veggie);
-        int bonus = 200;
+        int bonus = 100;
         GameData.AddFoodReserve(total+bonus);
         // Debug.Log($"Added {total} food to reserves");
     }
