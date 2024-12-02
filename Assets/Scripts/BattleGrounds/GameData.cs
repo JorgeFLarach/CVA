@@ -23,6 +23,14 @@ public static class GameData
         }
         return false;
     }
+    public static void ClearFoodBoard(){
+        saladLocations.Clear();
+        lasagnaLocations.Clear();
+    }
+
+    public static void AddFoodReserve(int amount){
+        globalFoodReserves += amount;
+    }
 
     public static void Reset(){
         playerScore = 0;

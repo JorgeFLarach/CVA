@@ -12,10 +12,12 @@ public class WaveScreen : MonoBehaviour
     {
         waveText.text = "Wave " + GameData.waveNumber;
         goToMenuBtn.onClick.AddListener(GoToMenu);
+        GameData.ClearFoodBoard();
     }
 
     public void GoToMenu(){
         PlayerPrefs.DeleteAll(); // Not sure what this does
         SceneManager.LoadScene("KitchenPrep");
     }
+
 }
