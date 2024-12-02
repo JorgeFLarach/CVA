@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public static class GameData
 {
     public static int highScore;
@@ -8,22 +8,21 @@ public static class GameData
     public static int globalFoodReserves = 500;
 
 
-    // public static void saveHighScore(){
-    //     if(playerScore > highScore){
-    //         highScore = playerScore;
-    //         string filePath = Application.persistentDataPath + "/highscore.txt";
-    //         System.IO.File.WriteAllText(filePath, highScore.ToString());
-    //     }
-    // }
-    // public static void loadHighScore(){
-    //     string filePath = Application.persistentDataPath + "/highscore.txt";
-    //     if(System.IO.File.Exists(filePath)){
-    //         highScore = int.Parse(System.IO.File.ReadAllText(filePath));
-    //     }
-    // }
-    // public static void Update(){
-    //     saveHighScore();
-    // }
+    public static List <Salad> saladLocations = new List<Salad>();
+    public static List <Lasagna> lasagnaLocations = new List<Lasagna>();
+    public static bool isOccupied(Vector2 position){
+        foreach(Salad salad in saladLocations){
+            if(salad.Position == position){
+                return true;
+            }
+        }
+        foreach(Lasagna lasagna in lasagnaLocations){
+            if(lasagna.Position == position){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void Reset(){
         playerScore = 0;

@@ -5,10 +5,10 @@ public class Lasagna : MonoBehaviour
 {
     public float speed = 2f;
     public int lives = 3;
-    public float Health = 10;
+    public float Health = 30;
 
 
-    private Vector2 Position;
+    public Vector2 Position;
 
     public int hp;
 
@@ -32,6 +32,7 @@ public class Lasagna : MonoBehaviour
       }
     }
     public void Die(){
+      GameData.lasagnaLocations.Remove(this);
       Destroy(gameObject);
     }
 

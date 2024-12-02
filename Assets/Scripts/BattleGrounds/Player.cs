@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
         Salad salad = Instantiate(saladPrefab, position, Quaternion.identity);
         salad.SetPosition(position);
         saladSprites.Add(salad);
+        GameData.saladLocations.Add(salad);
     }
     public void ThrowPie(Vector2 position)
     {
@@ -154,11 +155,12 @@ public class Player : MonoBehaviour
     {
         Lasagna lasagna = Instantiate(lasagnaPrefab, position, Quaternion.identity);
         lasagnaSprites.Add(lasagna);
+        GameData.lasagnaLocations.Add(lasagna);
     }
     public int PlaceFood(Vector2 input)
     {
         Vector2 position = GridLockPosition(input);
-        if(selectedFood.isSalad())
+        if(selectedFood.isSalad() && !GameData.isOccupied(position))
         {
             PlaceSalad(position);
             return saladCost;
@@ -168,7 +170,7 @@ public class Player : MonoBehaviour
             ThrowPie(position);
             return pieCost;
         }
-        else if (selectedFood.isLasagna()){
+        else if (selectedFood.isLasagna() && !GameData.isOccupied(position)){
             PlaceLasagna(position);
             return lasagnaCost;
         } else {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Salad : MonoBehaviour
 {
   public List<Tomato> tomatos = new List<Tomato>();
-  private Vector2 Position;
+  public Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
   public int throwRate = 6;
@@ -31,6 +31,7 @@ public class Salad : MonoBehaviour
     }
   }
   public void Die(){
+    GameData.saladLocations.Remove(this);
     Destroy(gameObject);
   }
   public void Start(){

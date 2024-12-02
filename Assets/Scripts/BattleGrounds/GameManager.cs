@@ -69,12 +69,9 @@ public class GameManager : MonoBehaviour
 
     void SpawnFood()
     {
-        if (GameData.globalFoodReserves <= 0)
-        {
+        if (GameData.globalFoodReserves <= 0){
             return;
-        }
-        else
-        {
+        }else{
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
