@@ -37,7 +37,7 @@ public class SliderScript : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         if (isFacingRight && transform.position.x > 5.42) Flip();
         if (!isFacingRight && transform.position.x < -5.39) Flip();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             Attempt();
         }
