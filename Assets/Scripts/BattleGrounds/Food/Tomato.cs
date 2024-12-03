@@ -8,7 +8,7 @@ public class Tomato : MonoBehaviour
   public int speed = 1;
   public int hp;
 
-  public int damage = 2;
+  public int damage = 1;
   public Vector2 Target;
   public Vector2 Position;
   public int lives = 1;
