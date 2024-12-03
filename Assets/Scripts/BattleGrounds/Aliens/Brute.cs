@@ -25,6 +25,13 @@ public class Brute : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Pancakes")){
+
+            GameData.playerScore += 500;
+            speed = 0;
+            spriteRenderer.color = new Color(0.4f, 0.075f, 0.075f, 1f); // Dark red color
+
+        }
         if (collision.gameObject.CompareTag("Food"))
         {
             lives--;

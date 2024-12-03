@@ -10,6 +10,7 @@ public static class GameData
     public static List<Table> tables = new List<Table>();
     public static List <Salad> saladLocations = new List<Salad>();
     public static List <Lasagna> lasagnaLocations = new List<Lasagna>();
+    public static List <Pancakes> pancakesLocations = new List<Pancakes>();
     public static bool isOccupied(Vector2 position){
         foreach(Salad salad in saladLocations){
             if(salad.GetPosition() == position){
@@ -26,11 +27,17 @@ public static class GameData
                 return true;
             }
         }
+        foreach(Pancakes pancakes in pancakesLocations){
+            if(pancakes.GetPosition() == position){
+                return true;
+            }
+        }
         return false;
     }
     public static void ClearFoodBoard(){
         saladLocations.Clear();
         lasagnaLocations.Clear();
+        pancakesLocations.Clear();
         tables.Clear();
     }
 

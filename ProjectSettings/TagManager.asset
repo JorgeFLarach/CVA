@@ -18,6 +18,7 @@ TagManager:
   - Oven
   - GameEnd
   - Shot
+  - Pancakes
   layers:
   - Default
   - TransparentFX

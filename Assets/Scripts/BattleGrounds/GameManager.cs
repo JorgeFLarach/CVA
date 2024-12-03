@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int pieDmg = 3;
     public int tomatoDmg = 1;
     public int lasagnaDmg = 10;
+    public int pancakesCost = 10;
 
     public float startSpawnRate = 1f;
     public int startSpawnAmount = 1;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Button setPieBtn;
     public Button setSaladBtn;
     public Button setLasagnaBtn;
+    public Button setPancakesBtn;
     public Button pauseBtn;
 
     public TextMeshProUGUI foodReservesText;
@@ -87,21 +89,8 @@ public class GameManager : MonoBehaviour
         player.SetCost(1, pieCost);
         player.SetCost(2, saladCost);
         player.SetCost(3, lasagnaCost);
+        player.SetCost(4, pancakesCost);
     }
-    void setHP()
-    {
-        player.SetHP(1, pieHP);
-        player.SetHP(2, tomatoHP);
-        player.SetHP(3, saladHP);
-        player.SetHP(4, lasagnaHP);
-    }
-    void setDmg()
-    {
-        player.SetDmg(1, pieDmg);
-        player.SetDmg(2, tomatoDmg);
-        player.SetDmg(3, lasagnaDmg);
-    }
-
 
     void Start()
     {
@@ -112,6 +101,7 @@ public class GameManager : MonoBehaviour
         setPieBtn.onClick.AddListener(() => SetPie());
         setSaladBtn.onClick.AddListener(() => SetSalad());
         setLasagnaBtn.onClick.AddListener(() => SetLasagna());
+        setPancakesBtn.onClick.AddListener(() => SetPancakes());
         pauseBtn.onClick.AddListener(() => TogglePause());
 
         if (pauseButtonText != null)
@@ -155,6 +145,10 @@ public class GameManager : MonoBehaviour
     public void SetLasagna()
     {
         player.SelectLasagna();
+    }
+    public void SetPancakes()
+    {
+        player.SelectPancakes();
     }
 
     public void TogglePause()

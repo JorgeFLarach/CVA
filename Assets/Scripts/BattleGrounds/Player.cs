@@ -17,6 +17,9 @@ public class SelectedFood
         else if(num == 3){
         food = "lasagna";
         }
+        else if(num == 4){
+        food = "pancakes";
+        }
     }
     public string GetFood(){
         return food;
@@ -39,6 +42,12 @@ public class SelectedFood
     public bool isLasagna(){
         return food == "lasagna";
     }
+    public bool isPancakes(){
+        return food == "pancakes";
+    }
+    public void pancakes(){
+        food = "pancakes";
+    }
 }
 
 public class Player : MonoBehaviour
@@ -52,15 +61,18 @@ public class Player : MonoBehaviour
     public int lasagnaHP;
     public int pieDmg;
     public int tomatoDmg;
+    public int pancakesCost = 10;
 
     public SelectedFood selectedFood;
     public List<Salad> saladSprites = new List<Salad>();
     public List<Pie> pieSprites = new List<Pie>();
     public List<Lasagna> lasagnaSprites = new List<Lasagna>();
+    public List<Pancakes> pancakesSprites = new List<Pancakes>();
 
     public Salad saladPrefab;
     public Pie piePrefab;
     public Lasagna lasagnaPrefab;
+    public Pancakes pancakesPrefab;
     public Table tablePrefab;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -101,6 +113,8 @@ public class Player : MonoBehaviour
         }
         else if(num == 3){
             lasagnaCost = cost;
+        } else if (num == 4){
+            pancakesCost = cost;
         }
     }
     public void SetDmg(int num, int dmg){
@@ -124,6 +138,10 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             SelectLasagna();
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha4)){
+            SelectPancakes();
+        }
     }
 
     public void SelectSalad()
@@ -137,6 +155,10 @@ public class Player : MonoBehaviour
     public void SelectLasagna()
     {
         selectedFood.lasagna();
+    }
+    public void SelectPancakes()
+    {
+        selectedFood.pancakes();
     }
     public void PlaceTable(Vector2 position){
         Table table = Instantiate(tablePrefab, position, Quaternion.identity);
@@ -162,6 +184,12 @@ public class Player : MonoBehaviour
         lasagnaSprites.Add(lasagna);
         GameData.lasagnaLocations.Add(lasagna);
     }
+    public void PlacePancakes(Vector2 position)
+    {
+        Pancakes pancakes = Instantiate(pancakesPrefab, position, Quaternion.identity);
+        pancakesSprites.Add(pancakes);
+        GameData.pancakesLocations.Add(pancakes);
+    }
     public int PlaceFood(Vector2 input)
     {
         Vector2 position = GameData.GridLockPosition(input);
@@ -178,42 +206,12 @@ public class Player : MonoBehaviour
         else if (selectedFood.isLasagna() && !GameData.isOccupied(position)){
             PlaceLasagna(position);
             return lasagnaCost;
+        } else if (selectedFood.isPancakes() && !GameData.isOccupied(position)){
+            PlacePancakes(position);
+            return 0;
         } else {
             return 0;
         }
     }
 
-    // private float LockYPosition(float y)
-    // {
-    //     if (y > 3.2f) return 3.7f;
-    //     if (y > 2.2f) return 2.7f;
-    //     if (y > 1.2f) return 1.7f;
-    //     if (y > 0.2f) return 0.7f;
-    //     if (y > -0.8f) return -0.3f;
-    //     if (y > -1.8f) return -1.3f;
-    //     if (y > -2.8f) return -2.3f;
-    //     if (y > -3.8f) return -3.3f;
-    //     return -4.3f;
-    // }
-
-    // private float LockXPosition(float x)
-    // {
-    //     if (x > -6.3f && x <= -4.8f) return -5.55f;
-    //     if (x > -4.8f && x <= -3.3f) return -4.05f;
-    //     if (x > -3.3f && x <= -1.8f) return -2.55f;
-    //     if (x > -1.8f && x <= -0.3f) return -1.05f;
-    //     if (x > -0.3f && x <= 1.2f) return 0.45f;
-    //     if (x > 1.2f && x <= 2.7f) return 1.95f;
-    //     if (x > 2.7f && x <= 4.2f) return 3.45f;
-    //     if (x > 4.2f && x <= 5.7f) return 4.95f;
-    //     return -6.3f;
-    // }
-
-    // public Vector2 GridLockPosition(Vector2 input)
-    // {
-    //     return new Vector2(
-    //         LockXPosition(input.x),
-    //         LockYPosition(input.y)
-    //     );
-    // }
 }
