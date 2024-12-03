@@ -11,6 +11,7 @@ public static class GameData
     public static List <Salad> saladLocations = new List<Salad>();
     public static List <Lasagna> lasagnaLocations = new List<Lasagna>();
     public static List <Pancakes> pancakesLocations = new List<Pancakes>();
+    
     public static bool isOccupied(Vector2 position){
         foreach(Salad salad in saladLocations){
             if(salad.GetPosition() == position){

@@ -91,6 +91,19 @@ public class GameManager : MonoBehaviour
         player.SetCost(3, lasagnaCost);
         player.SetCost(4, pancakesCost);
     }
+    void setHP()
+    {
+        player.SetHP(1, pieHP);
+        player.SetHP(2, tomatoHP);
+        player.SetHP(3, saladHP);
+    }
+    void setDmg()
+    {
+        player.SetDmg(1, pieDmg);
+        player.SetDmg(2, tomatoDmg);
+        player.SetDmg(3, lasagnaDmg);
+    }
+
 
     void Start()
     {

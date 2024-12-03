@@ -8,7 +8,7 @@ public class Brute : MonoBehaviour
 {
     public float speed = 0.5f;
     public float lifeTime = 30f;
-    public float lives = 10;
+    public float lives = 15;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
 

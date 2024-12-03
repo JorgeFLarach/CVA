@@ -12,7 +12,7 @@ public class Shooter : MonoBehaviour
 
     public float speed = 0.5f;
     public float lifeTime = 30f;
-    public float lives = 3;
+    public float lives = 10;
     public bool reloading = false;
     public float reloadtime = 1f;
     public float loadprog = 0f;
@@ -23,18 +23,6 @@ public class Shooter : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void Start()
-    {
-        /*spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360f);
-        Destroy(gameObject, lifeTime); */
-
-        // Set a random angle to move left
-        /*float angle = Random.Range(-45f, 45f);
-        Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.left;
-        SetTrajectory(direction); */
     }
 
     void Update(){
@@ -62,7 +50,7 @@ public class Shooter : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.CompareTag("GameEnd")) // Replace "GameEndTag" with the actual tag
+        else if (collision.gameObject.CompareTag("GameEnd"))
         {
             GameOver();
         }
