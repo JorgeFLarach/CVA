@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public int startSpawnAmount = 1;
     public float startWaveTime = 50f;
 
+    [SerializeField]
+    private GameObject background;
 
     public Button setPieBtn;
     public Button setSaladBtn;
@@ -183,12 +185,25 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void GreyOutBackground(){
+        background.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+        foodReservesText.color = new Color(1f, 1f, 1f, 1f);
+        scoreText.color = new Color(1f, 1f, 1f, 1f);
+    }
+    public void ResetBackground(){
+        background.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        foodReservesText.color = new Color(0f, 0f, 0f, 1f);
+        scoreText.color = new Color(0f, 0f, 0f, 1f);
+    }
+
     public void PauseGame()
     {
+        GreyOutBackground();
         Time.timeScale = 0;
     }
     public void ResumeGame()
     {
+        ResetBackground();
         Time.timeScale = 1;
     }
 

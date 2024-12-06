@@ -174,8 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   lifeTime: 30
-  lives: 3
+  lives: 10
   reloading: 0
+  pancaked: 0
   reloadtime: 0.05
   loadprog: 0
   shotPrefab: {fileID: 5047957583806563965, guid: 12946189cc019674bbaa8be538084616, type: 3}
