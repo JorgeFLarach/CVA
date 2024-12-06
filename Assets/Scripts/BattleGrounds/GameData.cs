@@ -75,7 +75,7 @@ public static class GameData
         if (x > 1.2f && x <= 2.7f) return 1.95f;
         if (x > 2.7f && x <= 4.2f) return 3.45f;
         if (x > 4.2f && x <= 5.7f) return 4.95f;
-        return -6.3f;
+        return -5.55f;
     }
 
     public static Vector2 GridLockPosition(Vector2 input)

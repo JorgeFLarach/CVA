@@ -181,35 +181,38 @@ public class Player : MonoBehaviour
     public void PlaceLasagna(Vector2 position)
     {
         Lasagna lasagna = Instantiate(lasagnaPrefab, position, Quaternion.identity);
+        lasagna.SetPosition(position);
         lasagnaSprites.Add(lasagna);
         GameData.lasagnaLocations.Add(lasagna);
     }
     public void PlacePancakes(Vector2 position)
     {
         Pancakes pancakes = Instantiate(pancakesPrefab, position, Quaternion.identity);
+        pancakes.SetPosition(position);
         pancakesSprites.Add(pancakes);
         GameData.pancakesLocations.Add(pancakes);
     }
     public int PlaceFood(Vector2 input)
     {
+        if(input.x>5.7f || input.x<-6.3f){
+            return 0;
+        }
         Vector2 position = GameData.GridLockPosition(input);
         if(selectedFood.isSalad() && !GameData.isOccupied(position))
         {
             PlaceSalad(position);
             return saladCost;
-        }
-        else if(selectedFood.isPie())
+        }else if (selectedFood.isLasagna() && !GameData.isOccupied(position)){
+            PlaceLasagna(position);
+            return lasagnaCost;
+        }else if (selectedFood.isPancakes() && !GameData.isOccupied(position)){
+            PlacePancakes(position);
+            return 0;
+        }else if(selectedFood.isPie())
         {
             ThrowPie(position);
             return pieCost;
-        }
-        else if (selectedFood.isLasagna() && !GameData.isOccupied(position)){
-            PlaceLasagna(position);
-            return lasagnaCost;
-        } else if (selectedFood.isPancakes() && !GameData.isOccupied(position)){
-            PlacePancakes(position);
-            return 0;
-        } else {
+        }else{
             return 0;
         }
     }
