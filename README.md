@@ -1,5 +1,5 @@
 # CVA
-the greatest game of all time
+The greatest game of all time
 
 Sprint 1: https://pbland.itch.io/cva
 
