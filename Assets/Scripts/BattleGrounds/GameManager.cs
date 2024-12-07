@@ -31,34 +31,26 @@ public class GameManager : MonoBehaviour
     public Button setLasagnaBtn;
     public Button setPancakesBtn;
     public Button pauseBtn;
+    public Button fastForwardBtn;
 
     public TextMeshProUGUI foodReservesText;
     public TextMeshProUGUI scoreText;
     public Player player;
 
+    public int time = 1;
+    public bool paused = false;
+
     public TextMeshProUGUI pauseButtonText;
-
-
-    public EnemySpawner enemySpawner;
+    public TextMeshProUGUI fastForwardButtonText;
 
     public float makeDecimal(int wvNum)
     {
         return (float)wvNum / 10f;
     }
 
-
-    public void startWave()
-    {
-        enemySpawner.SetWaveTime(startWaveTime * (1 + makeDecimal(GameData.waveNumber)));
-        enemySpawner.SetSpawnRate(startSpawnRate * (1 + makeDecimal(GameData.waveNumber)));
-        enemySpawner.SetSpawnAmount((int)(startSpawnAmount * (1 + makeDecimal(GameData.waveNumber))));
-        enemySpawner.StartSpawning();
-    }
-
-
     void Update()
     {
-        if (Time.timeScale != 0 && Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             SpawnFood();
         }
@@ -66,6 +58,10 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
+	if (Input.GetKeyDown(KeyCode.F))
+	{
+		ToggleFastForward();
+	}
 
         DisplayFoodReserves();
         DisplayScore();
@@ -73,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnFood()
     {
-        if (GameData.globalFoodReserves <= 0){
+        if (GameData.globalFoodReserves <= 0 || paused){
             return;
         }else{
             Vector3 mousePosition = Input.mousePosition;
@@ -118,13 +114,15 @@ public class GameManager : MonoBehaviour
         setLasagnaBtn.onClick.AddListener(() => SetLasagna());
         setPancakesBtn.onClick.AddListener(() => SetPancakes());
         pauseBtn.onClick.AddListener(() => TogglePause());
-
+        fastForwardBtn.onClick.AddListener(() => ToggleFastForward());
         if (pauseButtonText != null)
         {
             pauseButtonText.text = "Pause";
         }
+        if (fastForwardButtonText != null){
+            fastForwardButtonText.text = ">>";
+        }
         GenerateTables();
-        // startWave();
     }
 
     public void DisplayScore()
@@ -171,17 +169,32 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale == 0)
         {
             ResumeGame();
+            paused = false;
             if (pauseButtonText != null)
-            {
+            {   
                 pauseButtonText.text = "Pause";
             }
         }
         else
         {
             PauseGame();
+            paused = true;
             if (pauseButtonText != null)
             {
                 pauseButtonText.text = "Resume";
+            }
+        }
+    }
+    public void ToggleFastForward(){
+        if (Time.timeScale != 3){
+            FastForward();
+            if (fastForwardButtonText != null){
+                fastForwardButtonText.text = "<<";
+            }
+        }else{
+            NormalSpeed();
+            if (fastForwardButtonText != null){
+                fastForwardButtonText.text = ">>";
             }
         }
     }
@@ -204,7 +217,20 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         ResetBackground();
-        Time.timeScale = 1;
+        Time.timeScale = time;
+    }
+
+    public void FastForward(){
+        time = 3;
+	ResetBackground();
+	paused = false;
+        Time.timeScale = time;
+    }
+    public void NormalSpeed(){
+        time = 1;
+	ResetBackground();
+	paused = false;
+        Time.timeScale = time;
     }
 
     public void placeTables(int num){
