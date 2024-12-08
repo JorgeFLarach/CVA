@@ -1682,7 +1682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1337895609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2699,9 +2699,10 @@ MonoBehaviour:
   foodReservesText: {fileID: 1527941240}
   scoreText: {fileID: 1642497068}
   player: {fileID: 229968826}
+  time: 1
+  paused: 0
   pauseButtonText: {fileID: 150985925}
   fastForwardButtonText: {fileID: 93847557}
-  enemySpawner: {fileID: 2037308807}
 --- !u!4 &1961119745
 Transform:
   m_ObjectHideFlags: 0

@@ -19,6 +19,11 @@ TagManager:
   - GameEnd
   - Shot
   - Pancakes
+  - Knife
+  - Brussel Sprout
+  - Cabbage
+  - Bok Choy
+  - Tomato
   layers:
   - Default
   - TransparentFX

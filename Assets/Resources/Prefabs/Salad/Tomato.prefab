@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7667734176785536618}
   - component: {fileID: 8611847075234952366}
   m_Layer: 0
-  m_Name: Brussel Sprout
-  m_TagString: Brussel Sprout
+  m_Name: Tomato
+  m_TagString: Tomato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 695644729
+  m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 4f64c685eca4b4824920ca9203f1cdf7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 310eaa83cd0dc4f65879be80b461accf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.02, y: 2.8}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 3.02, y: 2.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

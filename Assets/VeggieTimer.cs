@@ -8,7 +8,7 @@ using TMPro;
 
 public class VeggieTimer : MonoBehaviour
 {
-    public float countdown = 20f;
+    public float countdown = 60f;
     
     public TMP_Text timerText;
 
