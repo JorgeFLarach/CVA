@@ -22,6 +22,9 @@ public class startController : MonoBehaviour
     public void ExitRules(){
         rulesPanel.SetActive(false);
     }
+    public void StartTutorial(){
+        SceneManager.LoadScene("Tutorial");
+    }
     
 
 }
