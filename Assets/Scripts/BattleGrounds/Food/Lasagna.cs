@@ -27,6 +27,14 @@ public class Lasagna : MonoBehaviour
         {
             TakeDamage(1 * Time.deltaTime);
         }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.CompareTag("Shot"))
+        {
+            TakeDamage(3); //might change
+        }
     }
     public void TakeDamage(float damage){
       Health -= damage;
