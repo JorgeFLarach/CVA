@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Player player;
 
-    public int time = 1;
+    public float time = 1f;
     public bool paused = false;
 
     public TextMeshProUGUI pauseButtonText;
@@ -102,12 +102,18 @@ public class GameManager : MonoBehaviour
         player.SetDmg(3, lasagnaDmg);
     }
 
+    void scaleTime(){
+        time = (1+ makeDecimal(GameData.waveNumber));
+        Time.timeScale = time;
+    }
+
 
     void Start()
     {
         DisplayFoodReserves();
         DisplayScore();
         setCost();
+        scaleTime();
 
         setPieBtn.onClick.AddListener(() => SetPie());
         setSaladBtn.onClick.AddListener(() => SetSalad());
@@ -186,7 +192,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public void ToggleFastForward(){
-        if (Time.timeScale != 3){
+        if (!fastForward){
             FastForward();
             if (fastForwardButtonText != null){
                 fastForwardButtonText.text = "<<";
@@ -219,15 +225,18 @@ public class GameManager : MonoBehaviour
         ResetBackground();
         Time.timeScale = time;
     }
+    private bool fastForward = false;
 
     public void FastForward(){
-        time = 3;
+        // time = 3*time;
+        fastForward = true;
 	ResetBackground();
 	paused = false;
-        Time.timeScale = time;
+        Time.timeScale = time*3;
     }
     public void NormalSpeed(){
-        time = 1;
+        // time = time/3;
+        fastForward = false;
 	ResetBackground();
 	paused = false;
         Time.timeScale = time;
