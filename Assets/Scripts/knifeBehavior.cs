@@ -103,8 +103,8 @@ public class knifeBehavior : MonoBehaviour
 
     }
     public float spawnOffsetY = 10f;
-    public float minX = -8f;
-    public float maxX = 8f;
+    public float minX = -7f;
+    public float maxX = 7f;
 
     public Vector2 GetRandomPosition()
     {
