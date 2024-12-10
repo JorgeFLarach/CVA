@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Stars : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class Stars : MonoBehaviour
     {
         InvokeRepeating("SpawnStar", 0f, 0.1f);
         InvokeRepeating("SpawnPlanet", 0f, 4f);
+        StartCoroutine(changeScene());
     }
 
     void SpawnStar()
@@ -37,5 +40,11 @@ public class Stars : MonoBehaviour
         float randomX = Random.Range(1, 5)-spawnOffsetX;
         float randomY = Random.Range(minY, maxY);
         return new Vector3(randomX, randomY, 0);
+    }
+
+    IEnumerator changeScene()
+    {
+        yield return new WaitForSeconds(15f);
+        SceneManager.LoadScene("CutScene1");
     }
 }

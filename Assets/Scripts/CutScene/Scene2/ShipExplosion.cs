@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class Ship : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class ShipExplosion : MonoBehaviour
 {
     private float speed = 15f;
     public Vector2 pos;
@@ -26,6 +26,7 @@ public class Ship : MonoBehaviour
             }
             Destroy(gameObject);
             Instantiate(brokenShipPrefab, transform.position, transform.rotation);
+            SceneManager.LoadScene("CutScene3");
         }
         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

@@ -21,11 +21,23 @@ EditorBuildSettings:
     path: Assets/Scenes/SaladGame.unity
     guid: 75387e864db8c49ea9c0be77050e37a0
   - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene3.unity
+    guid: 8f4a26d94a8d94dc08f11c2a90109f20
+  - enabled: 1
     path: Assets/Scenes/LasagnaMiniGame.unity
     guid: e31ecf47707506d429ba7cca504563b3
   - enabled: 1
     path: Assets/Scenes/LasagnaStartGame.unity
     guid: f30f11e81e9f4f947a3b22062ca10cfa
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene1.unity
+    guid: d5235791de7424a889b5a5de956d9bd5
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene2.unity
+    guid: 1c82bf0b74b19418ea2656a58df0c736
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene.unity
+    guid: bb576a6237a354c2284f327f24652a69
   - enabled: 1
     path: Assets/Scenes/GameSelector.unity
     guid: 1b52744e94ac4b74e907f1d45d43513f
