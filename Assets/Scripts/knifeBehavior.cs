@@ -16,10 +16,12 @@ public class knifeBehavior : MonoBehaviour
     public int choppedTomato = 0;
     private int saladMade = 0;
 
+    public int foodCollected = 0;
+
     public List<String> foodOrder = new List<string> {"Cabbage", "Brussel Sprout", "Bok Choy", "Tomato"};    
 
     void Update() {
-        int random = UnityEngine.Random.Range(0,300);
+        int random = UnityEngine.Random.Range(0,100);
         if(random == 10){
             spawnIngredients();
         }
@@ -34,6 +36,7 @@ public class knifeBehavior : MonoBehaviour
 
     private void addFoodReserves(){
         GameData.globalFoodReserves += 1;
+        foodCollected += 1;
     }
 
     void OnCollisionEnter2D(Collision2D collision){
@@ -99,7 +102,7 @@ public class knifeBehavior : MonoBehaviour
 
 
     }
-    public float spawnOffsetY = 15f;
+    public float spawnOffsetY = 10f;
     public float minX = -8f;
     public float maxX = 8f;
 
