@@ -43,24 +43,36 @@ public static class GameData
     }
 
     public static void forkFood(Vector2 position){
+        List<Salad> saladRemoveList = new List<Salad>();
+        List<Lasagna> lasagnaRemoveList = new List<Lasagna>();
+        List<Pancakes> pancakesRemoveList = new List<Pancakes>();
         position = GridLockPosition(position);
         foreach(Salad salad in saladLocations){
             if(salad.GetPosition() == position){
                 globalFoodReserves += 5;
-                salad.Die();
+                saladRemoveList.Add(salad);
             }
         }
         foreach(Lasagna lasagna in lasagnaLocations){
             if(lasagna.GetPosition() == position){
                 globalFoodReserves += 2;
-                lasagna.Die();
+                lasagnaRemoveList.Add(lasagna);
             }
         }
         foreach(Pancakes pancakes in pancakesLocations){
             if(pancakes.GetPosition() == position){
                 globalFoodReserves += 5;
-                pancakes.Die();
+                pancakesRemoveList.Add(pancakes);
             }
+        }
+        foreach(Salad salad in saladRemoveList){
+            salad.Die();
+        }
+        foreach(Lasagna lasagna in lasagnaRemoveList){
+            lasagna.Die();
+        }
+        foreach(Pancakes pancakes in pancakesRemoveList){
+            pancakes.Die();
         }
     }
 

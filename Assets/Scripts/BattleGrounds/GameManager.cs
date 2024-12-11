@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour
 
         DisplayFoodReserves();
         DisplayScore();
+
+        if (Input.GetKeyDown(KeyCode.R)){
+            forkMode();
+        }
     }
 
     void SpawnFood()
