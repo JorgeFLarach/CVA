@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     public void SetWaveTime(float time)
     {
         waveTime = time;
+        GameData.globalWaveTime = waveTime;
     }
     public void SetSpawnRate(float rate)
     {
@@ -91,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemyCount = updateEnemyCount();
         waveTime -= Time.deltaTime;
+        GameData.globalWaveTime = waveTime;
         if (waveTime <= 0)
         {
             endSpawning();

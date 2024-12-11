@@ -19,10 +19,6 @@ public class GameManager : MonoBehaviour
     public int lasagnaDmg = 10;
     public int pancakesCost = 10;
 
-    public float startSpawnRate = 1f;
-    public int startSpawnAmount = 1;
-    public float startWaveTime = 50f;
-
     [SerializeField]
     private GameObject background;
 
@@ -45,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI pauseButtonText;
     public TextMeshProUGUI fastForwardButtonText;
+    public GameObject progressBar;
 
     public float makeDecimal(int wvNum)
     {
@@ -61,10 +58,10 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
-	if (Input.GetKeyDown(KeyCode.F))
-	{
-		ToggleFastForward();
-	}
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ToggleFastForward();
+        }
 
         DisplayFoodReserves();
         DisplayScore();
@@ -72,6 +69,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)){
             forkMode();
         }
+        ProgressBar();
     }
 
     void SpawnFood()
@@ -292,6 +290,24 @@ public class GameManager : MonoBehaviour
         if (GameData.waveNumber > 2){
             Debug.Log($"Generating {GameData.waveNumber} tables for wave {GameData.waveNumber}");
             placeTables(GameData.waveNumber);
+        }
+    }
+    private float startWaveTime = GameData.globalWaveTime;
+   
+
+    public void ProgressBar(){
+        if (!paused) {
+            float progressBarWidth = 14f;
+            float initialWaveTime = startWaveTime;
+            float moveAmount = progressBarWidth / initialWaveTime * Time.deltaTime;
+            
+            Vector3 currentPos = progressBar.transform.position;
+            currentPos.x -= moveAmount * time; // Account for game speed
+            
+            // Clamp position to stay within bounds
+            currentPos.x = Mathf.Clamp(currentPos.x, -7f, 7f);
+            
+            progressBar.transform.position = currentPos;
         }
     }
 }

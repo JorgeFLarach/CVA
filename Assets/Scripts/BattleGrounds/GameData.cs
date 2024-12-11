@@ -6,6 +6,7 @@ public static class GameData
     public static int playerScore;
     public static int waveNumber = 1;
     public static int globalFoodReserves = 500;
+    public static float globalWaveTime = 120f;
 
     public static List<Table> tables = new List<Table>();
     public static List <Salad> saladLocations = new List<Salad>();
