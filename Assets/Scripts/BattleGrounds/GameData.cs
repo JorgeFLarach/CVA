@@ -42,6 +42,28 @@ public static class GameData
         tables.Clear();
     }
 
+    public static void forkFood(Vector2 position){
+        position = GridLockPosition(position);
+        foreach(Salad salad in saladLocations){
+            if(salad.GetPosition() == position){
+                globalFoodReserves += 5;
+                salad.Die();
+            }
+        }
+        foreach(Lasagna lasagna in lasagnaLocations){
+            if(lasagna.GetPosition() == position){
+                globalFoodReserves += 2;
+                lasagna.Die();
+            }
+        }
+        foreach(Pancakes pancakes in pancakesLocations){
+            if(pancakes.GetPosition() == position){
+                globalFoodReserves += 5;
+                pancakes.Die();
+            }
+        }
+    }
+
     public static void AddFoodReserve(int amount){
         globalFoodReserves += amount;
     }

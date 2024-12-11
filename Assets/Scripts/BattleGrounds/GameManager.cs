@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public Button setPancakesBtn;
     public Button pauseBtn;
     public Button fastForwardBtn;
+    public Button forkBtn;
+
+    public bool isForkMode = false;
 
     public TextMeshProUGUI foodReservesText;
     public TextMeshProUGUI scoreText;
@@ -77,7 +80,12 @@ public class GameManager : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             if (worldPosition.y < 4.3 && worldPosition.x > -7)
             {
-                GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
+                if (isForkMode){
+                    forkMode();
+                    GameData.forkFood(worldPosition);
+                }else{
+                    GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
+                }
             }
         }
     }
@@ -121,6 +129,7 @@ public class GameManager : MonoBehaviour
         setPancakesBtn.onClick.AddListener(() => SetPancakes());
         pauseBtn.onClick.AddListener(() => TogglePause());
         fastForwardBtn.onClick.AddListener(() => ToggleFastForward());
+        forkBtn.onClick.AddListener(() => forkMode());
         if (pauseButtonText != null)
         {
             pauseButtonText.text = "Pause";
@@ -129,6 +138,10 @@ public class GameManager : MonoBehaviour
             fastForwardButtonText.text = ">>";
         }
         GenerateTables();
+    }
+    public void forkMode(){
+        isForkMode = !isForkMode;
+        forkBtn.GetComponent<Image>().color = isForkMode ? Color.red : Color.white;
     }
 
     public void DisplayScore()
@@ -169,6 +182,7 @@ public class GameManager : MonoBehaviour
     {
         player.SelectPancakes();
     }
+    
 
     public void TogglePause()
     {
