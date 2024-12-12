@@ -7,45 +7,59 @@ public class SelectedFood
 {
     public string food;
 
-    public void SetFood(int num){
-        if(num == 1){
-        food = "salad";
+    public void SetFood(int num)
+    {
+        if (num == 1)
+        {
+            food = "salad";
         }
-        else if(num == 2){
-        food = "pie";
+        else if (num == 2)
+        {
+            food = "pie";
         }
-        else if(num == 3){
-        food = "lasagna";
+        else if (num == 3)
+        {
+            food = "lasagna";
         }
-        else if(num == 4){
-        food = "pancakes";
+        else if (num == 4)
+        {
+            food = "pancakes";
         }
     }
-    public string GetFood(){
+    public string GetFood()
+    {
         return food;
     }
-    public void salad(){
+    public void salad()
+    {
         food = "salad";
     }
-    public void pie(){
+    public void pie()
+    {
         food = "pie";
     }
-    public void lasagna(){
+    public void lasagna()
+    {
         food = "lasagna";
     }
-    public bool isSalad(){
+    public bool isSalad()
+    {
         return food == "salad";
     }
-    public bool isPie(){
+    public bool isPie()
+    {
         return food == "pie";
     }
-    public bool isLasagna(){
+    public bool isLasagna()
+    {
         return food == "lasagna";
     }
-    public bool isPancakes(){
+    public bool isPancakes()
+    {
         return food == "pancakes";
     }
-    public void pancakes(){
+    public void pancakes()
+    {
         food = "pancakes";
     }
 }
@@ -87,62 +101,76 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        PlaceFoodWithKey();
+        // PlaceFoodWithKey();
     }
 
-    public void SetHP(int num, int hp){
-        if(num == 1){
+    public void SetHP(int num, int hp)
+    {
+        if (num == 1)
+        {
             pieHP = hp;
         }
-        else if(num == 2){
+        else if (num == 2)
+        {
             tomatoHP = hp;
         }
-        else if(num == 3){
+        else if (num == 3)
+        {
             saladHP = hp;
         }
-        else if(num == 4){
+        else if (num == 4)
+        {
             lasagnaHP = hp;
         }
     }
-    public void SetCost(int num, int cost){
-        if(num == 1){
+    public void SetCost(int num, int cost)
+    {
+        if (num == 1)
+        {
             pieCost = cost;
         }
-        else if(num == 2){
+        else if (num == 2)
+        {
             saladCost = cost;
         }
-        else if(num == 3){
+        else if (num == 3)
+        {
             lasagnaCost = cost;
-        } else if (num == 4){
+        }
+        else if (num == 4)
+        {
             pancakesCost = cost;
         }
     }
-    public void SetDmg(int num, int dmg){
-        if(num == 1){
+    public void SetDmg(int num, int dmg)
+    {
+        if (num == 1)
+        {
             pieDmg = dmg;
         }
-        else if(num == 2){
+        else if (num == 2)
+        {
             tomatoDmg = dmg;
         }
     }
 
-    public void PlaceFoodWithKey(){
-        if(Input.GetKeyDown(KeyCode.Alpha1)){
-            SelectPie();
-        }
+    // public void PlaceFoodWithKey(){
+    //     if(Input.GetKeyDown(KeyCode.Alpha1)){
+    //         SelectPie();
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2)){
-            SelectSalad();
-        }
+    //     if(Input.GetKeyDown(KeyCode.Alpha2)){
+    //         SelectSalad();
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.Alpha3)){
-            SelectLasagna();
-        }
+    //     if(Input.GetKeyDown(KeyCode.Alpha3)){
+    //         SelectLasagna();
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.Alpha4)){
-            SelectPancakes();
-        }
-    }
+    //     if(Input.GetKeyDown(KeyCode.Alpha4)){
+    //         SelectPancakes();
+    //     }
+    // }
 
     public void SelectSalad()
     {
@@ -160,7 +188,8 @@ public class Player : MonoBehaviour
     {
         selectedFood.pancakes();
     }
-    public void PlaceTable(Vector2 position){
+    public void PlaceTable(Vector2 position)
+    {
         Table table = Instantiate(tablePrefab, position, Quaternion.identity);
         table.SetPosition(position);
         GameData.tables.Add(table);
@@ -194,25 +223,33 @@ public class Player : MonoBehaviour
     }
     public int PlaceFood(Vector2 input)
     {
-        if(input.x>5.7f || input.x<-6.3f){
+        if (input.x > 5.7f || input.x < -6.3f)
+        {
             return 0;
         }
         Vector2 position = GameData.GridLockPosition(input);
-        if(selectedFood.isSalad() && !GameData.isOccupied(position))
+        if (selectedFood.isSalad() && !GameData.isOccupied(position))
         {
             PlaceSalad(position);
             return saladCost;
-        }else if (selectedFood.isLasagna() && !GameData.isOccupied(position)){
+        }
+        else if (selectedFood.isLasagna() && !GameData.isOccupied(position))
+        {
             PlaceLasagna(position);
             return lasagnaCost;
-        }else if (selectedFood.isPancakes() && !GameData.isOccupied(position)){
+        }
+        else if (selectedFood.isPancakes() && !GameData.isOccupied(position))
+        {
             PlacePancakes(position);
             return 0;
-        }else if(selectedFood.isPie())
+        }
+        else if (selectedFood.isPie())
         {
             ThrowPie(position);
             return pieCost;
-        }else{
+        }
+        else
+        {
             return 0;
         }
     }

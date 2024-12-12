@@ -13,18 +13,22 @@ public class startController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void StartGame(){
-        SceneManager.LoadScene("KitchenPrep");
+    public void StartGame()
+    {
+        SceneManager.LoadScene("CutScene");
     }
-    public void OpenRules(){
+    public void OpenRules()
+    {
         rulesPanel.SetActive(true);
     }
-    public void ExitRules(){
+    public void ExitRules()
+    {
         rulesPanel.SetActive(false);
     }
-    public void StartTutorial(){
+    public void StartTutorial()
+    {
         SceneManager.LoadScene("Tutorial");
     }
-    
+
 
 }
