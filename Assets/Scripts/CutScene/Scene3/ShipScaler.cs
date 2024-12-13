@@ -11,7 +11,7 @@ public class ShipScaler : MonoBehaviour
 
     void Start()
     {
-        ship.transform.localScale = new Vector3(scale, scale, scale);   
+        ship.transform.localScale = new Vector3(scale, scale, scale);
     }
 
     public void ScaleShip(float scale)
@@ -34,7 +34,7 @@ public class ShipScaler : MonoBehaviour
         {
             scale = 0.5f;
         }
-        if (ship.transform.position.x <= -8f)
+        if (ship.transform.position.x <= -6f)
         {
             SceneManager.LoadScene("CutScene2");
         }

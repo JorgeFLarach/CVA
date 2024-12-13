@@ -48,6 +48,7 @@ public class Shooter : MonoBehaviour
             if (lives <= 0)
             {
                 GameData.playerScore += 250;
+                GameData.shooters.Remove(this);
                 Destroy(gameObject);
             }
         }
@@ -91,6 +92,17 @@ public class Shooter : MonoBehaviour
         // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         reloading = false;
     }
-
+    public void TurnBlue()
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    public void TurnRed()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+    public void TurnWhite()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 
 }

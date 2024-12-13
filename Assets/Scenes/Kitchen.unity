@@ -312,6 +312,7 @@ MonoBehaviour:
   pieDmg: 0
   tomatoDmg: 0
   pancakesCost: 10
+  iceCreamCost: 15
   saladSprites: []
   pieSprites: []
   lasagnaSprites: []
@@ -320,6 +321,7 @@ MonoBehaviour:
   piePrefab: {fileID: 2864491281462127574, guid: d1c3dab6a528b4cc087ee3a0b6823d0b, type: 3}
   lasagnaPrefab: {fileID: 661464866136891020, guid: e952ddfcf7a5745639ed5deaf4a2cd85, type: 3}
   pancakesPrefab: {fileID: 1642430171954511562, guid: 1e3477089b89d45ed9813ad4e18642b4, type: 3}
+  iceCreamPrefab: {fileID: 1371193902830337333, guid: 5b72ce4c1d6e54df6a9f0057afeefb01, type: 3}
   tablePrefab: {fileID: 7266720771539076962, guid: 0aed89a0e38944fd2875bbb37fa09266, type: 3}
 --- !u!1 &332437343
 GameObject:
@@ -3198,6 +3200,7 @@ MonoBehaviour:
   tomatoDmg: 1
   lasagnaDmg: 10
   pancakesCost: 10
+  iceCreamCost: 15
   background: {fileID: 1392206784}
   setPieBtn: {fileID: 1218895191}
   setSaladBtn: {fileID: 332437345}
@@ -3210,7 +3213,8 @@ MonoBehaviour:
   foodReservesText: {fileID: 1527941240}
   scoreText: {fileID: 1642497068}
   player: {fileID: 229968826}
-  time: 1
+  expectedTime: 1
+  previousTime: 1
   paused: 0
   pauseButtonText: {fileID: 150985925}
   fastForwardButtonText: {fileID: 1107947741}

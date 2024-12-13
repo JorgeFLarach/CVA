@@ -38,6 +38,7 @@ public class Brute : MonoBehaviour
             if (lives <= 0)
             {
                 GameData.playerScore += 500;
+                GameData.brutes.Remove(this);
                 Destroy(gameObject);
             }
         }
@@ -54,5 +55,14 @@ public class Brute : MonoBehaviour
             GameData.highScore = GameData.playerScore;
         }
         SceneManager.LoadScene("GameOver");
+    }
+    public void TurnBlue() //colors need to be adjusted
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    public void TurnWhite()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        // GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

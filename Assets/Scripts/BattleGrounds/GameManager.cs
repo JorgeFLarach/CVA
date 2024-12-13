@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int tomatoDmg = 1;
     public int lasagnaDmg = 10;
     public int pancakesCost = 10;
+    public int iceCreamCost = 15;
 
     [SerializeField]
     private GameObject background;
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Player player;
 
-    public float time = 1f;
+    public float expectedTime = 1f;
+    public float previousTime = 1f;
     public bool paused = false;
 
     public TextMeshProUGUI pauseButtonText;
@@ -48,8 +50,28 @@ public class GameManager : MonoBehaviour
         return (float)wvNum / 10f;
     }
 
+    IEnumerator ResetTimeScale(float duration)
+    {
+        GameData.TurnAllBlue();
+        yield return new WaitForSeconds(duration);
+        GameData.globalTimeScale = (1 + makeDecimal(GameData.waveNumber));
+        Time.timeScale = GameData.globalTimeScale;
+        GameData.freeze = false;
+        GameData.TurnAllWhite();
+    }
+
+    private void CheckFreeze()
+    {
+        if (GameData.freeze)
+        {
+            StartCoroutine(ResetTimeScale(5));
+        }
+    }
+
     void Update()
     {
+        CheckTime();
+        CheckFreeze();
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             SpawnFood();
@@ -95,6 +117,10 @@ public class GameManager : MonoBehaviour
         {
             SetPancakes();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetIceCream();
+        }
     }
 
     void SpawnFood()
@@ -129,6 +155,7 @@ public class GameManager : MonoBehaviour
         player.SetCost(2, saladCost);
         player.SetCost(3, lasagnaCost);
         player.SetCost(4, pancakesCost);
+        player.SetCost(5, iceCreamCost);
     }
     void setHP()
     {
@@ -145,8 +172,8 @@ public class GameManager : MonoBehaviour
 
     void scaleTime()
     {
-        time = (1 + makeDecimal(GameData.waveNumber));
-        Time.timeScale = time;
+        GameData.globalTimeScale = (1 + makeDecimal(GameData.waveNumber));
+        Time.timeScale = GameData.globalTimeScale;
     }
 
 
@@ -218,7 +245,10 @@ public class GameManager : MonoBehaviour
     {
         player.SelectPancakes();
     }
-
+    public void SetIceCream()
+    {
+        player.SelectIceCream();
+    }
 
     public void TogglePause()
     {
@@ -276,14 +306,28 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         GreyOutBackground();
-        Time.timeScale = 0;
+        UpdateTimeScale(0);
+        // Time.timeScale = 0;
     }
     public void ResumeGame()
     {
         ResetBackground();
-        Time.timeScale = time;
+        Time.timeScale = previousTime;
+        UpdateTimeScale(previousTime);
+    }
+
+    public void CheckTime()
+    {
+        Time.timeScale = GameData.globalTimeScale;
     }
     private bool fastForward = false;
+
+    public void UpdateTimeScale(float time)
+    {
+        previousTime = Time.timeScale;
+        GameData.globalTimeScale = time;
+        Time.timeScale = time;
+    }
 
     public void FastForward()
     {
@@ -291,7 +335,9 @@ public class GameManager : MonoBehaviour
         fastForward = true;
         ResetBackground();
         paused = false;
-        Time.timeScale = time * 3;
+        // GameData.globalTimeScale = time * 3;
+        // Time.timeScale = time * 3;
+        UpdateTimeScale(GameData.globalTimeScale * 3);
     }
     public void NormalSpeed()
     {
@@ -299,7 +345,8 @@ public class GameManager : MonoBehaviour
         fastForward = false;
         ResetBackground();
         paused = false;
-        Time.timeScale = time;
+        Time.timeScale = previousTime;
+        UpdateTimeScale(previousTime);
     }
 
     public void placeTables(int num)
@@ -356,7 +403,7 @@ public class GameManager : MonoBehaviour
             float moveAmount = progressBarWidth / initialWaveTime * Time.deltaTime;
 
             Vector3 currentPos = progressBar.transform.position;
-            currentPos.x -= moveAmount * time; // Account for game speed
+            currentPos.x -= moveAmount * GameData.globalTimeScale; // Account for game speed
 
             // Clamp position to stay within bounds
             currentPos.x = Mathf.Clamp(currentPos.x, -7f, 7f);

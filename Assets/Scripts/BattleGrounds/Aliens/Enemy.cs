@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
             if (lives <= 0)
             {
                 GameData.playerScore += 100;
+                GameData.enemies.Remove(this);
                 Destroy(gameObject);
             }
         }
@@ -59,6 +60,18 @@ public class Enemy : MonoBehaviour
             GameData.highScore = GameData.playerScore;
         }
         SceneManager.LoadScene("GameOver");
+    }
+    public void TurnBlue()
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    public void TurnRed()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+    public void TurnWhite()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
 }

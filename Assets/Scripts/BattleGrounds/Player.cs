@@ -25,6 +25,10 @@ public class SelectedFood
         {
             food = "pancakes";
         }
+        else if (num == 5)
+        {
+            food = "icecream";
+        }
     }
     public string GetFood()
     {
@@ -62,6 +66,14 @@ public class SelectedFood
     {
         food = "pancakes";
     }
+    public void icecream()
+    {
+        food = "icecream";
+    }
+    public bool isIcecream()
+    {
+        return food == "icecream";
+    }
 }
 
 public class Player : MonoBehaviour
@@ -76,6 +88,7 @@ public class Player : MonoBehaviour
     public int pieDmg;
     public int tomatoDmg;
     public int pancakesCost = 10;
+    public int iceCreamCost = 15;
 
     public SelectedFood selectedFood;
     public List<Salad> saladSprites = new List<Salad>();
@@ -83,10 +96,12 @@ public class Player : MonoBehaviour
     public List<Lasagna> lasagnaSprites = new List<Lasagna>();
     public List<Pancakes> pancakesSprites = new List<Pancakes>();
 
+
     public Salad saladPrefab;
     public Pie piePrefab;
     public Lasagna lasagnaPrefab;
     public Pancakes pancakesPrefab;
+    public IceCream iceCreamPrefab;
     public Table tablePrefab;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -141,6 +156,10 @@ public class Player : MonoBehaviour
         {
             pancakesCost = cost;
         }
+        else if (num == 5)
+        {
+            iceCreamCost = cost;
+        }
     }
     public void SetDmg(int num, int dmg)
     {
@@ -188,6 +207,10 @@ public class Player : MonoBehaviour
     {
         selectedFood.pancakes();
     }
+    public void SelectIceCream()
+    {
+        selectedFood.icecream();
+    }
     public void PlaceTable(Vector2 position)
     {
         Table table = Instantiate(tablePrefab, position, Quaternion.identity);
@@ -199,7 +222,7 @@ public class Player : MonoBehaviour
     {
         Salad salad = Instantiate(saladPrefab, position, Quaternion.identity);
         salad.SetPosition(position);
-        saladSprites.Add(salad);
+        // saladSprites.Add(salad);
         GameData.saladLocations.Add(salad);
     }
     public void ThrowPie(Vector2 position)
@@ -211,15 +234,21 @@ public class Player : MonoBehaviour
     {
         Lasagna lasagna = Instantiate(lasagnaPrefab, position, Quaternion.identity);
         lasagna.SetPosition(position);
-        lasagnaSprites.Add(lasagna);
+        // lasagnaSprites.Add(lasagna);
         GameData.lasagnaLocations.Add(lasagna);
     }
     public void PlacePancakes(Vector2 position)
     {
         Pancakes pancakes = Instantiate(pancakesPrefab, position, Quaternion.identity);
         pancakes.SetPosition(position);
-        pancakesSprites.Add(pancakes);
+        // pancakesSprites.Add(pancakes);
         GameData.pancakesLocations.Add(pancakes);
+    }
+    public void PlaceIceCream(Vector2 position)
+    {
+        IceCream iceCream = Instantiate(iceCreamPrefab, position, Quaternion.identity);
+        iceCream.SetPosition(position);
+        GameData.icecreamLocations.Add(iceCream);
     }
     public int PlaceFood(Vector2 input)
     {
@@ -247,6 +276,11 @@ public class Player : MonoBehaviour
         {
             ThrowPie(position);
             return pieCost;
+        }
+        else if (selectedFood.isIcecream() && !GameData.isOccupied(position))
+        {
+            PlaceIceCream(position);
+            return iceCreamCost;
         }
         else
         {
