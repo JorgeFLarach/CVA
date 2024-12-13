@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public Button setSaladBtn;
     public Button setLasagnaBtn;
     public Button setPancakesBtn;
+    public Button setIceCreamBtn;
+    public Button setSalsaBtn;
     public Button pauseBtn;
     public Button fastForwardBtn;
     public Button forkBtn;
@@ -214,6 +216,14 @@ public class GameManager : MonoBehaviour
         setSaladBtn.onClick.AddListener(SetSalad);
         setLasagnaBtn.onClick.AddListener(SetLasagna);
         setPancakesBtn.onClick.AddListener(SetPancakes);
+        setIceCreamBtn.onClick.AddListener(SetIceCream);
+        if (GameData.waveNumber < 4){
+            setIceCreamBtn.gameObject.SetActive(false);
+        }
+        setSalsaBtn.onClick.AddListener(SetSalsa);
+        if (GameData.waveNumber < 5){
+            setSalsaBtn.gameObject.SetActive(false);
+        }
         pauseBtn.onClick.AddListener(TogglePause);
         fastForwardBtn.onClick.AddListener(ToggleFastForward);
         forkBtn.onClick.AddListener(forkMode);
