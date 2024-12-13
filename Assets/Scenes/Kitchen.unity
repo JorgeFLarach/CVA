@@ -305,12 +305,6 @@ MonoBehaviour:
   pieCost: 1
   saladCost: 10
   lasagnaCost: 5
-  pieHP: 0
-  tomatoHP: 0
-  saladHP: 0
-  lasagnaHP: 0
-  pieDmg: 0
-  tomatoDmg: 0
   pancakesCost: 10
   iceCreamCost: 15
   salsaCost: 20
@@ -2582,7 +2576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2920, y: -86}
+  m_AnchoredPosition: {x: 2920, y: -50}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440998983
@@ -3447,13 +3441,6 @@ MonoBehaviour:
   pieCost: 1
   saladCost: 10
   lasagnaCost: 5
-  pieHP: 3
-  tomatoHP: 1
-  saladHP: 20
-  lasagnaHP: 10
-  pieDmg: 3
-  tomatoDmg: 1
-  lasagnaDmg: 10
   pancakesCost: 10
   iceCreamCost: 15
   salsaCost: 20
@@ -3467,7 +3454,6 @@ MonoBehaviour:
   pauseBtn: {fileID: 1440998983}
   fastForwardBtn: {fileID: 2103091385}
   forkBtn: {fileID: 1222715347}
-  isForkMode: 0
   foodReservesText: {fileID: 1527941240}
   scoreText: {fileID: 1642497068}
   player: {fileID: 229968826}
@@ -3699,7 +3685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2103091384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3717,7 +3703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 3150, y: -86}
+  m_AnchoredPosition: {x: 2920, y: -120}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103091385
