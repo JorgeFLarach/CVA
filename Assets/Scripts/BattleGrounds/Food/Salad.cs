@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Salad : MonoBehaviour
 {
-  // public List<Tomato> tomatos = new List<Tomato>();
   private Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
   private int throwRate = 3;
-  public int hp;
+
 
   public void SetPosition(Vector2 position){
     Position = position;
@@ -22,9 +21,6 @@ public class Salad : MonoBehaviour
   public void ThrowTomato(){
    Tomato tomato = Instantiate(tomatoPrefab, Position, Quaternion.identity);
    GameData.tomatos.Add(tomato);
-  }
-  public void SetHP(int num){
-      hp = num;
   }
 
   public void TakeDamage(float damage){

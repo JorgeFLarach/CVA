@@ -6,15 +6,8 @@ public class Lasagna : MonoBehaviour
     public float speed = 2f;
     public int lives = 3;
     public float Health = 30;
-
-
     private Vector2 Position;
 
-    public int hp;
-
-    public void SetHP(int num){
-        hp = num;
-    }
     public Vector2 GetPosition(){
       return Position;
     }
@@ -33,7 +26,7 @@ public class Lasagna : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag("Shot"))
         {
-            TakeDamage(3); //might change
+            TakeDamage(2); //might change
         }
     }
     public void TakeDamage(float damage){

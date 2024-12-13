@@ -9,11 +9,11 @@ public class SelectedFood
 
     public void SetFood(int num)
     {
-        if (num == 1)
+        if (num == 2)
         {
             food = "salad";
         }
-        else if (num == 2)
+        else if (num == 1)
         {
             food = "pie";
         }
@@ -93,23 +93,11 @@ public class Player : MonoBehaviour
     public int pieCost = 1;
     public int saladCost = 10;
     public int lasagnaCost = 5;
-    public int pieHP;
-    public int tomatoHP;
-    public int saladHP;
-    public int lasagnaHP;
-    public int pieDmg;
-    public int tomatoDmg;
     public int pancakesCost = 10;
     public int iceCreamCost = 20;
     public int salsaCost = 20;
 
     public SelectedFood selectedFood;
-    // public List<Salad> saladSprites = new List<Salad>();
-    // public List<Pie> pieSprites = new List<Pie>();
-    // public List<Lasagna> lasagnaSprites = new List<Lasagna>();
-    // public List<Pancakes> pancakesSprites = new List<Pancakes>();
-    // public List<IceCream> iceCreamSprites = new List<IceCream>();
-    // public List<Salsa> salsaSprites = new List<Salsa>();
 
 
     public Salad saladPrefab;
@@ -132,28 +120,9 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        // PlaceFoodWithKey();
+        PlaceFoodWithKey();
     }
 
-    public void SetHP(int num, int hp)
-    {
-        if (num == 1)
-        {
-            pieHP = hp;
-        }
-        else if (num == 2)
-        {
-            tomatoHP = hp;
-        }
-        else if (num == 3)
-        {
-            saladHP = hp;
-        }
-        else if (num == 4)
-        {
-            lasagnaHP = hp;
-        }
-    }
     public void SetCost(int num, int cost)
     {
         if (num == 1)
@@ -181,36 +150,35 @@ public class Player : MonoBehaviour
             salsaCost = cost;
         }
     }
-    public void SetDmg(int num, int dmg)
-    {
-        if (num == 1)
-        {
-            pieDmg = dmg;
+
+    public void PlaceFoodWithKey(){
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
+            SelectPie();
         }
-        else if (num == 2)
-        {
-            tomatoDmg = dmg;
+
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+            SelectSalad();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha3)){
+            SelectLasagna();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha4) && GameData.waveNumber >= 3){
+            SelectPancakes();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5) && GameData.waveNumber >= 4){
+            SelectIceCream();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha6) && GameData.waveNumber >= 5){
+            SelectSalsa();
         }
     }
 
-    // public void PlaceFoodWithKey(){
-    //     if(Input.GetKeyDown(KeyCode.Alpha1)){
-    //         SelectPie();
-    //     }
-
-    //     if(Input.GetKeyDown(KeyCode.Alpha2)){
-    //         SelectSalad();
-    //     }
-
-    //     if(Input.GetKeyDown(KeyCode.Alpha3)){
-    //         SelectLasagna();
-    //     }
-
-    //     if(Input.GetKeyDown(KeyCode.Alpha4)){
-    //         SelectPancakes();
-    //     }
-    // }
-
+    public void SelectFood(int num)
+    {
+        selectedFood.SetFood(num);
+    }
     public void SelectSalad()
     {
         selectedFood.salad();
@@ -235,37 +203,33 @@ public class Player : MonoBehaviour
     {
         selectedFood.salsa();
     }
+
     public void PlaceTable(Vector2 position)
     {
         Table table = Instantiate(tablePrefab, position, Quaternion.identity);
         table.SetPosition(position);
         GameData.tables.Add(table);
     }
-
     public void PlaceSalad(Vector2 position)
     {
         Salad salad = Instantiate(saladPrefab, position, Quaternion.identity);
         salad.SetPosition(position);
-        // saladSprites.Add(salad);
         GameData.saladLocations.Add(salad);
     }
     public void ThrowPie(Vector2 position)
     {
         Pie pie = Instantiate(piePrefab, position, Quaternion.identity);
-        // pieSprites.Add(pie);
     }
     public void PlaceLasagna(Vector2 position)
     {
         Lasagna lasagna = Instantiate(lasagnaPrefab, position, Quaternion.identity);
         lasagna.SetPosition(position);
-        // lasagnaSprites.Add(lasagna);
         GameData.lasagnaLocations.Add(lasagna);
     }
     public void PlacePancakes(Vector2 position)
     {
         Pancakes pancakes = Instantiate(pancakesPrefab, position, Quaternion.identity);
         pancakes.SetPosition(position);
-        // pancakesSprites.Add(pancakes);
         GameData.pancakesLocations.Add(pancakes);
     }
     public void PlaceIceCream(Vector2 position)
@@ -280,6 +244,7 @@ public class Player : MonoBehaviour
         salsa.SetPosition(position);
         GameData.salsaLocations.Add(salsa);
     }
+
     public int PlaceFood(Vector2 input)
     {
         if (input.x > 5.7f || input.x < -6.3f)

@@ -4,7 +4,7 @@ public class IceCream : MonoBehaviour
 {
     private Vector2 Position;
     private float Health = 10;
-    private float duration = 20;
+    // private float duration = 20;
 
     public Vector2 GetPosition()
     {

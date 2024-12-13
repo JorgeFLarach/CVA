@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public static class GameData
 {
-    public static int highScore;
+    public static int highScore; 
     public static int playerScore;
     public static int waveNumber = 1;
     public static int globalFoodReserves = 500;
