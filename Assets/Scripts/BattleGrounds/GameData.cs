@@ -9,16 +9,18 @@ public static class GameData
     public static float globalWaveTime = 120f;
     public static float globalTimeScale = 1.1f;
     public static bool freeze = false;
+    public static bool burn = false;
 
     public static List<Table> tables = new List<Table>();
     public static List<Salad> saladLocations = new List<Salad>();
     public static List<Lasagna> lasagnaLocations = new List<Lasagna>();
     public static List<Pancakes> pancakesLocations = new List<Pancakes>();
     public static List<IceCream> icecreamLocations = new List<IceCream>();
-
+    public static List<Salsa> salsaLocations = new List<Salsa>();
     public static List<Enemy> enemies = new List<Enemy>();
     public static List<Shooter> shooters = new List<Shooter>();
     public static List<Brute> brutes = new List<Brute>();
+    public static List<Tomato> tomatos = new List<Tomato>();
 
     public static bool isOccupied(Vector2 position)
     {
@@ -57,6 +59,13 @@ public static class GameData
                 return true;
             }
         }
+        foreach (Salsa salsa in salsaLocations)
+        {
+            if (salsa.GetPosition() == position)
+            {
+                return true;
+            }
+        }
         return false;
     }
     public static void ClearFoodBoard()
@@ -80,6 +89,7 @@ public static class GameData
         List<Lasagna> lasagnaRemoveList = new List<Lasagna>();
         List<Pancakes> pancakesRemoveList = new List<Pancakes>();
         List<IceCream> iceCreamRemoveList = new List<IceCream>();
+        List<Salsa> salsaRemoveList = new List<Salsa>();
         position = GridLockPosition(position);
         foreach (Salad salad in saladLocations)
         {
@@ -109,8 +119,16 @@ public static class GameData
         {
             if (iceCream.GetPosition() == position)
             {
-                globalFoodReserves += 7;
+                globalFoodReserves += 10;
                 iceCreamRemoveList.Add(iceCream);
+            }
+        }
+        foreach (Salsa salsa in salsaLocations)
+        {
+            if (salsa.GetPosition() == position)
+            {
+                globalFoodReserves += 10;
+                salsaRemoveList.Add(salsa);
             }
         }
         foreach (Salad salad in saladRemoveList)
@@ -128,6 +146,10 @@ public static class GameData
         foreach (IceCream iceCream in iceCreamRemoveList)
         {
             iceCream.Die();
+        }
+        foreach (Salsa salsa in salsaRemoveList)
+        {
+            salsa.Die();
         }
     }
 
@@ -176,6 +198,17 @@ public static class GameData
             LockYPosition(input.y)
         );
     }
+    public static void BurnEM(){
+        TurnAllRed();
+        foreach (Salad salad in saladLocations){
+            // salad.TurnRed();
+            salad.SetTimeScale(10f);
+            foreach (Tomato tomato in tomatos){
+                tomato.SetSpeed(10f);
+            }
+        }
+
+    }
 
 
     public static void TurnAllBlue()
@@ -208,6 +241,14 @@ public static class GameData
         {
             brute.TurnBlue();
         }
+        foreach (Salsa salsa in salsaLocations)
+        {
+            salsa.TurnBlue();
+        }
+        foreach (Tomato tomato in tomatos)
+        {
+            tomato.TurnBlue();
+        }
     }
     public static void TurnAllWhite()
     {
@@ -238,6 +279,41 @@ public static class GameData
         foreach (IceCream iceCream in icecreamLocations)
         {
             iceCream.TurnWhite();
+        }
+        foreach (Salsa salsa in salsaLocations)
+        {
+            salsa.TurnWhite();
+        }
+        foreach (Tomato tomato in tomatos)
+        {
+            tomato.TurnWhite();
+        }
+    }
+    public static void TurnAllRed()
+    {
+        foreach (Salad salad in saladLocations)
+        {
+            salad.TurnRed();
+        }
+        foreach (Lasagna lasagna in lasagnaLocations)
+        {
+            lasagna.TurnRed();
+        }
+        foreach (Pancakes pancakes in pancakesLocations)
+        {
+            pancakes.TurnRed();
+        }
+        foreach (IceCream iceCream in icecreamLocations)
+        {
+            iceCream.TurnRed();
+        }
+        foreach (Salsa salsa in salsaLocations)
+        {
+            salsa.TurnRed();
+        }
+        foreach (Tomato tomato in tomatos)
+        {
+            tomato.TurnRed();
         }
     }
 }

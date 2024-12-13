@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     public int tomatoDmg = 1;
     public int lasagnaDmg = 10;
     public int pancakesCost = 10;
-    public int iceCreamCost = 15;
-
+    public int iceCreamCost = 20;
+    public int salsaCost = 20;
     [SerializeField]
     private GameObject background;
 
@@ -67,11 +67,32 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ResetTimeScale(5));
         }
     }
+    IEnumerator DisableBurn(){
+        yield return new WaitForSeconds(20);
+        GameData.burn = false;
+        foreach (Tomato tomato in GameData.tomatos)
+        {
+            tomato.SetSpeed(3);
+        }
+        foreach (Salad salad in GameData.saladLocations)
+        {
+            // salad.TurnWhite();
+            salad.SetTimeScale(3);
+        }
+        GameData.TurnAllWhite();
+    }
+    private void CheckBurn(){
+        if (GameData.burn){
+            GameData.BurnEM();
+            StartCoroutine(DisableBurn());
+        }
+    }
 
     void Update()
     {
         CheckTime();
         CheckFreeze();
+        CheckBurn();
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             SpawnFood();
@@ -121,6 +142,10 @@ public class GameManager : MonoBehaviour
         {
             SetIceCream();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SetSalsa();
+        }
     }
 
     void SpawnFood()
@@ -156,6 +181,7 @@ public class GameManager : MonoBehaviour
         player.SetCost(3, lasagnaCost);
         player.SetCost(4, pancakesCost);
         player.SetCost(5, iceCreamCost);
+        player.SetCost(6, salsaCost);
     }
     void setHP()
     {
@@ -248,6 +274,10 @@ public class GameManager : MonoBehaviour
     public void SetIceCream()
     {
         player.SelectIceCream();
+    }
+    public void SetSalsa()
+    {
+        player.SelectSalsa();
     }
 
     public void TogglePause()

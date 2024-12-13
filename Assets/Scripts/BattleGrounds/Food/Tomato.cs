@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Tomato : MonoBehaviour
 {
-  public int speed = 1;
+  public float speed = 1;
   public int hp;
 
   public int damage = 1;
@@ -39,8 +39,21 @@ public class Tomato : MonoBehaviour
           lives--;
           if (lives <= 0)
           {
+              GameData.tomatos.Remove(this);
               Destroy(gameObject);
           }
       }
+  }
+  public void SetSpeed(float speed){
+    this.speed = speed;
+  }
+  public void TurnBlue(){
+    GetComponent<SpriteRenderer>().color = Color.blue;
+  }
+  public void TurnWhite(){
+    GetComponent<SpriteRenderer>().color = Color.white;
+  }
+  public void TurnRed(){
+    GetComponent<SpriteRenderer>().color = Color.red;
   }
 }

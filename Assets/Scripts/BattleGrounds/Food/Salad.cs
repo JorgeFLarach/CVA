@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Salad : MonoBehaviour
 {
-  public List<Tomato> tomatos = new List<Tomato>();
+  // public List<Tomato> tomatos = new List<Tomato>();
   private Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
@@ -21,7 +21,7 @@ public class Salad : MonoBehaviour
 
   public void ThrowTomato(){
    Tomato tomato = Instantiate(tomatoPrefab, Position, Quaternion.identity);
-   tomatos.Add(tomato);
+   GameData.tomatos.Add(tomato);
   }
   public void SetHP(int num){
       hp = num;
@@ -67,5 +67,9 @@ public class Salad : MonoBehaviour
     public void TurnWhite()
     {
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    public void SetTimeScale(float timeScale)
+    {
+        throwRate = (int)(throwRate * timeScale);
     }
 }
