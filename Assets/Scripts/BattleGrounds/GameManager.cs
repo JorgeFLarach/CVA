@@ -216,6 +216,9 @@ public class GameManager : MonoBehaviour
         setSaladBtn.onClick.AddListener(SetSalad);
         setLasagnaBtn.onClick.AddListener(SetLasagna);
         setPancakesBtn.onClick.AddListener(SetPancakes);
+        if (GameData.waveNumber < 3){
+            setPancakesBtn.gameObject.SetActive(false);
+        }
         setIceCreamBtn.onClick.AddListener(SetIceCream);
         if (GameData.waveNumber < 4){
             setIceCreamBtn.gameObject.SetActive(false);
