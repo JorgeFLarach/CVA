@@ -21,10 +21,6 @@ public class knifeBehavior : MonoBehaviour
     public List<String> foodOrder = new List<string> {"Cabbage", "Brussel Sprout", "Bok Choy", "Tomato"};    
 
     void Update() {
-        int random = UnityEngine.Random.Range(0,100);
-        if(random == 10){
-            spawnIngredients();
-        }
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         // mousePosition.z = 0; // Set z to 0 since we're in 2D
 
@@ -32,6 +28,13 @@ public class knifeBehavior : MonoBehaviour
 
         
 
+    }
+    void Start(){
+        InvokeRepeating("spawnIngredients", 1.1f, 2f);
+        InvokeRepeating("spawnIngredients", 0.7f, 3f);
+        InvokeRepeating("spawnIngredients", 0.5f, 5f);
+        InvokeRepeating("spawnIngredients", 0.3f, 7f);
+        InvokeRepeating("spawnIngredients", 0.2f, 11f);
     }
 
     private void addFoodReserves(){
