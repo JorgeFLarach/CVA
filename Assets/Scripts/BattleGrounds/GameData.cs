@@ -24,7 +24,7 @@ public static class GameData
     public static List<Tomato> tomatos = new List<Tomato>();
 
     public static void SkipKitchenPrep(){
-        globalFoodReserves += 240;
+        globalFoodReserves += 260;
         SceneManager.LoadScene("Kitchen");
     }
 

@@ -103,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameData.waveNumber++;
                 GameData.playerScore += 1000;
-                SceneManager.LoadScene("WaveScreen");
+                SceneManager.LoadScene("WaveTransition");
         }
         }
 
