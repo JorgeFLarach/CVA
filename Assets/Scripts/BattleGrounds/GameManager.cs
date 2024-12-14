@@ -115,16 +115,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float makeDecimal(int wvNum)
-    {
-        return (float)wvNum / 10f;
-    }
-
     IEnumerator ResetTimeScale(float duration)
     {
         GameData.TurnAllBlue();
         yield return new WaitForSeconds(duration);
-        GameData.globalTimeScale = (1 + makeDecimal(GameData.waveNumber));
+        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
         Time.timeScale = GameData.globalTimeScale;
         GameData.freeze = false;
         GameData.TurnAllWhite();
@@ -159,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnFood()
     {
-        if (GameData.globalFoodReserves <= 0 || paused)
+        if (paused)
         {
             return;
         }
@@ -175,9 +170,11 @@ public class GameManager : MonoBehaviour
                     forkMode();
                     GameData.forkFood(worldPosition);
                 }
-                else
+                else if (GameData.globalFoodReserves > 0)
                 {
                     GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
+                } else {
+                    return;
                 }
             }
         }
@@ -195,7 +192,7 @@ public class GameManager : MonoBehaviour
 
    private void scaleTime()
     {
-        GameData.globalTimeScale = (1 + makeDecimal(GameData.waveNumber));
+        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
         Time.timeScale = GameData.globalTimeScale;
     }
 
@@ -395,14 +392,14 @@ public class GameManager : MonoBehaviour
     }
     private float startWaveTime = GameData.globalWaveTime;
 
+    private float waveDuration = 120f;
 
     public void ProgressBar()
     {
         if (!paused)
         {
             float progressBarWidth = 14f;
-            float initialWaveTime = startWaveTime;
-            float moveAmount = progressBarWidth / initialWaveTime * Time.deltaTime;
+            float moveAmount = progressBarWidth / waveDuration * Time.deltaTime;
             Vector3 currentPos = progressBar.transform.position;
             currentPos.x -= moveAmount * GameData.globalTimeScale;
             currentPos.x = Mathf.Clamp(currentPos.x, -7f, 7f);

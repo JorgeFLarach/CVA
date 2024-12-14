@@ -75,6 +75,10 @@ public static class GameData
         }
         return false;
     }
+    public static float makeDecimal(int wvNum)
+    {
+        return (float)wvNum / 10f;
+    }
     public static void ClearFoodBoard()
     {
         saladLocations.Clear();
@@ -87,6 +91,27 @@ public static class GameData
         tomatos.Clear();
         icecreamLocations.Clear();
         salsaLocations.Clear();
+        ResetTime();
+    }
+    public static void ResetTime(){
+        if (burn){
+            burn = false;
+            foreach (Tomato tomato in tomatos)
+            {
+                tomato.SetSpeed(3);
+            }
+            foreach (Salad salad in saladLocations)
+            {
+                salad.SetTimeScale(3);
+            }
+            TurnAllWhite();
+        }
+        if (freeze){
+            globalTimeScale = (1 + makeDecimal(waveNumber));
+            Time.timeScale = globalTimeScale;
+            freeze = false;
+            TurnAllWhite();
+        }
     }
     public static void ResetGame()
     {
