@@ -10,19 +10,9 @@ public class GameManager : MonoBehaviour
     public int pieCost = 1;
     public int saladCost = 10;
     public int lasagnaCost = 5;
-    public int pieHP = 3;
-    public int tomatoHP = 1;
-    public int saladHP = 20;
-    public int lasagnaHP = 10;
-    public int pieDmg = 3;
-    public int tomatoDmg = 1;
-    public int lasagnaDmg = 10;
     public int pancakesCost = 10;
-
-    public float startSpawnRate = 1f;
-    public int startSpawnAmount = 1;
-    public float startWaveTime = 50f;
-
+    public int iceCreamCost = 20;
+    public int salsaCost = 20;
     [SerializeField]
     private GameObject background;
 
@@ -30,27 +20,54 @@ public class GameManager : MonoBehaviour
     public Button setSaladBtn;
     public Button setLasagnaBtn;
     public Button setPancakesBtn;
+    public Button setIceCreamBtn;
+    public Button setSalsaBtn;
     public Button pauseBtn;
     public Button fastForwardBtn;
+    public Button forkBtn;
+
+    private bool isForkMode = false;
 
     public TextMeshProUGUI foodReservesText;
     public TextMeshProUGUI scoreText;
     public Player player;
 
-    public int time = 1;
+    public float expectedTime = 1f;
+    public float previousTime = 1f;
     public bool paused = false;
 
     public TextMeshProUGUI pauseButtonText;
     public TextMeshProUGUI fastForwardButtonText;
+    public GameObject progressBar;
 
-    public float makeDecimal(int wvNum)
+    void Start()
     {
-        return (float)wvNum / 10f;
+        GameData.ClearFoodBoard();
+        DisplayFoodReserves();
+        DisplayScore();
+        setCost();
+        scaleTime();
+        ButtonLogic();
+        GenerateTables();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        CheckTime();
+        CheckFreeze();
+        CheckBurn();
+        KeyLogic();
+        DisplayFoodReserves();
+        DisplayScore();
+        ProgressBar();
+    }
+
+    private void KeyLogic(){
+        if (Input.GetMouseButtonDown(0))
+        {
+            SpawnFood();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnFood();
         }
@@ -58,71 +75,131 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
-	if (Input.GetKeyDown(KeyCode.F))
-	{
-		ToggleFastForward();
-	}
-
-        DisplayFoodReserves();
-        DisplayScore();
+        // if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     ToggleFastForward();
+        // }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            forkMode();
+        }
     }
 
-    void SpawnFood()
+    private void ButtonLogic(){
+        setPieBtn.onClick.AddListener(SetPie);
+        setSaladBtn.onClick.AddListener(SetSalad);
+        setLasagnaBtn.onClick.AddListener(SetLasagna);
+        setPancakesBtn.onClick.AddListener(SetPancakes);
+        if (GameData.waveNumber < 3){
+            setPancakesBtn.gameObject.SetActive(false);
+        }
+        setIceCreamBtn.onClick.AddListener(SetIceCream);
+        if (GameData.waveNumber < 4){
+            setIceCreamBtn.gameObject.SetActive(false);
+        }
+        setSalsaBtn.onClick.AddListener(SetSalsa);
+        if (GameData.waveNumber < 5){
+            setSalsaBtn.gameObject.SetActive(false);
+        }
+        pauseBtn.onClick.AddListener(TogglePause);
+        fastForwardBtn.onClick.AddListener(ToggleFastForward);
+        fastForwardBtn.interactable = false;
+        forkBtn.onClick.AddListener(forkMode);
+        if (pauseButtonText != null)
+        {
+            pauseButtonText.text = "Pause";
+        }
+        if (fastForwardButtonText != null)
+        {
+            fastForwardButtonText.text = ">>";
+        }
+    }
+
+    IEnumerator ResetTimeScale(float duration)
     {
-        if (GameData.globalFoodReserves <= 0 || paused){
+        GameData.TurnAllBlue();
+        yield return new WaitForSeconds(duration);
+        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
+        Time.timeScale = GameData.globalTimeScale;
+        GameData.freeze = false;
+        GameData.TurnAllWhite();
+    }
+
+    private void CheckFreeze()
+    {
+        if (GameData.freeze)
+        {
+            StartCoroutine(ResetTimeScale(5));
+        }
+    }
+    IEnumerator DisableBurn(){
+        yield return new WaitForSeconds(20);
+        GameData.burn = false;
+        foreach (Tomato tomato in GameData.tomatos)
+        {
+            tomato.SetSpeed(3);
+        }
+        foreach (Salad salad in GameData.saladLocations)
+        {
+            salad.SetTimeScale(3);
+        }
+        GameData.TurnAllWhite();
+    }
+    private void CheckBurn(){
+        if (GameData.burn){
+            GameData.BurnEM();
+            StartCoroutine(DisableBurn());
+        }
+    }
+
+    private void SpawnFood()
+    {
+        if (paused)
+        {
             return;
-        }else{
+        }
+        else
+        {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             if (worldPosition.y < 4.3 && worldPosition.x > -7)
             {
-                GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
+                if (isForkMode)
+                {
+                    forkMode();
+                    GameData.forkFood(worldPosition);
+                }
+                else if (GameData.globalFoodReserves > 0)
+                {
+                    GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
+                } else {
+                    return;
+                }
             }
         }
     }
 
-    void setCost()
+    private void setCost()
     {
         player.SetCost(1, pieCost);
         player.SetCost(2, saladCost);
         player.SetCost(3, lasagnaCost);
         player.SetCost(4, pancakesCost);
-    }
-    void setHP()
-    {
-        player.SetHP(1, pieHP);
-        player.SetHP(2, tomatoHP);
-        player.SetHP(3, saladHP);
-    }
-    void setDmg()
-    {
-        player.SetDmg(1, pieDmg);
-        player.SetDmg(2, tomatoDmg);
-        player.SetDmg(3, lasagnaDmg);
+        player.SetCost(5, iceCreamCost);
+        player.SetCost(6, salsaCost);
     }
 
-
-    void Start()
+   private void scaleTime()
     {
-        DisplayFoodReserves();
-        DisplayScore();
-        setCost();
+        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
+        Time.timeScale = GameData.globalTimeScale;
+    }
 
-        setPieBtn.onClick.AddListener(() => SetPie());
-        setSaladBtn.onClick.AddListener(() => SetSalad());
-        setLasagnaBtn.onClick.AddListener(() => SetLasagna());
-        setPancakesBtn.onClick.AddListener(() => SetPancakes());
-        pauseBtn.onClick.AddListener(() => TogglePause());
-        fastForwardBtn.onClick.AddListener(() => ToggleFastForward());
-        if (pauseButtonText != null)
-        {
-            pauseButtonText.text = "Pause";
-        }
-        if (fastForwardButtonText != null){
-            fastForwardButtonText.text = ">>";
-        }
-        GenerateTables();
+    public void forkMode()
+    {
+        isForkMode = !isForkMode;
+        forkBtn.GetComponent<Image>().color = isForkMode ? Color.red : Color.white;
     }
 
     public void DisplayScore()
@@ -147,21 +224,29 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void SetPie()
+    private void SetPie()
     {
         player.SelectPie();
     }
-    public void SetSalad()
+    private void SetSalad()
     {
         player.SelectSalad();
     }
-    public void SetLasagna()
+    private void SetLasagna()
     {
         player.SelectLasagna();
     }
-    public void SetPancakes()
+    private void SetPancakes()
     {
         player.SelectPancakes();
+    }
+    private void SetIceCream()
+    {
+        player.SelectIceCream();
+    }
+    private void SetSalsa()
+    {
+        player.SelectSalsa();
     }
 
     public void TogglePause()
@@ -171,7 +256,7 @@ public class GameManager : MonoBehaviour
             ResumeGame();
             paused = false;
             if (pauseButtonText != null)
-            {   
+            {
                 pauseButtonText.text = "Pause";
             }
         }
@@ -185,64 +270,99 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void ToggleFastForward(){
-        if (Time.timeScale != 3){
+    public void ToggleFastForward()
+    {
+        if (!fastForward)
+        {
             FastForward();
-            if (fastForwardButtonText != null){
+            if (fastForwardButtonText != null)
+            {
                 fastForwardButtonText.text = "<<";
             }
-        }else{
+        }
+        else
+        {
             NormalSpeed();
-            if (fastForwardButtonText != null){
+            if (fastForwardButtonText != null)
+            {
                 fastForwardButtonText.text = ">>";
             }
         }
-    }
-    public void GreyOutBackground(){
-        background.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-        foodReservesText.color = new Color(1f, 1f, 1f, 1f);
-        scoreText.color = new Color(1f, 1f, 1f, 1f);
-    }
-    public void ResetBackground(){
-        background.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-        foodReservesText.color = new Color(0f, 0f, 0f, 1f);
-        scoreText.color = new Color(0f, 0f, 0f, 1f);
     }
 
     public void PauseGame()
     {
         GreyOutBackground();
-        Time.timeScale = 0;
+        UpdateTimeScale(0);
     }
     public void ResumeGame()
     {
         ResetBackground();
+        Time.timeScale = previousTime;
+        UpdateTimeScale(previousTime);
+    }
+
+    public void CheckTime()
+    {
+        Time.timeScale = GameData.globalTimeScale;
+    }
+    private bool fastForward = false;
+
+    public void UpdateTimeScale(float time)
+    {
+        previousTime = Time.timeScale;
+        GameData.globalTimeScale = time;
         Time.timeScale = time;
     }
 
-    public void FastForward(){
-        time = 3;
-	ResetBackground();
-	paused = false;
-        Time.timeScale = time;
+    public void FastForward()
+    {
+        if (paused)
+        {
+            TogglePause();
+        } else {
+            fastForward = true;
+            ResetBackground();
+            paused = false;
+            UpdateTimeScale(GameData.globalTimeScale * 3);
+        }
     }
-    public void NormalSpeed(){
-        time = 1;
-	ResetBackground();
-	paused = false;
-        Time.timeScale = time;
+    public void NormalSpeed()
+    {
+        fastForward = false;
+        ResetBackground();
+        paused = false;
+        Time.timeScale = previousTime;
+        UpdateTimeScale(previousTime);
+    }
+    public void GreyOutBackground()
+    {
+        background.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+        foodReservesText.color = new Color(1f, 1f, 1f, 1f);
+        scoreText.color = new Color(1f, 1f, 1f, 1f);
+    }
+    public void ResetBackground()
+    {
+        background.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        foodReservesText.color = new Color(0f, 0f, 0f, 1f);
+        scoreText.color = new Color(0f, 0f, 0f, 1f);
     }
 
-    public void placeTables(int num){
+    public void placeTables(int num)
+    {
         int rows = 9;
         List<int> availableRows = new List<int>();
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < rows; i++)
+        {
             availableRows.Add(i);
         }
 
-        for (int i = 0; i < num; i++) {
-            if (availableRows.Count == 0) {
-                for (int j = 0; j < rows; j++) {
+        for (int i = 0; i < num; i++)
+        {
+            if (availableRows.Count == 0)
+            {
+                for (int j = 0; j < rows; j++)
+                {
                     availableRows.Add(j);
                 }
             }
@@ -254,17 +374,36 @@ public class GameManager : MonoBehaviour
             float yPos = GameData.LockYPosition(3.7f - (selectedRow * 1.0f));
             float xPos = GameData.LockXPosition(Random.Range(-6.3f, 5.7f));
             Vector2 position = new Vector2(xPos, yPos);
-            if (!GameData.isOccupied(position)) {
+            if (!GameData.isOccupied(position))
+            {
                 player.PlaceTable(position);
             }
         }
     }
 
-    public void GenerateTables(){
-        Debug.Log($"Generating tables for wave {GameData.waveNumber}");
-        if (GameData.waveNumber > 2){
-            Debug.Log($"Generating {GameData.waveNumber} tables for wave {GameData.waveNumber}");
+    public void GenerateTables()
+    {
+        // Debug.Log($"Generating tables for wave {GameData.waveNumber}");
+        if (GameData.waveNumber > 2)
+        {
+            // Debug.Log($"Generating {GameData.waveNumber} tables for wave {GameData.waveNumber}");
             placeTables(GameData.waveNumber);
+        }
+    }
+    private float startWaveTime = GameData.globalWaveTime;
+
+    private float waveDuration = 120f;
+
+    public void ProgressBar()
+    {
+        if (!paused)
+        {
+            float progressBarWidth = 14f;
+            float moveAmount = progressBarWidth / waveDuration * Time.deltaTime;
+            Vector3 currentPos = progressBar.transform.position;
+            currentPos.x -= moveAmount * GameData.globalTimeScale;
+            currentPos.x = Mathf.Clamp(currentPos.x, -7f, 7f);
+            progressBar.transform.position = currentPos;
         }
     }
 }

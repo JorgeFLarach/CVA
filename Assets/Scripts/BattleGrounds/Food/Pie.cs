@@ -4,20 +4,10 @@ public class Pie : MonoBehaviour
 {
     public float speed = 2f;
     public int lives = 1;
-    public int damage = 10;
-    public int hp;
+    public int damage = 3;
 
     public int lifetime = 30;
-
-    public int GetDamage(){
-      return damage;
-    }
-    public void SetDamage(int dmg){
-        damage = dmg;
-    }
-    public void SetHP(int num){
-        hp = num;
-    }
+  
 
     void Update()
     {
@@ -40,15 +30,26 @@ public class Pie : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("Trigger Entered");
         if (other.gameObject.CompareTag("Shot"))
         {
-            lives--; // Decrease lives by 1
+            lives--;
             if (lives <= 0)
             {
-                Destroy(gameObject); // Destroy the food if no lives are left
+                Destroy(gameObject);
             }
         }
+    }
+    public void TurnBlue()
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    public void TurnRed()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+    public void TurnWhite()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
 }

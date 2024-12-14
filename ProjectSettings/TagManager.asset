@@ -24,6 +24,7 @@ TagManager:
   - Cabbage
   - Bok Choy
   - Tomato
+  - IceCream
   layers:
   - Default
   - TransparentFX
@@ -75,4 +76,7 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 917767495
+    locked: 0
+  - name: Hud
+    uniqueID: 3252095991
     locked: 0

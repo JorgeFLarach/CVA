@@ -17,7 +17,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void GoToMenu(){
         PlayerPrefs.DeleteAll(); // Not sure what this does
-        GameData.Reset();
+        GameData.ResetGame();
         SceneManager.LoadScene("MainMenu");
     }
 }

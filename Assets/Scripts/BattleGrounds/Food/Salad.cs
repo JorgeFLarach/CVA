@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Salad : MonoBehaviour
 {
-  public List<Tomato> tomatos = new List<Tomato>();
   private Vector2 Position;
   public float Health = 10;
   public Tomato tomatoPrefab;
   private int throwRate = 3;
-  public int hp;
+
 
   public void SetPosition(Vector2 position){
     Position = position;
@@ -21,10 +20,7 @@ public class Salad : MonoBehaviour
 
   public void ThrowTomato(){
    Tomato tomato = Instantiate(tomatoPrefab, Position, Quaternion.identity);
-   tomatos.Add(tomato);
-  }
-  public void SetHP(int num){
-      hp = num;
+   GameData.tomatos.Add(tomato);
   }
 
   public void TakeDamage(float damage){
@@ -50,10 +46,26 @@ public class Salad : MonoBehaviour
   }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("Trigger Entered");
+        // Debug.Log("Trigger Entered");
         if (other.gameObject.CompareTag("Shot"))
         {
-           TakeDamage(2);
+           TakeDamage(1);
         }
+    }
+    public void TurnBlue()
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+    public void TurnRed()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+    public void TurnWhite()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    public void SetTimeScale(float timeScale)
+    {
+        throwRate = (int)(throwRate * timeScale);
     }
 }

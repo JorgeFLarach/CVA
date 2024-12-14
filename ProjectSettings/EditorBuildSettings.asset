@@ -15,17 +15,35 @@ EditorBuildSettings:
     path: Assets/Scenes/KitchenPrep.unity
     guid: 73ae4077069f442c08c641618620508e
   - enabled: 1
-    path: Assets/Scenes/Kitchen.unity
+    path: Assets/Scenes/BattleGrounds/Kitchen.unity
     guid: 5bbe6f02c6ce646fc846ee0c2a858099
   - enabled: 1
     path: Assets/Scenes/SaladGame.unity
     guid: 75387e864db8c49ea9c0be77050e37a0
   - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene3.unity
+    guid: 8f4a26d94a8d94dc08f11c2a90109f20
+  - enabled: 1
+    path: Assets/Scenes/BattleGrounds/WaveScreen.unity
+    guid: 46d146b63a4504402a0eb49fb55c36fe
+  - enabled: 1
     path: Assets/Scenes/LasagnaMiniGame.unity
     guid: e31ecf47707506d429ba7cca504563b3
   - enabled: 1
+    path: Assets/Scenes/CutScene/WaveTransition.unity
+    guid: 578e39d1aff9d45f1888f88b87d0069e
+  - enabled: 1
     path: Assets/Scenes/LasagnaStartGame.unity
     guid: f30f11e81e9f4f947a3b22062ca10cfa
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene1.unity
+    guid: d5235791de7424a889b5a5de956d9bd5
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene2.unity
+    guid: 1c82bf0b74b19418ea2656a58df0c736
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutScene.unity
+    guid: bb576a6237a354c2284f327f24652a69
   - enabled: 1
     path: Assets/Scenes/GameSelector.unity
     guid: 1b52744e94ac4b74e907f1d45d43513f
@@ -42,7 +60,7 @@ EditorBuildSettings:
     path: Assets/Scenes/VeggieStart.unity
     guid: f5f0b998ea47abf44b2467bfc317bfec
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Tutorials/Tutorial.unity
     guid: ac883fdc7a60c4e1f9462338f26f8a05
   - enabled: 1
     path: Assets/Scenes/OvenStart.unity

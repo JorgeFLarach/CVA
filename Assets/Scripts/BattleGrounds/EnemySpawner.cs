@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     public void SetWaveTime(float time)
     {
         waveTime = time;
+        GameData.globalWaveTime = waveTime;
     }
     public void SetSpawnRate(float rate)
     {
@@ -54,7 +55,8 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < spawnAmount; i++)
         {
             Enemy enemy = Instantiate(enemyPrefab, GridSpawning(), Quaternion.identity);
-            enemies.Add(enemy);
+            GameData.enemies.Add(enemy);
+            // enemies.Add(enemy);
         }
     }
     public Vector2 GridSpawning()
@@ -70,12 +72,14 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnShooter()
     {
         Shooter shooter = Instantiate(shooterPrefab, GridSpawning(), Quaternion.identity);
-        shooters.Add(shooter);
+        GameData.shooters.Add(shooter);
+        // shooters.Add(shooter);
     }
     public void SpawnBrute()
     {
         Brute brute = Instantiate(brutePrefab, GridSpawning(), Quaternion.identity);
-        brutes.Add(brute);
+        GameData.brutes.Add(brute);
+        // brutes.Add(brute);
     }
     public bool AllEnemiesDead()
     {
@@ -91,6 +95,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemyCount = updateEnemyCount();
         waveTime -= Time.deltaTime;
+        GameData.globalWaveTime = waveTime;
         if (waveTime <= 0)
         {
             endSpawning();
@@ -98,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameData.waveNumber++;
                 GameData.playerScore += 1000;
-                SceneManager.LoadScene("WaveScreen");
+                SceneManager.LoadScene("WaveTransition");
         }
         }
 
