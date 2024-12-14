@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 341749575}
   - component: {fileID: 341749574}
   m_Layer: 5
-  m_Name: totPie (1)
+  m_Name: totPiet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,9 @@ MonoBehaviour:
   lasagna: 0
   pie: 0
   veggie: 0
-  Monstertext: {fileID: 2047808109}
+  veggieText: {fileID: 2047808109}
+  pieText: {fileID: 1672722267}
+  lasagnaText: {fileID: 2112801903}
   totalText: {fileID: 1516960081}
   waveNumber: {fileID: 1903193285}
 --- !u!4 &1118978397

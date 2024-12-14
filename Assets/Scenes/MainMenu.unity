@@ -1036,25 +1036,40 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'First you will start your 100-second Prep Round in the kitchen:
+  m_text: 'First you will enter the Prep Round:
 
 
-    -Use
-    arrow keys/WASD to move your chef arounf the kitchen.
+    Start with 100 seconds in the
+    kitchen.
 
-    -Hover your chef over
-    highlighted mini-game boxes to view the start screen.
+    Use arrow keys or WASD to move your chef.
 
-    -Press Escape or click
-    Exit to leave the mini-game start screen.
+    Hover your chef
+    over mini-game boxes to see the start screen.
 
-    -Complete as many mini-games as
-    possible to earn food monsters.
+    Press Escape or click "Exit"
+    to leave the mini-game start screen.
+
+    Complete mini-games to earn food monsters.
 
 
-    After the Prep Round, enter the Battle
-    Ground! Place food monsters to defend your kitchen from aliens. Click the tutorial
-    to learn how to place monsters and play!'
+    Battle
+    Round:
+
+
+    After the Prep Round, begin your first wave of the Battle Ground.
+
+    Each
+    wave, enter the kitchen for a set time.
+
+    Use the food monsters you earned
+    to defend against aliens.
+
+    Your prep time decreases each wave.
+
+
+    Click
+    the tutorial to learn how to play and defend your kitchen!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1081,8 +1096,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

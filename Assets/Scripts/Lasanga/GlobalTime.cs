@@ -15,7 +15,9 @@ public class GlobalTime : MonoBehaviour
     public void Start(){
 
       if (!PlayerPrefs.HasKey("Timer")){
-       PlayerPrefs.SetFloat("Timer", 100);
+       int waveNumber = GameData.waveNumber;
+       float prepTime =  Mathf.Max(100 - 5 * (waveNumber - 1), 30);
+       PlayerPrefs.SetFloat("Timer", prepTime);
        PlayerPrefs.Save();
       }
     }
@@ -25,6 +27,9 @@ public class GlobalTime : MonoBehaviour
         clock.text = timer.ToString().Split('.')[0];
           if (timer > 0){
             timer -= Time.deltaTime;
+               if (timer < 0) {
+               timer = 0;
+              } 
             PlayerPrefs.SetFloat("Timer", timer);
             PlayerPrefs.Save();
         }

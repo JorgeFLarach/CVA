@@ -8,23 +8,25 @@ public class EarnedMonsters : MonoBehaviour
     public float lasagna;
     public float pie;
     public float veggie;
-    public TMP_Text Monstertext;
+    public TMP_Text veggieText;
+    public TMP_Text pieText;
+    public TMP_Text lasagnaText;
     public TMP_Text totalText;
     public TMP_Text waveNumber; 
     
-    
-
     void Start(){
         lasagna = PlayerPrefs.GetInt("Lasagna", 0);
         pie = PlayerPrefs.GetInt("Pie", 0);
         veggie = PlayerPrefs.GetInt("Veggie", 0);
-        Monstertext.text = $"Lasagna Monsters: {lasagna}\nPie Monsters: {pie}\n Veggie Monsters: {veggie} ";
+        lasagnaText.text = $"{lasagna}";
+        veggieText.text = $"{veggie}";
+        pieText.text = $"{pie}";
         int total = (int)(lasagna + pie + veggie);
         int bonus = 100;
         int foodReserves = total+bonus;
-        totalText.text = $"Your Total Food Reserves: {foodReserves}";
+        totalText.text = $"{foodReserves}";
         GameData.AddFoodReserve(foodReserves);
-        waveNumber.text = $"Get Ready for Wave {waveNumber}";
+        waveNumber.text = $"Get Ready for Wave {GameData.waveNumber}";
         // Debug.Log($"Added {total} food to reserves");
     }
 
