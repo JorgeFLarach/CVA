@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        GameData.ClearFoodBoard();
         DisplayFoodReserves();
         DisplayScore();
         setCost();

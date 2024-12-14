@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 public static class GameData
 {
     public static int highScore; 
@@ -21,6 +22,12 @@ public static class GameData
     public static List<Shooter> shooters = new List<Shooter>();
     public static List<Brute> brutes = new List<Brute>();
     public static List<Tomato> tomatos = new List<Tomato>();
+
+    public static void SkipKitchenPrep(){
+        globalFoodReserves += 240;
+        SceneManager.LoadScene("Kitchen");
+    }
+
 
     public static bool isOccupied(Vector2 position)
     {
@@ -74,6 +81,23 @@ public static class GameData
         lasagnaLocations.Clear();
         pancakesLocations.Clear();
         tables.Clear();
+        enemies.Clear();
+        shooters.Clear();
+        brutes.Clear();
+        tomatos.Clear();
+        icecreamLocations.Clear();
+        salsaLocations.Clear();
+    }
+    public static void ResetGame()
+    {
+        ClearFoodBoard();
+        globalFoodReserves = 500;
+        globalWaveTime = 120f;
+        globalTimeScale = 1.1f;
+        waveNumber = 1;
+        playerScore = 0;
+        freeze = false;
+        burn = false;
     }
 
 
@@ -156,13 +180,6 @@ public static class GameData
     public static void AddFoodReserve(int amount)
     {
         globalFoodReserves += amount;
-    }
-
-    public static void Reset()
-    {
-        playerScore = 0;
-        waveNumber = 1;
-        globalFoodReserves = 500;
     }
 
     public static float LockYPosition(float y)

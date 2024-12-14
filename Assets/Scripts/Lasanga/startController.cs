@@ -29,6 +29,13 @@ public class startController : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameData.SkipKitchenPrep();
+        }
+    }
 
 
 }

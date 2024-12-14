@@ -19,5 +19,9 @@ public class WaveScreen : MonoBehaviour
         PlayerPrefs.DeleteAll(); // Not sure what this does
         SceneManager.LoadScene("KitchenPrep");
     }
-
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.L)){
+            GameData.SkipKitchenPrep();
+        }
+    }
 }
