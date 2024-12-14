@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdown: 50
+  knife: {fileID: 2025263179}
   timerText: {fileID: 157396195}
 --- !u!1 &1042686553
 GameObject:
@@ -512,7 +513,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 950}
-  m_SizeDelta: {x: 600, y: 100}
+  m_SizeDelta: {x: 600, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042686555
 MonoBehaviour:
@@ -534,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46d85e9a57ba2b34db4123118124f670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f8f1a711cdf78946be709c76b0f8618, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1263,6 +1264,8 @@ MonoBehaviour:
   choppedBokChoy: 0
   choppedbrusselSprout: 0
   choppedTomato: 0
+  saladMade: 0
+  foodCollected: 0
   foodOrder:
   - Cabbage
   - Brussel Sprout
@@ -1351,7 +1354,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 950}
-  m_SizeDelta: {x: 600, y: 100}
+  m_SizeDelta: {x: 600, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091403454
 MonoBehaviour:
@@ -1373,7 +1376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46d85e9a57ba2b34db4123118124f670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f8f1a711cdf78946be709c76b0f8618, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

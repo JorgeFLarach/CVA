@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
-
 public class playerController : MonoBehaviour
 {
     public bool fstMove = true;
@@ -12,8 +10,6 @@ public class playerController : MonoBehaviour
     public float speed = 5.3f;
     public Animator anim;
     public Vector2 moveDir;
-    //public TMP_Text timeText;
-
     public float timer;
     public Rigidbody2D rb;
     public void Start()
@@ -36,25 +32,24 @@ public class playerController : MonoBehaviour
     public void FixedUpdate(){
        rb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
 
-       if(Input.GetKey("right")){
+       if(Input.GetKey("right") || Input.GetKey(KeyCode.D)){
         this.GetComponent<SpriteRenderer>().flipX = false;
             anim.Play("ChefWalkRight");
-            
        }
-       else if(Input.GetKey("left")){
+
+       else if(Input.GetKey("left") || Input.GetKey(KeyCode.A)){
            this.GetComponent<SpriteRenderer>().flipX = true;
             anim.Play("ChefWalkRight");
-           
        }
-        else if(Input.GetKey("up")){
+       else if(Input.GetKey("up") || Input.GetKey(KeyCode.W)){
             anim.Play("ChefWalkDOwn");
            
        }
-        else if(Input.GetKey("down")){
+        else if(Input.GetKey("down") || Input.GetKey(KeyCode.S)){
             anim.Play("ChefWalkUp");
             
        }
-       else {
+        else {
             anim.Play("Idle");
        }
       

@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class buttonScript : MonoBehaviour
 {
+
+    void Update(){
+       if(Input.GetKeyDown(KeyCode.Escape)){
+        SceneManager.LoadScene("KitchenPrep");
+       }
+    }
     public void StartGame(){
           SceneManager.LoadScene("LasagnaMiniGame");
     }
