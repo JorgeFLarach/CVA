@@ -265,7 +265,7 @@ public class Player : MonoBehaviour
         else if (selectedFood.isPancakes() && !GameData.isOccupied(position))
         {
             PlacePancakes(position);
-            return 0;
+            return pancakesCost;
         }
         else if (selectedFood.isPie())
         {
