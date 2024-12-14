@@ -9,6 +9,8 @@ using TMPro;
 public class VeggieTimer : MonoBehaviour
 {
     public float countdown = 60f;
+
+    public GameObject knife;
     
     public TMP_Text timerText;
 
@@ -25,6 +27,8 @@ public class VeggieTimer : MonoBehaviour
 
         if (countdown < 0){
            PlayerPrefs.SetInt("inMinigame", 0);
+           int saladMade = knife.GetComponent<knifeBehavior>().saladMade;
+           PlayerPrefs.SetInt("Veggie", saladMade);
            SceneManager.LoadScene("KitchenPrep");
     }
 }

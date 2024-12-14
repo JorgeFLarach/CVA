@@ -14,7 +14,7 @@ public class knifeBehavior : MonoBehaviour
     public int choppedBokChoy = 0;
     public int choppedbrusselSprout = 0;
     public int choppedTomato = 0;
-    private int saladMade = 0;
+    public int saladMade = 0;
 
     public int foodCollected = 0;
 
@@ -63,12 +63,13 @@ public class knifeBehavior : MonoBehaviour
             addFoodReserves();
         }
         
-        if(choppedCabbage >= 3 && choppedbrusselSprout >= 3 && choppedBokChoy >= 3 && choppedTomato >= 3){
+        if(choppedCabbage >= 1 && choppedbrusselSprout >= 1 && choppedBokChoy >= 1 && choppedTomato >= 1){
             saladMade += 1;
             choppedCabbage = 0;
             choppedbrusselSprout = 0;
             choppedBokChoy = 0;
             choppedTomato = 0;
+
         }
 
         Destroy(collision.gameObject);

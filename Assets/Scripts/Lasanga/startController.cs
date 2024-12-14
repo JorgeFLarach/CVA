@@ -7,11 +7,18 @@ using UnityEngine.SceneManagement;
 public class startController : MonoBehaviour
 {
     public GameObject rulesPanel;
+    public GameObject credits;
     // Start is called before the first frame update
     void Start()
     {
     }
 
+    public void OpenCredits(){
+      credits.SetActive(true);
+    }
+     public void CloseCredits(){
+        credits.SetActive(false);
+    }
     // Update is called once per frame
     public void StartGame()
     {
