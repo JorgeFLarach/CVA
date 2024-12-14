@@ -74,10 +74,10 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ToggleFastForward();
-        }
+        // if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     ToggleFastForward();
+        // }
         if (Input.GetKeyDown(KeyCode.R))
         {
             forkMode();
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         }
         pauseBtn.onClick.AddListener(TogglePause);
         fastForwardBtn.onClick.AddListener(ToggleFastForward);
+        fastForwardBtn.interactable = false;
         forkBtn.onClick.AddListener(forkMode);
         if (pauseButtonText != null)
         {

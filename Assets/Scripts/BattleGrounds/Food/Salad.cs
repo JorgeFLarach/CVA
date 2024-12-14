@@ -46,10 +46,10 @@ public class Salad : MonoBehaviour
   }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("Trigger Entered");
+        // Debug.Log("Trigger Entered");
         if (other.gameObject.CompareTag("Shot"))
         {
-           TakeDamage(2);
+           TakeDamage(1);
         }
     }
     public void TurnBlue()
