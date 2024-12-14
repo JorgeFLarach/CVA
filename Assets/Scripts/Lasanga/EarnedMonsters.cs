@@ -15,6 +15,7 @@ public class EarnedMonsters : MonoBehaviour
     public TMP_Text waveNumber; 
     
     void Start(){
+        //temp
         lasagna = PlayerPrefs.GetInt("Lasagna", 0);
         pie = PlayerPrefs.GetInt("Pie", 0);
         veggie = PlayerPrefs.GetInt("Veggie", 0);
