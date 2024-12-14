@@ -10,7 +10,6 @@ public class GlobalTime : MonoBehaviour
 {    
     public TMP_Text clock;
     public float timer;
-
     public int inMinigame;
   
     public void Start(){
@@ -30,7 +29,7 @@ public class GlobalTime : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        else if (timer < 0){
+        else if (timer == 0){
           inMinigame = PlayerPrefs.GetInt("inMinigame");
           if (inMinigame == 0){
             Invoke("EndPrep", 2f);

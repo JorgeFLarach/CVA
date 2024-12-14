@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class veggieButtons : MonoBehaviour
 {
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+        SceneManager.LoadScene("KitchenPrep");
+       }
+    }
    public void StartGame(){
     SceneManager.LoadScene("SaladGame");
    }
