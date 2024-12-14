@@ -23,11 +23,7 @@ public class knifeBehavior : MonoBehaviour
     void Update() {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         // mousePosition.z = 0; // Set z to 0 since we're in 2D
-
         transform.position = mousePosition;
-
-        
-
     }
     void Start(){
         InvokeRepeating("spawnIngredients", 1.1f, 2f);
