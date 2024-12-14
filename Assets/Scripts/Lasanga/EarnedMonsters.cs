@@ -19,7 +19,7 @@ public class EarnedMonsters : MonoBehaviour
         pie = PlayerPrefs.GetInt("Pie", 0);
         veggie = PlayerPrefs.GetInt("Veggie", 0);
         lasagnaText.text = $"{lasagna}";
-        veggieText.text = $"{veggie}";
+        veggieText.text = $"{veggie *10}";
         pieText.text = $"{pie}";
         int total = (int)(lasagna + pie + veggie);
         int bonus = 100;

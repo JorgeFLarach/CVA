@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdown: 50
+  knife: {fileID: 2025263179}
   timerText: {fileID: 157396195}
 --- !u!1 &1042686553
 GameObject:
@@ -1263,6 +1264,8 @@ MonoBehaviour:
   choppedBokChoy: 0
   choppedbrusselSprout: 0
   choppedTomato: 0
+  saladMade: 0
+  foodCollected: 0
   foodOrder:
   - Cabbage
   - Brussel Sprout
