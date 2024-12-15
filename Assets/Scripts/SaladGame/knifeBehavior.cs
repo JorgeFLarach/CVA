@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class knifeBehavior : MonoBehaviour
@@ -108,10 +111,6 @@ public class knifeBehavior : MonoBehaviour
         // UnityEngine.Vector3 foodPos = new UnityEngine.Vector3(randNum , 4, 0);
         Instantiate(foodObject, GetRandomPosition(), Quaternion.identity);
     }
-    void spawnVeggies(){
-
-
-    }
     public float spawnOffsetY = 10f;
     public float minX = -7f;
     public float maxX = 7f;
@@ -122,5 +121,10 @@ public class knifeBehavior : MonoBehaviour
         float randomX = UnityEngine.Random.Range(minX, maxX);
         return new Vector2(randomX, randomY);
     }
+    // public void GameOver(){
+    //     PlayerPrefs.SetInt("inMinigame", 0);
+    //     PlayerPrefs.SetInt("Veggie", foodCollected);
+    //     UnityEngine.SceneManagement.SceneManager.LoadScene("KitchenPrep");
+    // }
 
 }

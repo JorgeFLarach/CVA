@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -835430371834121497}
   - component: {fileID: 490518464695234851}
   - component: {fileID: 4597308621805609692}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RightBrussel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

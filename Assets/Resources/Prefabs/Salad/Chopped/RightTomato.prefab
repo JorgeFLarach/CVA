@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -835430371834121497}
   - component: {fileID: 7863609075814524168}
   - component: {fileID: 5413235750532386356}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RightTomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}

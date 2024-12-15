@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8369282043043460626}
   - component: {fileID: 2533765612090106739}
   - component: {fileID: 7801067386525409947}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cabbage
   m_TagString: Cabbage
   m_Icon: {fileID: 0}

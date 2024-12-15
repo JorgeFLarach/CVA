@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -835430371834121497}
   - component: {fileID: -8019834278101998678}
   - component: {fileID: -2454714656363654352}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LeftCabage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

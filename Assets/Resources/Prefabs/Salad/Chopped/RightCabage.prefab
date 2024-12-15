@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -835430371834121497}
   - component: {fileID: -1112257294332328330}
   - component: {fileID: -772054214678533896}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RightCabage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

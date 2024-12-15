@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -835430371834121497}
   - component: {fileID: -8080344397370544512}
   - component: {fileID: 647154339697302629}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RightBoch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

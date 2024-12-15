@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5158150212328855140}
   - component: {fileID: 1953614193731727245}
   - component: {fileID: 8652167026937653578}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bok Choy
   m_TagString: Bok Choy
   m_Icon: {fileID: 0}
