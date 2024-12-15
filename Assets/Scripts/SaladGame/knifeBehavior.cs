@@ -39,7 +39,7 @@ public class knifeBehavior : MonoBehaviour
     }
 
     private void addFoodReserves(int amount){
-        GameData.globalFoodReserves += amount;
+        // GameData.globalFoodReserves += amount;
         foodCollected += amount;
     }
 

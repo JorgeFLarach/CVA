@@ -12,14 +12,14 @@ public class EarnedMonsters : MonoBehaviour
     public TMP_Text pieText;
     public TMP_Text lasagnaText;
     public TMP_Text totalText;
-    public TMP_Text waveNumber; 
-    
+    public TMP_Text waveNumber;
+
     void Start(){
         lasagna = PlayerPrefs.GetInt("Lasagna", 0);
         pie = PlayerPrefs.GetInt("Pie", 0);
         veggie = PlayerPrefs.GetInt("Veggie", 0);
         lasagnaText.text = $"{lasagna}";
-        veggieText.text = $"{veggie *10}";
+        veggieText.text = $"{veggie}";
         pieText.text = $"{pie}";
         int total = (int)(lasagna + pie + veggie);
         int bonus = 100;
@@ -30,5 +30,5 @@ public class EarnedMonsters : MonoBehaviour
         // Debug.Log($"Added {total} food to reserves");
     }
 
-   
+
 }
