@@ -55,7 +55,7 @@ public class knifeBehavior : MonoBehaviour
             choppedbrusselSprout++;
 
             Debug.Log("CHOPPED BRUSSEL SPROUT!!");
-            addFoodReserves(5);
+            addFoodReserves(3);
             chopped.chopBrusselSprout(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -63,7 +63,7 @@ public class knifeBehavior : MonoBehaviour
             choppedBokChoy++;
 
             Debug.Log("CHOPPED BOK CHOY!!");
-            addFoodReserves(2);
+            addFoodReserves(1);
             chopped.chopBokChoy(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -71,7 +71,7 @@ public class knifeBehavior : MonoBehaviour
             choppedTomato++;
 
             Debug.Log("CHOPPED TOMATO!!");
-            addFoodReserves(3);
+            addFoodReserves(2);
             chopped.chopTomato(collision.transform.position);
             Destroy(collision.gameObject);
         }
