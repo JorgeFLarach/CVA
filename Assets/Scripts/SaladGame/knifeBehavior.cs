@@ -10,6 +10,8 @@ public class knifeBehavior : MonoBehaviour
     public GameObject brusselSproutPrefab;
     public GameObject tomatoPrefab;
 
+    public chopped chopped;
+
     public int choppedCabbage = 0;
     public int choppedBokChoy = 0;
     public int choppedbrusselSprout = 0;
@@ -18,7 +20,7 @@ public class knifeBehavior : MonoBehaviour
 
     public int foodCollected = 0;
 
-    public List<String> foodOrder = new List<string> {"Cabbage", "Brussel Sprout", "Bok Choy", "Tomato"};    
+    public List<String> foodOrder = new List<string> {"Cabbage", "Brussel Sprout", "Bok Choy", "Tomato"};
 
     void Update() {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -43,26 +45,34 @@ public class knifeBehavior : MonoBehaviour
             choppedCabbage++;
             Debug.Log("CHOPPED CABBAGE!!");
             addFoodReserves(1);
+            chopped.chopCabbage(collision.transform.position);
+            Destroy(collision.gameObject);
         }
         if(collision.gameObject.CompareTag("Brussel Sprout")){
             choppedbrusselSprout++;
-            
+
             Debug.Log("CHOPPED BRUSSEL SPROUT!!");
             addFoodReserves(5);
-        }            
+            chopped.chopBrusselSprout(collision.transform.position);
+            Destroy(collision.gameObject);
+        }
         if(collision.gameObject.CompareTag("Bok Choy")){
             choppedBokChoy++;
-            
+
             Debug.Log("CHOPPED BOK CHOY!!");
             addFoodReserves(2);
+            chopped.chopBokChoy(collision.transform.position);
+            Destroy(collision.gameObject);
         }
         if(collision.gameObject.CompareTag("Tomato")){
             choppedTomato++;
-            
+
             Debug.Log("CHOPPED TOMATO!!");
             addFoodReserves(3);
+            chopped.chopTomato(collision.transform.position);
+            Destroy(collision.gameObject);
         }
-        
+
         if(choppedCabbage >= 1 && choppedbrusselSprout >= 1 && choppedBokChoy >= 1 && choppedTomato >= 1){
             saladMade += 1;
             choppedCabbage = 0;
@@ -72,13 +82,13 @@ public class knifeBehavior : MonoBehaviour
 
         }
 
-        Destroy(collision.gameObject);
+        // Destroy(collision.gameObject);
     }
 
     void spawnIngredients(){
         int randNum = UnityEngine.Random.Range(-10, 10);
         int randIndex = UnityEngine.Random.Range(0, 4);
-        GameObject foodObject; 
+        GameObject foodObject;
 
         String spawnedFood = foodOrder[randIndex];
         if (spawnedFood == "Cabbage"){

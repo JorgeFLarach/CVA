@@ -568,6 +568,58 @@ MonoBehaviour:
   fill: {fileID: 1042686555}
   currTime: 0
   totTime: 0
+--- !u!1 &1245120458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245120460}
+  - component: {fileID: 1245120459}
+  m_Layer: 0
+  m_Name: chopped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1245120459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245120458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4146eeca1341849a6a59878846360c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightCabage: {fileID: 9109837858996563947, guid: 67a99030fcb2047ea95d24e0a3fbd821, type: 3}
+  leftCabage: {fileID: 9109837858996563947, guid: 383f4f5feb6584951ab75dfef91fa41f, type: 3}
+  rightBokChoy: {fileID: 9109837858996563947, guid: e74bc4d0dfd88418b992ffa2e7652283, type: 3}
+  leftBokChoy: {fileID: 9109837858996563947, guid: 79125cfd171fd4fb68537fcd238217da, type: 3}
+  rightBrusselSprout: {fileID: 9109837858996563947, guid: d8e87b223e3e04779a6246ceb13d690b, type: 3}
+  leftBrusselSprout: {fileID: 9109837858996563947, guid: d103520d072064c3595209dda0e18aab, type: 3}
+  rightTomato: {fileID: 9109837858996563947, guid: 3c5b76be712f74421ae1d57b89296e76, type: 3}
+  leftTomato: {fileID: 9109837858996563947, guid: b8014914262a64fc59331f4a6466a33a, type: 3}
+--- !u!4 &1245120460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245120458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.04455, y: -4.76976, z: -0.0047347266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336418322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,8 +1181,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 941640649
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8bbb05bef071f415980631c6460a319a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1260,6 +1312,7 @@ MonoBehaviour:
   bokChoyPrefab: {fileID: 3872949294257959179, guid: 559d728aa54f44a4ea2e4cba3e37fc19, type: 3}
   brusselSproutPrefab: {fileID: 6060920143977300341, guid: 09b3599b40bce4971a459c742c9cc5a8, type: 3}
   tomatoPrefab: {fileID: 6060920143977300341, guid: 8bf0356d18aa24841afcb2ace1c6f653, type: 3}
+  chopped: {fileID: 1245120459}
   choppedCabbage: 0
   choppedBokChoy: 0
   choppedbrusselSprout: 0
@@ -1404,3 +1457,4 @@ SceneRoots:
   - {fileID: 2025263180}
   - {fileID: 330400482}
   - {fileID: 702434341}
+  - {fileID: 1245120460}
