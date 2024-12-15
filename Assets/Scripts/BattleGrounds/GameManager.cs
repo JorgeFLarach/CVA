@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int pieCost = 1;
+    public int pieCost = 5;
     public int saladCost = 10;
     public int lasagnaCost = 5;
-    public int pancakesCost = 10;
+    public int pancakesCost = 2;
     public int iceCreamCost = 20;
     public int salsaCost = 20;
     [SerializeField]

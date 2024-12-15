@@ -33,34 +33,34 @@ public class knifeBehavior : MonoBehaviour
         InvokeRepeating("spawnIngredients", 0.2f, 11f);
     }
 
-    private void addFoodReserves(){
-        GameData.globalFoodReserves += 1;
-        foodCollected += 1;
+    private void addFoodReserves(int amount){
+        GameData.globalFoodReserves += amount;
+        foodCollected += amount;
     }
 
     void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.CompareTag("Cabbage")){
             choppedCabbage++;
             Debug.Log("CHOPPED CABBAGE!!");
-            addFoodReserves();
+            addFoodReserves(1);
         }
         if(collision.gameObject.CompareTag("Brussel Sprout")){
             choppedbrusselSprout++;
             
             Debug.Log("CHOPPED BRUSSEL SPROUT!!");
-            addFoodReserves();
+            addFoodReserves(5);
         }            
         if(collision.gameObject.CompareTag("Bok Choy")){
             choppedBokChoy++;
             
             Debug.Log("CHOPPED BOK CHOY!!");
-            addFoodReserves();
+            addFoodReserves(2);
         }
         if(collision.gameObject.CompareTag("Tomato")){
             choppedTomato++;
             
             Debug.Log("CHOPPED TOMATO!!");
-            addFoodReserves();
+            addFoodReserves(3);
         }
         
         if(choppedCabbage >= 1 && choppedbrusselSprout >= 1 && choppedBokChoy >= 1 && choppedTomato >= 1){

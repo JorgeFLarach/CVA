@@ -152,7 +152,7 @@ public static class GameData
         {
             if (lasagna.GetPosition() == position)
             {
-                globalFoodReserves += 2;
+                globalFoodReserves += 3;
                 lasagnaRemoveList.Add(lasagna);
             }
         }
@@ -160,7 +160,7 @@ public static class GameData
         {
             if (pancakes.GetPosition() == position)
             {
-                globalFoodReserves += 5;
+                globalFoodReserves += 1;
                 pancakesRemoveList.Add(pancakes);
             }
         }
