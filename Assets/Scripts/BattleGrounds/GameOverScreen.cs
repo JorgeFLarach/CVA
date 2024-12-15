@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public TextMeshProUGUI gameOverText; 
-    public Button goToMenuBtn;  
+    public TextMeshProUGUI gameOverText;
+    public Button goToMenuBtn;
 
     private void Start()
     {
         gameOverText.text = "Game Over\nScore: " + GameData.playerScore;
-        
+
         goToMenuBtn.onClick.AddListener(GoToMenu);
     }
 
-    public void GoToMenu(){
+    public void GoToMenu()
+    {
         PlayerPrefs.DeleteAll(); // Not sure what this does
         GameData.ResetGame();
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }

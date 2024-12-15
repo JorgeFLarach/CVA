@@ -56,13 +56,23 @@ public class GameManager : MonoBehaviour
         CheckTime();
         CheckFreeze();
         CheckBurn();
+        CheckFastForward();
         KeyLogic();
         DisplayFoodReserves();
         DisplayScore();
         ProgressBar();
     }
 
-    private void KeyLogic(){
+    void CheckFastForward()
+    {
+        if (!GameData.isFast)
+        {
+            NormalSpeed();
+        }
+    }
+
+    private void KeyLogic()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             SpawnFood();
@@ -75,35 +85,39 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
-        // if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     ToggleFastForward();
-        // }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ToggleFastForward();
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             forkMode();
         }
     }
 
-    private void ButtonLogic(){
+    private void ButtonLogic()
+    {
         setPieBtn.onClick.AddListener(SetPie);
         setSaladBtn.onClick.AddListener(SetSalad);
         setLasagnaBtn.onClick.AddListener(SetLasagna);
         setPancakesBtn.onClick.AddListener(SetPancakes);
-        if (GameData.waveNumber < 3){
+        if (GameData.waveNumber < 3)
+        {
             setPancakesBtn.gameObject.SetActive(false);
         }
         setIceCreamBtn.onClick.AddListener(SetIceCream);
-        if (GameData.waveNumber < 4){
+        if (GameData.waveNumber < 4)
+        {
             setIceCreamBtn.gameObject.SetActive(false);
         }
         setSalsaBtn.onClick.AddListener(SetSalsa);
-        if (GameData.waveNumber < 5){
+        if (GameData.waveNumber < 5)
+        {
             setSalsaBtn.gameObject.SetActive(false);
         }
         pauseBtn.onClick.AddListener(TogglePause);
         fastForwardBtn.onClick.AddListener(ToggleFastForward);
-        fastForwardBtn.interactable = false;
+        // fastForwardBtn.interactable = false;
         forkBtn.onClick.AddListener(forkMode);
         if (pauseButtonText != null)
         {
@@ -132,7 +146,8 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ResetTimeScale(5));
         }
     }
-    IEnumerator DisableBurn(){
+    IEnumerator DisableBurn()
+    {
         yield return new WaitForSeconds(20);
         GameData.burn = false;
         foreach (Tomato tomato in GameData.tomatos)
@@ -145,8 +160,10 @@ public class GameManager : MonoBehaviour
         }
         GameData.TurnAllWhite();
     }
-    private void CheckBurn(){
-        if (GameData.burn){
+    private void CheckBurn()
+    {
+        if (GameData.burn)
+        {
             GameData.BurnEM();
             StartCoroutine(DisableBurn());
         }
@@ -173,7 +190,9 @@ public class GameManager : MonoBehaviour
                 else if (GameData.globalFoodReserves > 0)
                 {
                     GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
-                } else {
+                }
+                else
+                {
                     return;
                 }
             }
@@ -190,7 +209,7 @@ public class GameManager : MonoBehaviour
         player.SetCost(6, salsaCost);
     }
 
-   private void scaleTime()
+    private void scaleTime()
     {
         GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
         Time.timeScale = GameData.globalTimeScale;
@@ -320,16 +339,21 @@ public class GameManager : MonoBehaviour
         if (paused)
         {
             TogglePause();
-        } else {
+        }
+        else
+        {
             fastForward = true;
+            GameData.isFast = true;
             ResetBackground();
             paused = false;
+            previousTime = Time.timeScale;
             UpdateTimeScale(GameData.globalTimeScale * 3);
         }
     }
     public void NormalSpeed()
     {
         fastForward = false;
+        GameData.isFast = false;
         ResetBackground();
         paused = false;
         Time.timeScale = previousTime;

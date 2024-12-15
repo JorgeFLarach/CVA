@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 public static class GameData
 {
-    public static int highScore; 
+    public static int highScore;
     public static int playerScore;
     public static int waveNumber = 1;
     public static int globalFoodReserves = 500;
@@ -11,6 +11,7 @@ public static class GameData
     public static float globalTimeScale = 1.1f;
     public static bool freeze = false;
     public static bool burn = false;
+    public static bool isFast = false;
 
     public static List<Table> tables = new List<Table>();
     public static List<Salad> saladLocations = new List<Salad>();
@@ -23,7 +24,8 @@ public static class GameData
     public static List<Brute> brutes = new List<Brute>();
     public static List<Tomato> tomatos = new List<Tomato>();
 
-    public static void SkipKitchenPrep(){
+    public static void SkipKitchenPrep()
+    {
         globalFoodReserves += 260;
         SceneManager.LoadScene("Kitchen");
     }
@@ -91,10 +93,13 @@ public static class GameData
         tomatos.Clear();
         icecreamLocations.Clear();
         salsaLocations.Clear();
+        isFast = false;
         ResetTime();
     }
-    public static void ResetTime(){
-        if (burn){
+    public static void ResetTime()
+    {
+        if (burn)
+        {
             burn = false;
             foreach (Tomato tomato in tomatos)
             {
@@ -106,7 +111,8 @@ public static class GameData
             }
             TurnAllWhite();
         }
-        if (freeze){
+        if (freeze)
+        {
             globalTimeScale = (1 + makeDecimal(waveNumber));
             Time.timeScale = globalTimeScale;
             freeze = false;
@@ -123,6 +129,7 @@ public static class GameData
         playerScore = 0;
         freeze = false;
         burn = false;
+        isFast = false;
     }
 
 
@@ -240,12 +247,15 @@ public static class GameData
             LockYPosition(input.y)
         );
     }
-    public static void BurnEM(){
+    public static void BurnEM()
+    {
         TurnAllRed();
-        foreach (Salad salad in saladLocations){
+        foreach (Salad salad in saladLocations)
+        {
             // salad.TurnRed();
             salad.SetTimeScale(10f);
-            foreach (Tomato tomato in tomatos){
+            foreach (Tomato tomato in tomatos)
+            {
                 tomato.SetSpeed(10f);
             }
         }

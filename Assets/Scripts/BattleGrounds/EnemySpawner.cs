@@ -41,10 +41,11 @@ public class EnemySpawner : MonoBehaviour
     public void StartSpawning()
     {
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
-        InvokeRepeating(nameof(SpawnShooter), spawnRate*10, spawnRate*5);
-        InvokeRepeating(nameof(SpawnBrute), spawnRate*5, spawnRate*5);
+        InvokeRepeating(nameof(SpawnShooter), spawnRate * 10, spawnRate * 5);
+        InvokeRepeating(nameof(SpawnBrute), spawnRate * 5, spawnRate * 5);
     }
-    public void endSpawning(){
+    public void endSpawning()
+    {
         CancelInvoke(nameof(Spawn));
         CancelInvoke(nameof(SpawnShooter));
         CancelInvoke(nameof(SpawnBrute));
@@ -86,7 +87,8 @@ public class EnemySpawner : MonoBehaviour
         return enemyCount <= 0;
     }
 
-    public int updateEnemyCount(){
+    public int updateEnemyCount()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         return enemies.Length;
     }
@@ -99,12 +101,13 @@ public class EnemySpawner : MonoBehaviour
         if (waveTime <= 0)
         {
             endSpawning();
-            if(AllEnemiesDead())
+            if (AllEnemiesDead())
             {
                 GameData.waveNumber++;
                 GameData.playerScore += 1000;
+                GameData.isFast = false;
                 SceneManager.LoadScene("WaveTransition");
-        }
+            }
         }
 
     }

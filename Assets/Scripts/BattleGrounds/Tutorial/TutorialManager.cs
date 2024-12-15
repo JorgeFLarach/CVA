@@ -29,7 +29,8 @@ public class TutorialManager : MonoBehaviour
         Time.timeScale = 1;
         GameData.globalTimeScale = 1;
     }
-    private void Wait(){
+    private void Wait()
+    {
         gameManager.GreyOutBackground();
         Time.timeScale = 0;
         GameData.globalTimeScale = 0;
@@ -81,9 +82,9 @@ public class TutorialManager : MonoBehaviour
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "You can resume the game by pressing the resume button in the top right or pressing the p key again.";
-        // Wait();
-        // yield return new WaitForSeconds(0.5f);
-        // tutorialText.text = "You can also press f to toggle fast forward once you feel you have a strong set up, however we would not recomend that until you have become more familar with how to play the game.";
+        Wait();
+        yield return new WaitForSeconds(0.5f);
+        tutorialText.text = "You can also press f to toggle fast forward once you feel you have a strong set up, however we would not recomend that until you have become more familar with how to play the game.";
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "Good luck!\n (Press enter when you are ready!)";
