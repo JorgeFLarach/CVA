@@ -49,7 +49,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "Welcome to the tutorial! (Press the enter to continue!)";
         Wait();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.5f);
         tutorialText.text = "You will need to place food to prevent the aliens from getting behind the counter!";
         Wait();
         yield return new WaitForSeconds(0.5f);
@@ -69,9 +69,9 @@ public class TutorialManager : MonoBehaviour
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "You can place Lasagnas to block the aliens from getting behind the counter! Be careful because the aliens can eat your food!";
-        Wait();
-        yield return new WaitForSeconds(0.5f);
-        tutorialText.text = "Placing pancakes will get aliens stuck in sticky syrup! Watch out because other aliens will still be able to push the frozen aliens into you!";
+        // Wait();
+        // yield return new WaitForSeconds(0.5f);
+        // tutorialText.text = "Placing pancakes will get aliens stuck in sticky syrup! Watch out because other aliens will still be able to push the frozen aliens into you!";
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "The goal is to make it through as many waves as possible! You will be able to restock on food reserves in between waves, but cook fast because you will not have much time before more aliens arrive!";
@@ -81,9 +81,9 @@ public class TutorialManager : MonoBehaviour
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "You can resume the game by pressing the resume button in the top right or pressing the p key again.";
-        Wait();
-        yield return new WaitForSeconds(0.5f);
-        tutorialText.text = "You can also press f to toggle fast forward once you feel you have a strong set up, however we would not recomend that until you have become more familar with how to play the game.";
+        // Wait();
+        // yield return new WaitForSeconds(0.5f);
+        // tutorialText.text = "You can also press f to toggle fast forward once you feel you have a strong set up, however we would not recomend that until you have become more familar with how to play the game.";
         Wait();
         yield return new WaitForSeconds(0.5f);
         tutorialText.text = "Good luck!\n (Press enter when you are ready!)";
