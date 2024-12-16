@@ -37,6 +37,11 @@ public class IceCream : MonoBehaviour
         GameData.icecreamLocations.Remove(this);
         Destroy(gameObject);
     }
+    public void Die2()
+    {
+        GameData.icecreamLocations.Remove(this);
+        Destroy(gameObject);
+    }
     public void TurnBlue()
     {
         GetComponent<SpriteRenderer>().color = Color.blue;

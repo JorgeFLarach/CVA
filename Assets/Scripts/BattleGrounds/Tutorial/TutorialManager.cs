@@ -34,6 +34,8 @@ public class TutorialManager : MonoBehaviour
         gameManager.GreyOutBackground();
         Time.timeScale = 0;
         GameData.globalTimeScale = 0;
+        // GameData.paused = true;
+        gameManager.paused = true;
     }
 
     private void RedirectToGame()
@@ -91,6 +93,7 @@ public class TutorialManager : MonoBehaviour
         Wait();
         yield return new WaitForSeconds(0.5f);
         enemySpawner.enabled = true;
+        gameManager.paused = false;
         gameManager.ResetBackground();
         tutorialText.text = "";
         yield return new WaitForSeconds(60f);

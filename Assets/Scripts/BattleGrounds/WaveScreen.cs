@@ -12,6 +12,11 @@ public class WaveScreen : MonoBehaviour
     {
         waveText.text = "Wave " + GameData.waveNumber;
         goToMenuBtn.onClick.AddListener(GoToMenu);
+        GameData.isFast = false;
+        GameData.paused = false;
+        GameData.freeze = false;
+        GameData.ResumeGame();
+        GameData.burn = false;
         GameData.ClearFoodBoard();
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int pieCost = 5;
+    public int pieCost = 1;
     public int saladCost = 10;
     public int lasagnaCost = 5;
     public int pancakesCost = 2;
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         scaleTime();
         ButtonLogic();
         GenerateTables();
+        GameData.UpdateTimes();
     }
 
     void Update()
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     void CheckFastForward()
     {
-        if (!GameData.isFast)
+        if (!GameData.isFast && !paused && !GameData.freeze)
         {
             NormalSpeed();
         }
@@ -133,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         GameData.TurnAllBlue();
         yield return new WaitForSeconds(duration);
-        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
+        GameData.globalTimeScale = GameData.regularTime;
         Time.timeScale = GameData.globalTimeScale;
         GameData.freeze = false;
         GameData.TurnAllWhite();
@@ -171,12 +172,12 @@ public class GameManager : MonoBehaviour
 
     private void SpawnFood()
     {
-        if (paused)
-        {
-            return;
-        }
-        else
-        {
+        // if (paused)
+        // {
+        //     return;
+        // }
+        // else
+        // {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -187,6 +188,10 @@ public class GameManager : MonoBehaviour
                     forkMode();
                     GameData.forkFood(worldPosition);
                 }
+                else if (paused)
+                {
+                    return;
+                }
                 else if (GameData.globalFoodReserves > 0)
                 {
                     GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
@@ -196,8 +201,9 @@ public class GameManager : MonoBehaviour
                     return;
                 }
             }
+
         }
-    }
+    
 
     private void setCost()
     {
@@ -356,8 +362,9 @@ public class GameManager : MonoBehaviour
         GameData.isFast = false;
         ResetBackground();
         paused = false;
-        Time.timeScale = previousTime;
-        UpdateTimeScale(previousTime);
+        // Time.timeScale = previousTime;
+        GameData.ResumeGame();
+        // UpdateTimeScale(previousTime);
     }
     public void GreyOutBackground()
     {

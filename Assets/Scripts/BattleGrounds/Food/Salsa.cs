@@ -37,6 +37,11 @@ public class Salsa : MonoBehaviour
         GameData.salsaLocations.Remove(this);
         Destroy(gameObject);
     }
+    public void Die2()
+    {
+        GameData.salsaLocations.Remove(this);
+        Destroy(gameObject);
+    }
     public void TurnBlue()
     {
         GetComponent<SpriteRenderer>().color = Color.blue;

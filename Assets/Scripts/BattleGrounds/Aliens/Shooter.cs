@@ -15,7 +15,7 @@ public class Shooter : MonoBehaviour
     public float lives = 10;
     public bool reloading = false;
     public bool pancaked = false;
-    public float reloadtime = 1f;
+    public float reloadtime = 3f;
     public float loadprog = 0f;
     public GameObject shotPrefab;
 
@@ -38,7 +38,7 @@ public class Shooter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pancakes")){
-            pancaked = true; 
+            pancaked = true;
             GameData.playerScore += 250;
             speed = 0;
             spriteRenderer.color = new Color(0.6f, 0.4f, 0.2f, 1f); // Brown color
