@@ -7,6 +7,9 @@ public class WaveTransition : MonoBehaviour
     public GameObject background1;
     public GameObject background2;
     public GameObject ship;
+    public GameObject alien1;
+    public GameObject alien2;
+    public GameObject alien3;
     private bool shouldMoveRight = true;
 
     void Update()
@@ -27,12 +30,18 @@ public class WaveTransition : MonoBehaviour
         background1.transform.Translate(Vector3.left * speed);
         background2.transform.Translate(Vector3.left * speed);
         ship.transform.Translate(Vector3.left * speed);
+        alien1.transform.Translate(Vector3.left * speed);
+        alien2.transform.Translate(Vector3.left * speed);
+        alien3.transform.Translate(Vector3.left * speed);
     }
     void moveLeft(){
         float speed = 5f * Time.deltaTime;
         background1.transform.Translate(Vector3.right * speed);
         background2.transform.Translate(Vector3.right * speed);
         ship.transform.Translate(Vector3.right * speed);
+        alien1.transform.Translate(Vector3.right * speed);
+        alien2.transform.Translate(Vector3.right * speed);
+        alien3.transform.Translate(Vector3.right * speed);
         if (background2.transform.position.x >= 0){
             SceneManager.LoadScene("WaveScreen");
         }
