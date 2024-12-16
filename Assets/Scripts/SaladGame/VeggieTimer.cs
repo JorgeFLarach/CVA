@@ -27,7 +27,8 @@ public class VeggieTimer : MonoBehaviour
 
         if (countdown < 0){
            PlayerPrefs.SetInt("inMinigame", 0);
-           int saladMade = knife.GetComponent<knifeBehavior>().foodCollected;
+           int totalSalad = PlayerPrefs.GetInt("Veggie");
+           int saladMade = knife.GetComponent<knifeBehavior>().foodCollected + totalSalad;
            PlayerPrefs.SetInt("Veggie", saladMade);
            SceneManager.LoadScene("KitchenPrep");
     }

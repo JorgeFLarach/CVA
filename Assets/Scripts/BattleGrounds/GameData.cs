@@ -9,9 +9,13 @@ public static class GameData
     public static int globalFoodReserves = 500;
     public static float globalWaveTime = 120f;
     public static float globalTimeScale = 1.1f;
+    public static float pauseTime = 0f;
+    public static float regularTime = (1 + makeDecimal(waveNumber));
+    public static float fastTime = regularTime * 3;
     public static bool freeze = false;
     public static bool burn = false;
     public static bool isFast = false;
+    public static bool paused = false;
 
     public static List<Table> tables = new List<Table>();
     public static List<Salad> saladLocations = new List<Salad>();
@@ -24,9 +28,46 @@ public static class GameData
     public static List<Brute> brutes = new List<Brute>();
     public static List<Tomato> tomatos = new List<Tomato>();
 
+    public static void UpdateTimes()
+    {
+        regularTime = (1 + makeDecimal(waveNumber));
+        fastTime = regularTime * 3;
+    }
+    public static void PauseGame()
+    {
+        paused = true;
+        isFast = false;
+        Time.timeScale = pauseTime;
+    }
+    public static void ResumeGame()
+    {
+        paused = false;
+        isFast = false;
+        Time.timeScale = regularTime;
+    }
+    public static void FastGame()
+    {
+        if (isFast)
+        {
+            Time.timeScale = regularTime;
+            isFast = false;
+            return;
+        }else if (freeze)
+        {
+            Time.timeScale = regularTime;
+            freeze = false;
+        }else if (paused){
+            Time.timeScale = regularTime;
+            paused = false;
+        }else {
+            Time.timeScale = fastTime;
+            isFast = true;
+        }
+    }
+
     public static void SkipKitchenPrep()
     {
-        globalFoodReserves += 260;
+        globalFoodReserves += 300;
         SceneManager.LoadScene("Kitchen");
     }
 

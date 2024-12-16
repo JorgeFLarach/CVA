@@ -55,7 +55,7 @@ public class knifeBehavior : MonoBehaviour
             choppedbrusselSprout++;
 
             Debug.Log("CHOPPED BRUSSEL SPROUT!!");
-            addFoodReserves(3);
+            addFoodReserves(5);
             chopped.chopBrusselSprout(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -63,7 +63,7 @@ public class knifeBehavior : MonoBehaviour
             choppedBokChoy++;
 
             Debug.Log("CHOPPED BOK CHOY!!");
-            addFoodReserves(1);
+            addFoodReserves(2);
             chopped.chopBokChoy(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -71,7 +71,7 @@ public class knifeBehavior : MonoBehaviour
             choppedTomato++;
 
             Debug.Log("CHOPPED TOMATO!!");
-            addFoodReserves(2);
+            addFoodReserves(3);
             chopped.chopTomato(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -89,7 +89,7 @@ public class knifeBehavior : MonoBehaviour
     }
 
     void spawnIngredients(){
-        int randNum = UnityEngine.Random.Range(-10, 10);
+        int randNum = UnityEngine.Random.Range(-4, 4);
         int randIndex = UnityEngine.Random.Range(0, 4);
         GameObject foodObject;
 

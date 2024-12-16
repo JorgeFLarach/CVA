@@ -24,7 +24,7 @@ public class EarnedMonsters : MonoBehaviour
         int total = (int)(lasagna + pie + veggie);
         int bonus = 100;
         int foodReserves = total+bonus;
-        totalText.text = $"{foodReserves}";
+        totalText.text = $"{total}";
         GameData.AddFoodReserve(foodReserves);
         waveNumber.text = $"Get Ready for Wave {GameData.waveNumber}";
         // Debug.Log($"Added {total} food to reserves");

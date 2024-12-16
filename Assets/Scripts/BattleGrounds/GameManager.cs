@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         scaleTime();
         ButtonLogic();
         GenerateTables();
+        GameData.UpdateTimes();
     }
 
     void Update()
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     void CheckFastForward()
     {
-        if (!GameData.isFast)
+        if (!GameData.isFast && !paused)
         {
             NormalSpeed();
         }
@@ -133,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         GameData.TurnAllBlue();
         yield return new WaitForSeconds(duration);
-        GameData.globalTimeScale = (1 + GameData.makeDecimal(GameData.waveNumber));
+        GameData.globalTimeScale = GameData.regularTime;
         Time.timeScale = GameData.globalTimeScale;
         GameData.freeze = false;
         GameData.TurnAllWhite();
@@ -356,8 +357,9 @@ public class GameManager : MonoBehaviour
         GameData.isFast = false;
         ResetBackground();
         paused = false;
-        Time.timeScale = previousTime;
-        UpdateTimeScale(previousTime);
+        // Time.timeScale = previousTime;
+        GameData.ResumeGame();
+        // UpdateTimeScale(previousTime);
     }
     public void GreyOutBackground()
     {
