@@ -111,8 +111,8 @@ public class knifeBehavior : MonoBehaviour
         Instantiate(foodObject, GetRandomPosition(), Quaternion.identity);
     }
     public float spawnOffsetY = 10f;
-    public float minX = -7f;
-    public float maxX = 7f;
+    public float minX = -5f;
+    public float maxX = 5f;
 
     public Vector2 GetRandomPosition()
     {

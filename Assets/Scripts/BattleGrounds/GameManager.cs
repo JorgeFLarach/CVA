@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Music music = FindObjectOfType<Music>();
+        // music.StopMusic();
+        // Destroy(music.gameObject);
+        // Source source = FindObjectOfType<Source>();
+        // Destroy(source.gameObject);
         GameData.ClearFoodBoard();
         DisplayFoodReserves();
         DisplayScore();
