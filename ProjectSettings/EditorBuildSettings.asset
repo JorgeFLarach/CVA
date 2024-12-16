@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleGrounds/WaveScreen.unity
     guid: 46d146b63a4504402a0eb49fb55c36fe
   - enabled: 1
+    path: Assets/Scenes/CutScene/SourceInput1.unity
+    guid: f0ef9f72820e443fab52db23b5ad035a
+  - enabled: 1
     path: Assets/Scenes/LasagnaMiniGame.unity
     guid: e31ecf47707506d429ba7cca504563b3
   - enabled: 1

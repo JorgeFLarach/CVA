@@ -15,6 +15,10 @@ public class SkipButton : MonoBehaviour
 
     void Skip()
     {
-        SceneManager.LoadScene("KitchenPrep");
+        Music music = FindObjectOfType<Music>();
+        music.StopMusic();
+        Source source = FindObjectOfType<Source>();
+        Destroy(source.gameObject);
+        SceneManager.LoadScene("SourceInput1");
     }
 }
