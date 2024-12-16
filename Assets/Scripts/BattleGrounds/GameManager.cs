@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int pieCost = 5;
+    public int pieCost = 1;
     public int saladCost = 10;
     public int lasagnaCost = 5;
     public int pancakesCost = 2;

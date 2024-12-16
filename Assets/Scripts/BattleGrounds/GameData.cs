@@ -242,11 +242,11 @@ public static class GameData
         }
         foreach (IceCream iceCream in iceCreamRemoveList)
         {
-            iceCream.Die();
+            iceCream.Die2();
         }
         foreach (Salsa salsa in salsaRemoveList)
         {
-            salsa.Die();
+            salsa.Die2();
         }
     }
 
