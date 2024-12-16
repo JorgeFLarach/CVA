@@ -33,10 +33,7 @@ public class Salad : MonoBehaviour
     GameData.saladLocations.Remove(this);
     Destroy(gameObject);
   }
-  public void Die2(){
-    GameData.saladLocations.Remove(this);
-    Destroy(gameObject);
-  }
+
   public void Start(){
     InvokeRepeating("ThrowTomato", 0, throwRate);
   }
