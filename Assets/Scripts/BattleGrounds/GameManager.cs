@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     void CheckFastForward()
     {
-        if (!GameData.isFast && !paused)
+        if (!GameData.isFast && !paused && !GameData.freeze)
         {
             NormalSpeed();
         }
