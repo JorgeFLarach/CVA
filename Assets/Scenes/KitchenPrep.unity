@@ -2666,8 +2666,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1633369657}
   - component: {fileID: 1633369658}
-  - component: {fileID: 1633369660}
-  - component: {fileID: 1633369659}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2700,19 +2698,19 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: abca5a11f34da8d4e9f03488bfdadcd7, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.663
-  m_Pitch: 1.86
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 2.08
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.04
+  Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -2746,7 +2744,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.63
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2761,7 +2759,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.29166666
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2776,7 +2774,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.883
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2786,28 +2784,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!170 &1633369659
-AudioDistortionFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633369656}
-  m_Enabled: 1
-  m_DistortionLevel: 0.8
---- !u!168 &1633369660
-AudioEchoFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633369656}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Delay: 600
-  m_DecayRatio: 0.8
-  m_WetMix: 1
-  m_DryMix: 1
 --- !u!1 &1661943741
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Shooter : MonoBehaviour
 {
     //public Sprite[] sprites;
-
+    
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
 
@@ -18,6 +18,8 @@ public class Shooter : MonoBehaviour
     public float reloadtime = 1f;
     public float loadprog = 0f;
     public GameObject shotPrefab;
+
+    public GameObject audioSource;
 
 
     private void Awake()
@@ -76,6 +78,8 @@ public class Shooter : MonoBehaviour
         if(reloading == false && pancaked == false){
             if (other.gameObject.CompareTag("Food")){
                 Instantiate(shotPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                audioSource = GameObject.FindGameObjectWithTag("AudioManagerLaser");
+                audioSource.GetComponent<AudioManager2>().playLaser = true;
                 reloading = true;
                 //Kerpow!
                 // Debug.Log("Reloading Start");
