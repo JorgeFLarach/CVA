@@ -22,7 +22,7 @@ public class WaveScreen : MonoBehaviour
 
     public void GoToMenu(){
         PlayerPrefs.DeleteAll(); // Not sure what this does
-        SceneManager.LoadScene("KitchenPrep");
+        SceneManager.LoadScene("SourceInput1");
     }
     void Update(){
         if (Input.GetKeyDown(KeyCode.L)){
