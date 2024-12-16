@@ -172,12 +172,12 @@ public class GameManager : MonoBehaviour
 
     private void SpawnFood()
     {
-        if (paused)
-        {
-            return;
-        }
-        else
-        {
+        // if (paused)
+        // {
+        //     return;
+        // }
+        // else
+        // {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -188,6 +188,10 @@ public class GameManager : MonoBehaviour
                     forkMode();
                     GameData.forkFood(worldPosition);
                 }
+                else if (paused)
+                {
+                    return;
+                }
                 else if (GameData.globalFoodReserves > 0)
                 {
                     GameData.globalFoodReserves -= player.PlaceFood(worldPosition);
@@ -197,8 +201,9 @@ public class GameManager : MonoBehaviour
                     return;
                 }
             }
+
         }
-    }
+    
 
     private void setCost()
     {
