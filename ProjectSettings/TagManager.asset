@@ -25,6 +25,7 @@ TagManager:
   - Bok Choy
   - Tomato
   - IceCream
+  - AudioManagerLaser
   layers:
   - Default
   - TransparentFX
