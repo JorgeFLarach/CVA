@@ -46,7 +46,7 @@ public class knifeBehavior : MonoBehaviour
         if(collision.gameObject.CompareTag("Cabbage")){
             choppedCabbage++;
             Debug.Log("CHOPPED CABBAGE!!");
-            addFoodReserves(1);
+            addFoodReserves(2);
             chopped.chopCabbage(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -54,7 +54,7 @@ public class knifeBehavior : MonoBehaviour
             choppedbrusselSprout++;
 
             Debug.Log("CHOPPED BRUSSEL SPROUT!!");
-            addFoodReserves(5);
+            addFoodReserves(10);
             chopped.chopBrusselSprout(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -62,7 +62,7 @@ public class knifeBehavior : MonoBehaviour
             choppedBokChoy++;
 
             Debug.Log("CHOPPED BOK CHOY!!");
-            addFoodReserves(2);
+            addFoodReserves(4);
             chopped.chopBokChoy(collision.transform.position);
             Destroy(collision.gameObject);
         }
@@ -70,7 +70,7 @@ public class knifeBehavior : MonoBehaviour
             choppedTomato++;
 
             Debug.Log("CHOPPED TOMATO!!");
-            addFoodReserves(3);
+            addFoodReserves(6);
             chopped.chopTomato(collision.transform.position);
             Destroy(collision.gameObject);
         }

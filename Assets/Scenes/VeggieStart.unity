@@ -2067,8 +2067,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Rules:\n\nDrag mouse across the screen to chop flying veggies. \nThe more
-    veggies you chop, the more veggie dishes you earn."
+  m_text: 'Rules:
+
+
+    Drag mouse across the screen to chop flying veggies. The
+    more veggies you chop, the more food you get. Be careful not to drop food on
+    the floor because you only have 5 lives.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
