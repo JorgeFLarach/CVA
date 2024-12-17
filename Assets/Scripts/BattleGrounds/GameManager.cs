@@ -437,7 +437,7 @@ public class GameManager : MonoBehaviour
             float progressBarWidth = 14f;
             float moveAmount = progressBarWidth / waveDuration * Time.deltaTime;
             Vector3 currentPos = progressBar.transform.position;
-            currentPos.x -= moveAmount * GameData.globalTimeScale;
+            currentPos.x -= moveAmount; //* GameData.globalTimeScale;
             currentPos.x = Mathf.Clamp(currentPos.x, -7f, 7f);
             progressBar.transform.position = currentPos;
         }
