@@ -33,5 +33,8 @@ public class WaveScreen : MonoBehaviour
         //     Destroy(source.gameObject);
             GameData.SkipKitchenPrep();
         }
+        if (Input.GetKeyDown(KeyCode.G)){
+            GameData.globalFoodReserves += 1000;
+        }
     }
 }

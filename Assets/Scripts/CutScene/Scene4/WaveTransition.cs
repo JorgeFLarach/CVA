@@ -12,6 +12,14 @@ public class WaveTransition : MonoBehaviour
     public GameObject alien3;
     private bool shouldMoveRight = true;
 
+    public void Start(){
+        GameData.isFast = false;
+        GameData.paused = false;
+        GameData.freeze = false;
+        GameData.ResumeGame();
+        GameData.burn = false;
+    }
+
     void Update()
     {
         if (shouldMoveRight){
